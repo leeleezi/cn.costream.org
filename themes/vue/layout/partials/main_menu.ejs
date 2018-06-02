@@ -3,6 +3,9 @@
     <input type="text" id="search-query-<%- context %>" class="search-query st-default-search-input">
   </form>
 </li>
+<li>
+    <a href="<%- url_for("/v2/guide/installation.html") %>" class="nav-link team<%- page.path.match(/guide\/installation.html/) ? ' current' : '' %>">安装</a>
+</li>
 <%- partial('partials/learn_dropdown') %>
 <%- partial('partials/ecosystem_dropdown') %>
 <!--
