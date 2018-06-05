@@ -1,9 +1,8 @@
 ---
 title: 安装
 type: guide
-order: 1
+order: 2
 costream_version: 0.6.0
-gz_size: "30.67"
 ---
 
 ### 兼容性

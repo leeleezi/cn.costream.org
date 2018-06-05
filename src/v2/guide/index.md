@@ -1,386 +1,168 @@
 ---
-title: 介绍
+title: 简介
 type: guide
-order: 2
+order: 1
 ---
 
-## Vue.js 是什么
 
-Vue (读音 /vjuː/，类似于 **view**) 是一套用于构建用户界面的**渐进式框架**。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与[现代化的工具链](single-file-components.html)以及各种[支持类库](https://github.com/vuejs/awesome-vue#libraries--plugins)结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。
+COStream编程语言是一种面向并行体系结构的高性能流编程语言，由[华中科技大学数字媒体处理与检索实验室](http://media.hust.edu.cn)多核计算与流编译组设计与开发。语言的名称由3个关键字：composite、operator和stream组合而来。COStream程序采用数据流图的方式来描述应用的处理过程，图中节点表示计算，边表示数据的流动。COStream语言具有广泛的应用领域，当前主要用于面向大数据量处理应用，如媒体处理、信号处理、搜索应用、数据文件处理等。
 
-如果你想在深入学习 Vue 之前对它有更多了解，我们<a id="modal-player" href="#">制作了一个视频</a>，带您了解其核心概念和一个示例工程。
+## 主要特性
+>流程序，即有序处理数据序列的程序，最常出现在声音、视频、数字信号处理的上下文中。流程序非常适合多核系统结构。对流应用的兴趣催生了一系列的作用于流域的程序语言，如COStream, Cg, StreamIt等。
 
-如果你已经是有经验的前端开发者，想知道 Vue 与其它库/框架有哪些区别，请查看[对比其它框架](comparison.html)。
+COStream编程语言是一种面向并行体系结构的高性能流编程语言，采用同步数据流图的计算模式，即程序实现了一些独立的结点(为独立计算单元，COStream中称为actor)，这些结点通过输入和输出通道进行数据传递(即actor的输出边和输出边)，这些节点一起组成了代表整体运算的流图。
 
-## 起步
+## 主要目的
+COStream语言的主要目的是:
+* 在多核架构下揭露并利用流程序固有的并行性
+* 自动实现特定域中流应用专家进行的优化
+* 提高程序员在流域中的工作效率
 
-<p class="tip">官方指南假设你已了解关于 HTML、CSS 和 JavaScript 的中级知识。如果你刚开始学习前端开发，将框架作为你的第一步可能不是最好的主意——掌握好基础知识再来吧！之前有其它框架的使用经验会有帮助，但这不是必需的。</p>
+## 并行处理
+COStream如何实现程序的并行:
+1. 任务划分  
+给数据流图中的各结点分配处理器核（核的总个数由后台程序员确定），一个结点对应一个核，一个核可对应多结点，使各核的计算量大致相同，总通信开销尽量小。
+1. 阶段赋值  
+给数据流图中各结点分配阶段号（总的阶段号由编译器决定），使每一阶段的总工作量大致相同，前一阶段的结点所需数据不依赖后一阶段中结点的输出。
+1. 软件流水  
+采用软件流水技术，实现并行。其中，软件流水中第n阶段执行阶段号为n的结点。
 
-尝试 Vue.js 最简单的方法是使用 [JSFiddle 上的 Hello World 例子](https://jsfiddle.net/chrisvfritz/50wL7mdz/)。你可以在浏览器新标签页中打开它，跟着例子学习一些基础用法。或者你也可以<a href="https://gist.githubusercontent.com/chrisvfritz/7f8d7d63000b48493c336e48b3db3e52/raw/ed60c4e5d5c6fec48b0921edaed0cb60be30e87c/index.html" target="_blank" download="index.html">创建一个 <code>.html</code> 文件<a/>，然后通过如下方式引入 Vue：
 
-``` html
-<!-- 开发环境版本，包含了用帮助的命令行警告 -->
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-```
-
-或者：
-
-``` html
-<!-- 生产环境版本，优化了尺寸和速度 -->
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-```
-
-[安装教程](/guide/installation.html)给出了更多安装 Vue 的方式。请注意我们**不推荐**新手直接使用 `vue-cli`，尤其是在你还不熟悉基于 Node.js 的构建工具时。
-
-## 声明式渲染
-
-Vue.js 的核心是一个允许采用简洁的模板语法来声明式地将数据渲染进 DOM 的系统：
-
-``` html
-<div id="app">
-  {{ message }}
-</div>
-```
-``` js
-var app = new Vue({
-  el: '#app',
-  data: {
-    message: 'Hello Vue!'
-  }
-})
-```
-{% raw %}
-<div id="app" class="demo">
-  {{ message }}
-</div>
-<script>
-var app = new Vue({
-  el: '#app',
-  data: {
-    message: 'Hello Vue!'
-  }
-})
-</script>
-{% endraw %}
-
-我们已经成功创建了第一个 Vue 应用！看起来这跟渲染一个字符串模板非常类似，但是 Vue 在背后做了大量工作。现在数据和 DOM 已经被建立了关联，所有东西都是**响应式的**。我们要怎么确认呢？打开你的浏览器的 JavaScript 控制台 (就在这个页面打开)，并修改 `app.message` 的值，你将看到上例相应地更新。
-
-除了文本插值，我们还可以像这样来绑定元素特性：
-
-``` html
-<div id="app-2">
-  <span v-bind:title="message">
-    鼠标悬停几秒钟查看此处动态绑定的提示信息！
-  </span>
-</div>
-```
-``` js
-var app2 = new Vue({
-  el: '#app-2',
-  data: {
-    message: '页面加载于 ' + new Date().toLocaleString()
-  }
-})
-```
-{% raw %}
-<div id="app-2" class="demo">
-  <span v-bind:title="message">
-    鼠标悬停几秒钟查看此处动态绑定的提示信息！
-  </span>
-</div>
-<script>
-var app2 = new Vue({
-  el: '#app-2',
-  data: {
-    message: '页面加载于 ' + new Date().toLocaleString()
-  }
-})
-</script>
-{% endraw %}
-
-这里我们遇到了一点新东西。你看到的 `v-bind` 特性被称为**指令**。指令带有前缀 `v-`，以表示它们是 Vue 提供的特殊特性。可能你已经猜到了，它们会在渲染的 DOM 上应用特殊的响应式行为。在这里，该指令的意思是：“将这个元素节点的 `title` 特性和 Vue 实例的 `message` 属性保持一致”。
-
-如果你再次打开浏览器的 JavaScript 控制台，输入 `app2.message = '新消息'`，就会再一次看到这个绑定了 `title` 特性的 HTML 已经进行了更新。
-
-## 条件与循环
-
-控制切换一个元素是否显示也相当简单：
-
-``` html
-<div id="app-3">
-  <p v-if="seen">现在你看到我了</p>
-</div>
-```
-``` js
-var app3 = new Vue({
-  el: '#app-3',
-  data: {
-    seen: true
-  }
-})
-```
-{% raw %}
-<div id="app-3" class="demo">
-  <span v-if="seen">现在你看到我了</span>
-</div>
-<script>
-var app3 = new Vue({
-  el: '#app-3',
-  data: {
-    seen: true
-  }
-})
-</script>
-{% endraw %}
-
-继续在控制台输入 `app3.seen = false`，你会发现之前显示的消息消失了。
-
-这个例子演示了我们不仅可以把数据绑定到 DOM 文本或特性，还可以绑定到 DOM **结构**。此外，Vue 也提供一个强大的过渡效果系统，可以在 Vue 插入/更新/移除元素时自动应用[过渡效果](transitions.html)。
-
-还有其它很多指令，每个都有特殊的功能。例如，`v-for` 指令可以绑定数组的数据来渲染一个项目列表：
-
-``` html
-<div id="app-4">
-  <ol>
-    <li v-for="todo in todos">
-      {{ todo.text }}
-    </li>
-  </ol>
-</div>
-```
-``` js
-var app4 = new Vue({
-  el: '#app-4',
-  data: {
-    todos: [
-      { text: '学习 JavaScript' },
-      { text: '学习 Vue' },
-      { text: '整个牛项目' }
-    ]
-  }
-})
-```
-{% raw %}
-<div id="app-4" class="demo">
-  <ol>
-    <li v-for="todo in todos">
-      {{ todo.text }}
-    </li>
-  </ol>
-</div>
-<script>
-var app4 = new Vue({
-  el: '#app-4',
-  data: {
-    todos: [
-      { text: '学习 JavaScript' },
-      { text: '学习 Vue' },
-      { text: '整个牛项目' }
-    ]
-  }
-})
-</script>
-{% endraw %}
-
-在控制台里，输入 `app4.todos.push({ text: '新项目' })`，你会发现列表最后添加了一个新项目。
-
-## 处理用户输入
-
-为了让用户和你的应用进行交互，我们可以用 `v-on` 指令添加一个事件监听器，通过它调用在 Vue 实例中定义的方法：
-
-``` html
-<div id="app-5">
-  <p>{{ message }}</p>
-  <button v-on:click="reverseMessage">逆转消息</button>
-</div>
-```
-``` js
-var app5 = new Vue({
-  el: '#app-5',
-  data: {
-    message: 'Hello Vue.js!'
-  },
-  methods: {
-    reverseMessage: function () {
-      this.message = this.message.split('').reverse().join('')
+## 程序举例
+下面这段代码给出了一个用COStream编写的一个程序实例。
+```c++
+composite Main(){
+  int N = 10;
+  stream<int x>S,P;
+  S = Source(){
+    int x;
+     init {x = 0;}
+     work {
+       S[0].x = x;
+       x++;
+     }
+     window{
+       S tumbling(1);
+     }
+  };
+  P = MyOp(S)(N);   
+  Sink(P){
+    work{
+      int r;
+      r = P[0].x;
+      println(r);
     }
-  }
-})
-```
-{% raw %}
-<div id="app-5" class="demo">
-  <p>{{ message }}</p>
-  <button v-on:click="reverseMessage">逆转消息</button>
-</div>
-<script>
-var app5 = new Vue({
-  el: '#app-5',
-  data: {
-    message: 'Hello Vue.js!'
-  },
-  methods: {
-    reverseMessage: function () {
-      this.message = this.message.split('').reverse().join('')
+    window{
+      P tumbling(1);
     }
-  }
-})
-</script>
-{% endraw %}
-
-注意在 `reverseMessage` 方法中，我们更新了应用的状态，但没有触碰 DOM——所有的 DOM 操作都由 Vue 来处理，你编写的代码只需要关注逻辑层面即可。
-
-Vue 还提供了 `v-model` 指令，它能轻松实现表单输入和应用状态之间的双向绑定。
-
-``` html
-<div id="app-6">
-  <p>{{ message }}</p>
-  <input v-model="message">
-</div>
+  };
+}
+composite MyOp(output Out,input In){
+  param
+    int pn;
+  Out = Averager(In){
+    work{
+      int sum = 0;
+      int i;
+      for(i=0;i<pn;i++)
+        sum += In[i].x;
+      Out[0].x = sum/pn;
+    }
+    window{
+      In sliding(pn,1);
+      Out tumbling(1);
+    }
+  };
+}
 ```
-``` js
-var app6 = new Vue({
-  el: '#app-6',
-  data: {
-    message: 'Hello Vue!'
-  }
-})
-```
-{% raw %}
-<div id="app-6" class="demo">
-  <p>{{ message }}</p>
-  <input v-model="message">
-</div>
-<script>
-var app6 = new Vue({
-  el: '#app-6',
-  data: {
-    message: 'Hello Vue!'
-  }
-})
-</script>
-{% endraw %}
+程序的功能为求移动平均值，该程序由三个operator组成即Source，Averager和Sink。其功能如下：Source作为数据源产生由“0”开始的自然数序列输出给Averager；Averager将得到的前N个自然数求平均值并消耗掉最早得到的一个数据，把计算得到的平均值输出给Sink；Sink将得到的平均值打印到屏幕。下面给出了该程序对应的SDF图：
+![](/img/averager.png)
 
-## 组件化应用构建
+## COStream适用的程序
+#### [](#header-2) 大的数据流  
+适合COStream应用的最根本特征体现在其在一个大数据序列(甚至是无穷的)，即数据流上进行操作，数据流中的每一个数据项在有限的时间内被处理，然后被丢弃。
+#### [](#header-2)	独立的数据流结点  
+从概念上说，一个流的计算体现在该程序中数据流的转换。我们定义数据流的基本计算单元为actor：在每次执行阶段中，从输入流中读一个或多个数据项，对其进行计算，然后将一个或多个计算结果写入到输出流中。Actor通常都是独立和自足的，即没有包含对全局变量和其他actor的引用。一个流程序就是由一系列的actor组成的数据流图，其中一些actor的输出将是另外一些actor的输入。
+#### [](#header-4)	一个稳定的计算模式  
+在程序稳态执行的过程中，数据流图的结构通常是不变的。即，一系列确定的actor将按照一个有序的顺序反复执行，给定一个输入数据流，将产生一个输出数据流。
+#### [](#header-4)	滑动窗口的计算  
+数据流中的每一个值通常都会被同一个actor在连续的执行中所检测，也被称为滑动窗口。滑动窗口的例子包括生物序列分析、自然语言的处理、图像的处理（锐化、模糊化等）、网络数据包的检测等。
+#### [](#header-4)	偶尔的流外通信  
+除了大容量的数据流将从一个actor流向另一个actor，actor也将通信一些少量的控制信息在一些罕见的不规则的基础上。例如：改变手机的音量，在屏幕中打印错误信息，或者改变自适应FIR actor中的系数。 这些信息通常和数据流中的数据相同步，例如调频电台在数据流中的某个特定点的传输时改变其频率。
+#### [](#header-4)	高性能的期望  
+通常一些数据流程序需要满足实时性的限制，因此效率（延迟和吞吐量反面）是主要的考虑因素。另外有一些嵌入式的流程序将用于手机环境中，因此电量消耗，存储限制，代码大小限制等也很重要。
 
-组件系统是 Vue 的另一个重要概念，因为它是一种抽象，允许我们使用小型、独立和通常可复用的组件构建大型应用。仔细想想，几乎任意类型的应用界面都可以抽象为一个组件树：
+## COStream不适用的程序
+#### [](#header-4)流结构的动态修改  
+COStream采用静态数据流图，不能在运行时候动态改变流图。一些流程序即使各个层次的actor执行很长一段时间后，偶尔也需要动态的修改流图。例如，如果一个无线网络的接口在其输入通道中经历了高噪声，这将使其需要产生一些actor去消除这些信号。或当网络协议从802.11变成了Bluetooth，它也可能重新初始化其子图。
+#### [](#header-4)actor的输入输出速率动态改变  
+COStream各actor的输入输出速率在运行时恒定。一些应用程序需要对输入数据流进行分析，舍弃不符合需求的数据，即动态改变actor的输出速率。例如图像surf特征提取，以图像像素点为输入数据流，首先判断输入流中的数据项是否为特征点，若是特征点才进行下一步处理。
 
-![Component Tree](/images/components.png)
+## 应用举例
 
-在 Vue 里，一个组件本质上是一个拥有预定义选项的一个 Vue 实例。在 Vue 中注册组件很简单：
+###  实际应用( 30个):
+| | |
+|:-------------|:------------------ |
+| MPEG2的编解码 		 | – MPEG2 encoder / decoder |
+| JPEG的编解码		 |	– JPEG decoder / transcoder |
+| 通道声码器		    |	– Channel Vocoder |
+| GSM解码器			| – GSM Decoder |
+| 地面移动目标指示器	| – Ground Moving Target Indicator |
+| 介质中的脉冲雷达	|	– Medium Pulse Compression Radar |
+| 雷达阵列前端		|	– Radar Front Array End |
+| 合成孔径雷达		|	– Synthetic Aperture Radar |
+| 目标探测器		|		– Target Detector |
+| 特征辅助跟踪		|	– Feature Aided Tracking |
+| 光线跟踪		|		– RayTracer |
+| DES加密			|	– DES encryption|
+| Serpent加密算法	|	– Serpent encryption|
+| 马赛克			|		– Mosaic|
+| 声音合成机			|	– Vocoder|
+| MP3子程序				|– MP3 subset|
+| 3GPP物理层			|- 3GPP physical layer|
+| 频率调频电台		|	– Freq-hopping radio|
+|  正交频分复用		|	– Orthogonal Frequency Division Multiplexer|
+|  高清电视			|	– HDTV|
+|  H264子集				|– H264 subset|
+| 过滤器集合				|– Filterbank|
+| 802.11a 传输器			|– 802.11a transmitte|
+| FM收音机			|	– FM Radio|
+| DTOA转换器		|	– DToA Converte|
 
-``` js
-// 定义名为 todo-item 的新组件
-Vue.component('todo-item', {
-  template: '<li>这是个待办项</li>'
-})
-```
+###  库和内核( 23个) 	Libraries / kernels (23):
+| | |
+|:-------------|:------------------ |
+| 自相关作用		|		– Autocorrelation |
+| 矩阵乘法		|		– Matrix Multiplication |
+| Cholesky分解	|		– Cholesky |
+| 循环冗余检验码	|	– CRC |
+| Oversampler	|			– Oversampler |
+| 转换率			|		– Rate Convert |
+| 离散余弦变换	|		– DCT (1D / 2D, float / int) |
+| 快速傅里叶变换	|	– FFT (4 granularities) |
+| 时域均衡			|	– Time Delay Equalization |
+| Trellis量化		|		– Trellis |
+| Lattice			|		–Lattice |
+| Vector相加			|	– VectAdd |
 
-现在你可以用它构建另一个组件模板：
+###  图像管道(4个)	Graphics pipelines (4):
+| | |
+|:-------------|:------------------ |
+|	管道相关			 |	–Reference pipeline |
+|	Phong着色 |				– Phong shading |
+|	体积阴影			 |	– Shadow volumes |
+|	粒子系统			 |	– Particle system |
 
-``` html
-<ol>
-  <!-- 创建一个 todo-item 组件的实例 -->
-  <todo-item></todo-item>
-</ol>
-```
+### 排序算法(8个) Sorting routines (8):
 
-但是这样会为每个待办项渲染同样的文本，这看起来并不炫酷。我们应该能从父作用域将数据传到子组件才对。让我们来修改一下组件的定义，使之能够接受一个 [prop](components.html#Props)：
+| | |
+|:-------------|:------------------ |
+| 	双调排序(3个版本)	  |	– Bitonic sort (3 versions) |
+| 	插入排序			|	– Insertion sort |
+| 	冒泡排序			|	– Bubble Sort |
+| 	比较计数			|	– Comparison counting |
+| 	合并排序			|	– Merge sort |
+| 	计数排序			|	– Radix sort |
 
-``` js
-Vue.component('todo-item', {
-  // todo-item 组件现在接受一个
-  // "prop"，类似于一个自定义特性。
-  // 这个 prop 名为 todo。
-  props: ['todo'],
-  template: '<li>{{ todo.text }}</li>'
-})
-```
 
-现在，我们可以使用 `v-bind` 指令将待办项传到循环输出的每个组件中：
-
-``` html
-<div id="app-7">
-  <ol>
-    <!--
-      现在我们为每个 todo-item 提供 todo 对象
-      todo 对象是变量，即其内容可以是动态的。
-      我们也需要为每个组件提供一个“key”，稍后再
-      作详细解释。
-    -->
-    <todo-item
-      v-for="item in groceryList"
-      v-bind:todo="item"
-      v-bind:key="item.id">
-    </todo-item>
-  </ol>
-</div>
-```
-
-``` js
-Vue.component('todo-item', {
-  props: ['todo'],
-  template: '<li>{{ todo.text }}</li>'
-})
-
-var app7 = new Vue({
-  el: '#app-7',
-  data: {
-    groceryList: [
-      { id: 0, text: '蔬菜' },
-      { id: 1, text: '奶酪' },
-      { id: 2, text: '随便其它什么人吃的东西' }
-    ]
-  }
-})
-```
-{% raw %}
-<div id="app-7" class="demo">
-  <ol>
-    <todo-item v-for="item in groceryList" v-bind:todo="item" :key="item.id"></todo-item>
-  </ol>
-</div>
-<script>
-Vue.component('todo-item', {
-  props: ['todo'],
-  template: '<li>{{ todo.text }}</li>'
-})
-var app7 = new Vue({
-  el: '#app-7',
-  data: {
-    groceryList: [
-      { id: 0, text: '蔬菜' },
-      { id: 1, text: '奶酪' },
-      { id: 2, text: '随便其它什么人吃的东西' }
-    ]
-  }
-})
-</script>
-{% endraw %}
-
-尽管这只是一个刻意设计的例子，但是我们已经设法将应用分割成了两个更小的单元。子单元通过 prop 接口与父单元进行了良好的解耦。我们现在可以进一步改进 `<todo-item>` 组件，提供更为复杂的模板和逻辑，而不会影响到父单元。
-
-在一个大型应用中，有必要将整个应用程序划分为组件，以使开发更易管理。在[后续教程](components.html)中我们将详述组件，不过这里有一个 (假想的) 例子，以展示使用了组件的应用模板是什么样的：
-
-``` html
-<div id="app">
-  <app-nav></app-nav>
-  <app-view>
-    <app-sidebar></app-sidebar>
-    <app-content></app-content>
-  </app-view>
-</div>
-```
-
-### 与自定义元素的关系
-
-你可能已经注意到 Vue 组件非常类似于**自定义元素**——它是 [Web 组件规范](https://www.w3.org/wiki/WebComponents/)的一部分，这是因为 Vue 的组件语法部分参考了该规范。例如 Vue 组件实现了 [Slot API](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md) 与 `is` 特性。但是，还是有几个关键差别：
-
-1. Web 组件规范仍然处于草案阶段，并且未被所有浏览器原生实现。相比之下，Vue 组件不需要任何 polyfill，并且在所有支持的浏览器 (IE9 及更高版本) 之下表现一致。必要时，Vue 组件也可以包装于原生自定义元素之内。
-
-2. Vue 组件提供了纯自定义元素所不具备的一些重要功能，最突出的是跨组件数据流、自定义事件通信以及构建工具集成。
-
-## 准备好了吗？
-
-我们刚才简单介绍了 Vue 核心最基本的功能——本教程的其余部分将涵盖这些功能以及其它高级功能更详细的细节，所以请务必读完整个教程！
-
-<div id="video-modal" class="modal"><div class="video-space" style="padding: 56.25% 0 0 0; position: relative;"></div></div>
+关于COStream语言的定义、编程规范和编译器行为（包括静态和动态）的详细说明等，详见[COStream参考文档列表](document)。
