@@ -1,5 +1,5 @@
 ---
-title: 简介
+title: 文法简介
 type: guide
 order: 30
 
