@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>COStream</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://cn.costream.site/"/>
+  <updated>2018-06-11T09:32:56.682Z</updated>
+  <id>https://cn.costream.site/</id>
+  
+  <author>
+    <name>DML308</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>COStream 0.6.0 Released</title>
+    <link href="https://cn.costream.site/2018/06/11/0.6.0-release/"/>
+    <id>https://cn.costream.site/2018/06/11/0.6.0-release/</id>
+    <published>2018-06-11T09:32:56.682Z</published>
+    <updated>2018-06-11T09:32:56.682Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="message"><a href="#message" class="headerlink" title="message"></a>message</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;message&quot;&gt;&lt;a href=&quot;#message&quot; class=&quot;headerlink&quot; title=&quot;message&quot;&gt;&lt;/a&gt;message&lt;/h3&gt;
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
