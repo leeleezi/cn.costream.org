@@ -12,7 +12,7 @@ $
 
 ## 部署
 
-该站点通过 [Netlify](https://www.netlify.com/) 对 `master` 分支进行自动部署到 `gh-pages` 分支。
+该站点通过 **手动部署** 对 `master` 分支进行部署到 `gh-pages` 分支。
 
 ## 如何参与贡献
 

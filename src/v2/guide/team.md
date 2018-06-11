@@ -8,7 +8,10 @@ order: 803
 <script id="vuer-profile-template" type="text/template">
   <div class="vuer">
     <div class="avatar">
-      <img v-if="profile.github"
+      <img v-if="profile.img"
+        :src="profile.img"
+        :alt="profile.name" width=80 height=80>
+      <img v-else
         :src="'https://github.com/' + profile.github + '.png'"
         :alt="profile.name" width=80 height=80>
     </div>
@@ -23,7 +26,7 @@ order: 803
           <dd>
             <ul>
               <li v-for="repo in profile.reposOfficial">
-                <a :href="githubUrl('vuejs', repo)" target=_blank>{{ repo.name || repo }}</a>
+                <a href="#" target=_self>{{ repo.name || repo }}</a>
               </li>
             </ul>
           </dd>
@@ -94,10 +97,6 @@ order: 803
           <a class=github v-if="profile.github" :href="githubUrl(profile.github)">
             <i class="fa fa-github"></i>
             <span class="sr-only">Github</span>
-          </a>
-          <a class=twitter v-if="profile.twitter" :href="'https://twitter.com/' + profile.twitter">
-            <i class="fa fa-twitter"></i>
-            <span class="sr-only">Twitter</span>
           </a>
           <a class=codepen v-if="profile.codepen" :href="'https://codepen.io/' + profile.codepen">
             <i class="fa fa-codepen"></i>
@@ -196,38 +195,9 @@ order: 803
 <script>
 (function () {
   var cityCoordsFor = {
-    'Annecy, France': [45.899247, 6.129384],
-    'Alicante, Spain' : [38.346543, -0.483838],
-    'Bangalore, India': [12.971599, 77.594563],
-    'Beijing, China': [39.904200, 116.407396],
-    'Bordeaux, France': [44.837789, -0.579180],
-    'Bucharest, Romania': [44.426767, 26.102538],
+    'Wuhan, China' : [30.51415,114.40776],
     'Chengdu, China': [30.572815, 104.066801],
-    'Chongqing, China': [29.431586, 106.912251],
-    'Denver, CO, USA': [39.739236, -104.990251],
-    'Dubna, Russia': [56.732020, 37.166897],
-    'East Lansing, MI, USA': [42.736979, -84.483865],
-    'Hangzhou, China': [30.274084, 120.155070],
-    'Jersey City, NJ, USA': [40.728157, -74.558716],
-    'Kingston, Jamaica': [18.017874, -76.809904],
-    'Krasnodar, Russia': [45.039267, 38.987221],
-    'Lansing, MI, USA': [42.732535, -84.555535],
-    'London, UK': [51.507351, -0.127758],
-    'Lyon, France': [45.764043, 4.835659],
-    'Mannheim, Germany': [49.487459, 8.466039],
-    'Moscow, Russia': [55.755826, 37.617300],
-    'Munich, Germany': [48.137154, 11.576124],
-    'Orlando, FL, USA': [28.538335, -81.379236],
-    'Paris, France': [48.856614, 2.352222],
-    'Poznań, Poland': [52.4006553, 16.761583],
-    'Seoul, South Korea': [37.566535, 126.977969],
-    'Shanghai, China': [31.230390, 121.473702],
-    'Taquaritinga, Brazil': [-21.430094, -48.515285],
-    'Tehran, Iran': [35.689197, 51.388974],
-    'Thessaloniki, Greece': [40.640063, 22.944419],
-    'Tokyo, Japan': [35.689487, 139.691706],
-    'Toronto, Canada': [43.653226, -79.383184],
-    'Wrocław, Poland': [51.107885, 17.038538]
+    'Chongqing, China': [29.431586, 106.912251]
   }
   var languageNameFor = {
     en: 'English',
@@ -248,45 +218,109 @@ order: 803
   }
 
   var team = [{
-    name: 'Evan You',
-    title: 'Benevolent Dictator For Life',
-    city: 'Jersey City, NJ, USA',
+    name: '于俊清',
+    title: 'Professor of DML',
+    city: 'Wuhan, China',
     languages: ['zh', 'en'],
-    github: 'yyx990803',
-    twitter: 'youyuxi',
+    github: null,
+    img: '/images/YuJunqing.jpg',
     work: {
-      role: 'Creator',
-      org: 'Vue.js'
+      role: 'Professor',
+      org: 'HUST DML'
     },
     reposOfficial: [
-      'vuejs/*', 'vuejs-templates/*'
+      '多核计算与流编译', '基于内容的视频分析','网络安全与大数据处理'
     ],
     links: [
-      'https://www.patreon.com/evanyou'
+      'http://faculty.hust.edu.cn/yujunqing/zh_CN/index.htm'
     ]
   }]
 
-  team = team.concat(shuffle([
+  team = team.concat(shuffle([ //shuffle 函数打乱了后续成员的顺序
     {
-      name: 'Chris Fritz',
-      title: 'Good Word Putter-Togetherer',
-      city: 'Lansing, MI, USA',
-      languages: ['en', 'de'],
-      github: 'chrisvfritz',
-      twitter: 'chrisvfritz',
+      name: '陈名韬',
+      title: 'Member of DML',
+      city: 'Wuhan, China',
+      languages: ['zh', 'en'],
+      github: 'lhcmt',
+      twitter: null,
       work: {
-        role: 'Educator & Consultant'
+        role: 'Master',
+        org:'HUST DML'
       },
       reposOfficial: [
-        'vuejs.org', 'vue-migration-helper'
+        'COStream GPU'
       ],
-      reposPersonal: [
-        'vue-2.0-simple-routing-example', 'vue-ssr-demo-simple'
-      ],
+      //      reposPersonal: [
+      //        
+      //      ],
       links: [
-        'https://www.patreon.com/chrisvuefritz'
+        'https://github.com/lhcmt'
       ]
-    }
+    },
+    {
+      name: '李新星',
+      title: 'Member of DML',
+      city: 'Wuhan, China',
+      languages: ['zh', 'en','jp'],
+      github: 'lxx2013',
+      twitter: null,
+      work: {
+        role: 'Master',
+        org:'HUST DML'
+      },
+      reposOfficial: [
+        'COStream图形库', '前端'
+      ],
+//      reposPersonal: [
+//        
+//      ],
+      links: [
+        'https://github.com/lxx2013'
+      ]
+    },
+    {
+      name: '杨飞',
+      title: 'Member of DML',
+      city: 'Wuhan, China',
+      languages: ['zh', 'en'],
+      github: 'innocanca',
+      twitter: null,
+      work: {
+        role: 'Master',
+        org:'HUST DML'
+      },
+      reposOfficial: [
+        'COStream - JPEG'
+      ],
+      //      reposPersonal: [
+      //        
+      //      ],
+      links: [
+        'https://github.com/innocanca'
+      ]
+    },
+    {
+      name: '余冰清',
+      title: 'Member of DML',
+      city: 'Wuhan, China',
+      languages: ['zh', 'en'],
+      github: 'yu583497794',
+      twitter: null,
+      work: {
+        role: 'Master',
+        org:'HUST DML'
+      },
+      reposOfficial: [
+        'COStream - Tensorflow'
+      ],
+      //      reposPersonal: [
+      //        
+      //      ],
+      links: [
+        'https://github.com/yu583497794'
+      ]
+    },
   ]))
 
   var partners = [
@@ -362,6 +396,7 @@ order: 803
           '<ul><li>' +
           vm.profile.languages.map(function (languageCode, index) {
             var language = languageNameFor[languageCode]
+            /* //这段注释掉了"本地语言符合后可以显示开讲座的蓝色样式"
             if (
               languageCode !== 'en' &&
               preferredLanguageCode &&
@@ -377,6 +412,7 @@ order: 803
                 '\>' + language + '</span>'
               )
             }
+            */
             return language
           }).join('</li><li>') +
           '</li></ul>'
