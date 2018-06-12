@@ -4,19 +4,24 @@
 
 英文原版仓库地址：https://github.com/DML308/COStream
 
-## 开发
+## 编辑
 
 ``` bash
-$
+#modify XX.md
+$ hexo generate
+$ git status
+$ git add -A
+$ git commit 
+$ git push
 ```
 
 ## 部署
 
-该站点通过 **手动部署** 对 `master` 分支进行部署到 `gh-pages` 分支。
+该站点通过 **手动部署** 对 `master` 分支进行部署到 `master/docs` - Git Pages。
 
 ## 如何参与贡献
 
-目前网站处于维护状态，我们会定期同步英文版的更新.
+目前网站处于维护状态，我们会定期同步更新到英文版.
 
 
 **注意：**
