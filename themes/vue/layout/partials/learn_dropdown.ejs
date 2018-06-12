@@ -2,10 +2,10 @@
   <a class="nav-link<%- page.path.match(/\/(guide(?!\/team.html$|\/installation.html)|api|style-guide|examples|cookbook)(\/|$)/) ? ' current' : '' %>">学习</a><span class="arrow"></span>
   <ul class="nav-dropdown">
     <li><ul>
-        <li><a href="<%- url_for("/v2/guide/") %>" class="nav-link<%- page.path.match(/\/guide(?!\/grammar-book)(\/|$)/) ? ' current' : '' %>">教程</a></li>
-        <li><a href="<%- url_for("/v2/guide/grammar-book/grammar.html") %>" class="nav-link<%- page.path.match(/\/grammar-book(\/|$)/) ? ' current' : '' %>">文法</a></li>
-        <li><a href="<%- url_for("/v2/api/") %>" class="nav-link<%- page.path.match(/\/api(\/|$)/) ? ' current' : '' %>">API</a></li>
-      <li><a href="<%- url_for("/v2/examples/") %>" class="nav-link<%- page.path.match(/\/examples(\/|$)/) ? ' current' : '' %>">示例</a></li>
+        <li><a href="<%- url_for("/guide/") %>" class="nav-link<%- page.path.match(/\/guide(?!\/grammar-book)(\/|$)/) ? ' current' : '' %>">教程</a></li>
+        <li><a href="<%- url_for("/guide/grammar-book/grammar.html") %>" class="nav-link<%- page.path.match(/\/grammar-book(\/|$)/) ? ' current' : '' %>">文法</a></li>
+        <li><a href="<%- url_for("/api/") %>" class="nav-link<%- page.path.match(/\/api(\/|$)/) ? ' current' : '' %>">API</a></li>
+      <li><a href="<%- url_for("/examples/") %>" class="nav-link<%- page.path.match(/\/examples(\/|$)/) ? ' current' : '' %>">示例</a></li>
     </ul></li>
   </ul>
 </li>
