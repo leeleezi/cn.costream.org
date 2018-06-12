@@ -275,6 +275,27 @@ order: 803
       ]
     },
     {
+      name: '李平然',
+      title: 'Member of DML',
+      city: 'Wuhan, China',
+      languages: ['zh', 'en'],
+      github: 'blendTree',
+      twitter: null,
+      work: {
+        role: 'Master',
+        org:'HUST DML'
+      },
+      reposOfficial: [
+        'COStream Dynamic scheduling'
+      ],
+      //      reposPersonal: [
+      //        
+      //      ],
+      links: [
+        'https://github.com/blendTree'
+      ]
+    },
+    {
       name: '李新星',
       title: 'Member of DML',
       city: 'Wuhan, China',
