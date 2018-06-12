@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
-    <title>COStream</title>
+    <title>程序结构 — COStream</title>
     <meta charset="utf-8">
     <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -12,12 +12,12 @@
     <link rel="alternate" hreflang="zh" href="https://cn.costream.site/guide/grammar-book/6.html">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Vue.js">
+    <meta property="og:title" content="程序结构 — Vue.js">
     <meta property="og:description" content="Vue.js - The Progressive JavaScript Framework">
     <meta property="og:image" content="https://cn.vuejs.org//images/logo.png">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Vue.js">
+    <meta name="twitter:title" content="程序结构 — Vue.js">
     <meta name="twitter:description" content="Vue.js - The Progressive JavaScript Framework">
     <meta name="twitter:image" content="https://cn.vuejs.org/images/logo.png">
 
@@ -57,7 +57,7 @@
 
     <!-- this needs to be loaded before guide's inline scripts -->
     <script src="/js/vue.js"></script>
-    <script>window.PAGE_TYPE = ""</script>
+    <script>window.PAGE_TYPE = "guide"</script>
 
     <!-- ga -->
     <script>
@@ -175,6 +175,7 @@
         
           
   <div class="sidebar">
+  <div class="sidebar-inner">
     <ul class="main-menu">
       <li>
   <form id="search-form">
@@ -263,14 +264,232 @@
 <!--<li><a href="https://github.com/vuejs/cn.vuejs.org/" target="_blank" class="nav-link contribute">参与翻译</a></li>-->
 
     </ul>
+    <div class="list">
+      <!--
+<div class="sidebar-sponsors">
+  <div class="main-sponsor">
+    <span>特别赞助</span><br>
+    <a id="main-sponsor-link" target="_blank" style="display: block; margin: 15px 0;" href="https://www.bmqb.com/jobs">
+      <img id="main-sponsor-image" src="/images/bmqb.png">
+    </a>
   </div>
+  <a class="become-backer" href="/support-vuejs">
+    成为赞助者
+  </a>
+</div>
+-->
 
-<div class="content  ">
+<!--
+
+original version from vuejs.org
+
+<div id="sidebar-sponsors-special">
+  <div class="main-sponsor">
+    <span>特别赞助</span>
+    <div>
+    <a href="https://stdlib.com" target="_blank" class="logo">
+      <img src="/images/stdlib.png">
+    </a>
+    <a href="https://www.bitsrc.io/?utm_source=vue&utm_medium=vue&utm_campaign=vue&utm_term=vue&utm_content=vue" target="_blank" class="logo">
+      <img src="/images/bit-wide.png">
+    </a>
+    </div>
+  </div>
+</div>
+
+<div id="sidebar-sponsors-platinum">
+  <div class="main-sponsor">
+    <span>Patreon 赞助</span>
+    <div>
+    <a href="http://tooltwist.com/" target="_blank" class="logo">
+      <img src="/images/tooltwist.png">
+    </a>
+    <a href="https://vueschool.io/?utm_source=Vuejs.org&utm_medium=Banner&utm_campaign=Sponsored%20Banner&utm_content=V1" target="_blank" class="logo">
+      <img src="/images/vueschool.png">
+    </a>
+    <a href="https://vehikl.com/" target="_blank" class="logo">
+      <img src="/images/vehikl.png">
+    </a>
+    </div>
+  </div>
+  <a class="become-backer" href="/support-vuejs">
+    成为赞助者
+  </a>
+</div>
+
+-->
+
+      
+        <h2>
+          
+          教程
+<!--
+          
+            <select class="version-select">
+              <option value="SELF" selected>2.x</option>
+              <option value="v1">1.0</option>
+              <option value="012">0.12</option>
+              <option value="011">0.11</option>
+            </select>
+          
+-->
+        </h2>
+        <ul class="menu-root">
+  
+    
+    
+      
+        <li><h3>基础</h3></li>
+      
+      
+			
+    
+    <li>
+      <a href="/guide/index.html" class="sidebar-link">简介</a>
+    </li>
+  
+    
+    
+      
+      
+			
+    
+    <li>
+      <a href="/guide/installation.html" class="sidebar-link">安装</a>
+    </li>
+  
+    
+    
+      
+      
+			
+    
+    <li>
+      <a href="/guide/helloworld.html" class="sidebar-link">运行第一个COStream程序</a>
+    </li>
+  
+    
+    
+      
+      
+      <li><h3>文法手册</h3></li>
+      
+			
+    
+    <li>
+      <a href="/guide/grammar-book/grammar.html" class="sidebar-link">文法简介</a>
+    </li>
+  
+    
+    
+      
+      
+			
+    
+    <li>
+      <a href="/guide/grammar-book/2.html" class="sidebar-link">关键字与类型</a>
+    </li>
+  
+    
+    
+      
+      
+			
+    
+    <li>
+      <a href="/guide/grammar-book/3.html" class="sidebar-link">流数据处理</a>
+    </li>
+  
+    
+    
+      
+      
+			
+    
+    <li>
+      <a href="/guide/grammar-book/4.html" class="sidebar-link">层次性流程序构造</a>
+    </li>
+  
+    
+    
+      
+      
+			
+    
+    <li>
+      <a href="/guide/grammar-book/5.html" class="sidebar-link">内置Composite</a>
+    </li>
+  
+    
+    
+      
+      
+			
+    
+    <li>
+      <a href="/guide/grammar-book/6.html" class="sidebar-link current">程序结构</a>
+    </li>
+  
+    
+    
+      
+      
+			
+      <li><h3>其它</h3></li>
+      
+    
+    <li>
+      <a href="/guide/team.html" class="sidebar-link">认识团队</a>
+    </li>
+  
+    
+    
+      
+      
+			
+    
+    <li>
+      <a href="/guide/MD.html" class="sidebar-link">模板.md用法</a>
+    </li>
+  
+</ul>
+
+      
+    </div>
+  </div>
+</div>
+
+
+<div class="content guide with-sidebar 6-guide">
+  
+    
   
   
+    <h1>程序结构</h1>
   
-    <h1 id="6-程序结构"><a href="#6-程序结构" class="headerlink" title="6    程序结构"></a>6    程序结构</h1>
   
+    <h2 id="外部C"><a href="#外部C" class="headerlink" title="外部C++"></a>外部C++</h2><p>图6.1给出了COStream程序的编译流程，COStream编译器是一个源到源的编译器，将COStream程序根据目标平台编译成并行的目标代码（这里是C++），然后调用底层的编译器生成最终的目标代码。</p>
+<p><img src="/img/PART1-6.1.png" alt="6.1"></p>
+<p>COStream编译器支持两种方式的程序编译：独立模式和嵌入模式。以目标语言C++为例，在独立模式中，COStream程序被翻译成C++最后编译成独立可执行的代码，无需其他干涉；在嵌入模式中，COStream程序通过提供的外部接口被外部C++程序调用，成为C++的一个调用库，和外部C++一起编译连接，只需设置编译选项，编译器便能对代码以不同的方式编译：embed表示嵌入式调用，而normal表示独立执行程序。这里对嵌入模式中COStream编译器提供的接口进行简单介绍。</p>
+<p>这里对嵌入模式中COStream编译器提供的接口进行简单介绍。在编译生成的文件中，RunCOStream.h文件定义了类RunCOStream，类RunCOStream包含在名字空间COStream中，该类主要接口用法如下：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">RunCOStream(<span class="built_in">stringstream</span>&amp; instream);</span><br><span class="line">RunCOStream(<span class="keyword">void</span>* pSrc,<span class="keyword">int</span> srcDataCount);</span><br><span class="line">RunCOStream(<span class="built_in">string</span> path)；</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Run</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetOutputNum</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span>* <span class="title">GetOutputArray</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>用户可以提供字符流、数组指针和数组长度以及文件路径以初始化RunCOStream，调用该类的Run方法将运行流程序，最后通过调用该类的GetOutputArray方法取得输出数据数组指针，调用GetOutputNum方法可以获得输出数据项个数；COStream.h文件包含了该类的声明，用户只需包含该文件。<br>对COStream的用法示例如下:<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"RunCOStream.h"</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> COStream;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> *p = <span class="keyword">new</span> <span class="keyword">double</span>[<span class="number">1379</span>];</span><br><span class="line">	RunCOStream costream = <span class="keyword">new</span> RunCOStream(p,<span class="number">1379</span>);</span><br><span class="line">	costream.Run();</span><br><span class="line">	<span class="keyword">int</span> retDataCount = costream.GetOutputNum();</span><br><span class="line">	<span class="keyword">double</span>* retArray = (<span class="keyword">double</span>*)costream. GetOutputArray();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="C-与COStream共享变量"><a href="#C-与COStream共享变量" class="headerlink" title="C++与COStream共享变量"></a>C++与COStream共享变量</h2><p>为了方便修改COStream程序中的变量，以使C++用户能够更加灵活地使用流程序，COStream编译器允许COStream程序引用外部C++程序定义的全局变量。在COStream程序中对引用的变量附加extern标识符，并不进行初始化；在C++程序中，将被引用的变量定义在全局命名空间中，而后每次修改这些共享变量都将修改COStream程序中的变量。<br>全局变量的使用实例如下：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//COStream文件：</span></span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> ExternValue;</span><br><span class="line"><span class="function">composite <span class="title">Main</span><span class="params">(output stream&lt;<span class="keyword">double</span> x&gt;Out, input stream&lt;<span class="keyword">double</span> x&gt;In)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	stream&lt;<span class="keyword">double</span> x&gt; Out = FMRadioCore(In)()</span><br><span class="line">	&#123;</span><br><span class="line">		work</span><br><span class="line">		&#123;</span><br><span class="line">			Out[<span class="number">0</span>].x = In[<span class="number">0</span>].x+ExternValue;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//C++文件:</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"RunCOStream.h"</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> COStream;</span><br><span class="line"><span class="keyword">int</span> ExternValue;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> *p = <span class="keyword">new</span> <span class="keyword">double</span>[<span class="number">1379</span>];</span><br><span class="line">	RunCOStream costream = <span class="keyword">new</span> RunCOStream(p,<span class="number">1379</span>);</span><br><span class="line">	ExternValue = <span class="number">2</span>;</span><br><span class="line">	costream.Run();</span><br><span class="line">	ExternValue = <span class="number">-1</span>;</span><br><span class="line">	costream.Run();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如上面的代码所示,在COStream文件中引用了外部变量ExternValue，该变量在C++源文件中定义，用户可以在C++文件中修改ExternValue。</p>
+<p>例子：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">composite <span class="title">MyCompositeCall</span><span class="params">(input stream&lt;<span class="keyword">int</span> x&gt; In, output stream&lt;<span class="keyword">int</span> x&gt; Out)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	param</span><br><span class="line">		<span class="keyword">float</span> f;</span><br><span class="line">	<span class="keyword">int</span> x=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(x&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		stream&lt;<span class="keyword">int</span> x&gt;G;</span><br><span class="line">		G=MyOperator(In)<span class="comment">//2.内置operator定义</span></span><br><span class="line">		&#123;</span><br><span class="line">			work</span><br><span class="line">			&#123;</span><br><span class="line">				G[<span class="number">0</span>].x = In[<span class="number">0</span>].x + f;</span><br><span class="line">			&#125;</span><br><span class="line">			window</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="function">In <span class="title">sliding</span><span class="params">(<span class="number">3</span>,<span class="number">2</span>)</span></span>;</span><br><span class="line">				<span class="function">Out <span class="title">tumbling</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">composite <span class="title">Main</span><span class="params">(input stream&lt;<span class="keyword">int</span> x&gt; In, stream&lt;<span class="keyword">int</span> x&gt; In1, output stream&lt;<span class="keyword">int</span> x&gt; Out)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	param <span class="keyword">int</span> x, <span class="keyword">int</span> y;</span><br><span class="line">	<span class="keyword">int</span> i,f;</span><br><span class="line">	<span class="keyword">int</span> realparam;</span><br><span class="line">	stream&lt;<span class="keyword">int</span> x&gt; G,G1,G3;<span class="comment">//1.stream独立声明</span></span><br><span class="line">	<span class="keyword">if</span>(x&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		G= MyCompositeCall(In)(f);<span class="comment">//2.其他composite调用</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		(G,G1)=MyOperatorx(In,In1)<span class="comment">//3.内置operator定义</span></span><br><span class="line">		&#123;</span><br><span class="line">			work</span><br><span class="line">			&#123;</span><br><span class="line">				G[<span class="number">0</span>].x = x+In[<span class="number">0</span>].x+In1[<span class="number">0</span>];</span><br><span class="line">				x += <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			window</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="function">In <span class="title">sliding</span><span class="params">(<span class="number">3</span>,<span class="number">2</span>)</span></span>;</span><br><span class="line">				<span class="function">G <span class="title">tumbling</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//4.在非pipeline和splitjion结构中不允许出现循环控制语句内含有composite调用语句，只允许出现普通语句</span></span><br><span class="line"></span><br><span class="line">	f=<span class="number">100000.0</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;<span class="number">3</span>;i++)</span><br><span class="line">		f += <span class="number">3</span>;</span><br><span class="line">		<span class="comment">//5.关于pipeline</span></span><br><span class="line">	G1=pipeline(G)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//5.1普通C语句</span></span><br><span class="line">		<span class="keyword">int</span> a,b;</span><br><span class="line">		x=(<span class="number">4</span>+y)/<span class="number">2</span>;</span><br><span class="line">		a =<span class="number">3</span>;</span><br><span class="line">		b =<span class="number">5</span>;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)<span class="comment">//5.2循环控制可以出现在pipeline结构中</span></span><br><span class="line">			<span class="keyword">if</span>(x&gt;<span class="number">0</span>)<span class="comment">//5.3条件控制</span></span><br><span class="line">				<span class="function">add <span class="title">MyCompositeCall</span><span class="params">(realparam[i])</span></span>;<span class="comment">// composite-call必须是单输入单输出</span></span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				add MyCompositeCall(realparam[i]);</span><br><span class="line">		<span class="function">add <span class="title">MyCompositeCall</span><span class="params">(realparam)</span></span>;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="comment">//6.splitjion</span></span><br><span class="line">	G3=splitjoin(G)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> t=<span class="number">12315</span>;</span><br><span class="line">		<span class="function">split <span class="title">duplicate</span><span class="params">()</span></span>;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)<span class="comment">//6.1循环控制可以出现在pipeline结构中</span></span><br><span class="line">			<span class="keyword">if</span>(t&gt;<span class="number">0</span>)<span class="comment">//6.2条件控制</span></span><br><span class="line">				<span class="function">add <span class="title">MyCompositeCall</span><span class="params">(realparam[i])</span></span>;<span class="comment">// 6.3composite-call必须是单输入单输出</span></span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				add MyCompositeCall(realparam[i]);</span><br><span class="line">		<span class="function">add <span class="title">MyCompositeCall</span><span class="params">(realparam)</span></span>;</span><br><span class="line">		<span class="function">join <span class="title">roundrobin</span><span class="params">()</span></span>;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+  
+  
+    <div class="guide-links">
+      
+      
+        <span>← <a href="/guide/grammar-book/5.html">内置Composite</a></span>
+      
+      
+      
+        <span style="float: right;"><a href="/guide/team.html">认识团队</a> →</span>
+      
+    </div>
   
   <div class="footer">
     发现错误？想参与编辑？

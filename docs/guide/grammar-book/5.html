@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
-    <title>COStream</title>
+    <title>内置Composite — COStream</title>
     <meta charset="utf-8">
     <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -12,12 +12,12 @@
     <link rel="alternate" hreflang="zh" href="https://cn.costream.site/guide/grammar-book/5.html">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Vue.js">
+    <meta property="og:title" content="内置Composite — Vue.js">
     <meta property="og:description" content="Vue.js - The Progressive JavaScript Framework">
     <meta property="og:image" content="https://cn.vuejs.org//images/logo.png">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Vue.js">
+    <meta name="twitter:title" content="内置Composite — Vue.js">
     <meta name="twitter:description" content="Vue.js - The Progressive JavaScript Framework">
     <meta name="twitter:image" content="https://cn.vuejs.org/images/logo.png">
 
@@ -57,7 +57,7 @@
 
     <!-- this needs to be loaded before guide's inline scripts -->
     <script src="/js/vue.js"></script>
-    <script>window.PAGE_TYPE = ""</script>
+    <script>window.PAGE_TYPE = "guide"</script>
 
     <!-- ga -->
     <script>
@@ -175,6 +175,7 @@
         
           
   <div class="sidebar">
+  <div class="sidebar-inner">
     <ul class="main-menu">
       <li>
   <form id="search-form">
@@ -263,14 +264,225 @@
 <!--<li><a href="https://github.com/vuejs/cn.vuejs.org/" target="_blank" class="nav-link contribute">参与翻译</a></li>-->
 
     </ul>
+    <div class="list">
+      <!--
+<div class="sidebar-sponsors">
+  <div class="main-sponsor">
+    <span>特别赞助</span><br>
+    <a id="main-sponsor-link" target="_blank" style="display: block; margin: 15px 0;" href="https://www.bmqb.com/jobs">
+      <img id="main-sponsor-image" src="/images/bmqb.png">
+    </a>
   </div>
+  <a class="become-backer" href="/support-vuejs">
+    成为赞助者
+  </a>
+</div>
+-->
 
-<div class="content  ">
+<!--
+
+original version from vuejs.org
+
+<div id="sidebar-sponsors-special">
+  <div class="main-sponsor">
+    <span>特别赞助</span>
+    <div>
+    <a href="https://stdlib.com" target="_blank" class="logo">
+      <img src="/images/stdlib.png">
+    </a>
+    <a href="https://www.bitsrc.io/?utm_source=vue&utm_medium=vue&utm_campaign=vue&utm_term=vue&utm_content=vue" target="_blank" class="logo">
+      <img src="/images/bit-wide.png">
+    </a>
+    </div>
+  </div>
+</div>
+
+<div id="sidebar-sponsors-platinum">
+  <div class="main-sponsor">
+    <span>Patreon 赞助</span>
+    <div>
+    <a href="http://tooltwist.com/" target="_blank" class="logo">
+      <img src="/images/tooltwist.png">
+    </a>
+    <a href="https://vueschool.io/?utm_source=Vuejs.org&utm_medium=Banner&utm_campaign=Sponsored%20Banner&utm_content=V1" target="_blank" class="logo">
+      <img src="/images/vueschool.png">
+    </a>
+    <a href="https://vehikl.com/" target="_blank" class="logo">
+      <img src="/images/vehikl.png">
+    </a>
+    </div>
+  </div>
+  <a class="become-backer" href="/support-vuejs">
+    成为赞助者
+  </a>
+</div>
+
+-->
+
+      
+        <h2>
+          
+          教程
+<!--
+          
+            <select class="version-select">
+              <option value="SELF" selected>2.x</option>
+              <option value="v1">1.0</option>
+              <option value="012">0.12</option>
+              <option value="011">0.11</option>
+            </select>
+          
+-->
+        </h2>
+        <ul class="menu-root">
+  
+    
+    
+      
+        <li><h3>基础</h3></li>
+      
+      
+			
+    
+    <li>
+      <a href="/guide/index.html" class="sidebar-link">简介</a>
+    </li>
+  
+    
+    
+      
+      
+			
+    
+    <li>
+      <a href="/guide/installation.html" class="sidebar-link">安装</a>
+    </li>
+  
+    
+    
+      
+      
+			
+    
+    <li>
+      <a href="/guide/helloworld.html" class="sidebar-link">运行第一个COStream程序</a>
+    </li>
+  
+    
+    
+      
+      
+      <li><h3>文法手册</h3></li>
+      
+			
+    
+    <li>
+      <a href="/guide/grammar-book/grammar.html" class="sidebar-link">文法简介</a>
+    </li>
+  
+    
+    
+      
+      
+			
+    
+    <li>
+      <a href="/guide/grammar-book/2.html" class="sidebar-link">关键字与类型</a>
+    </li>
+  
+    
+    
+      
+      
+			
+    
+    <li>
+      <a href="/guide/grammar-book/3.html" class="sidebar-link">流数据处理</a>
+    </li>
+  
+    
+    
+      
+      
+			
+    
+    <li>
+      <a href="/guide/grammar-book/4.html" class="sidebar-link">层次性流程序构造</a>
+    </li>
+  
+    
+    
+      
+      
+			
+    
+    <li>
+      <a href="/guide/grammar-book/5.html" class="sidebar-link current">内置Composite</a>
+    </li>
+  
+    
+    
+      
+      
+			
+    
+    <li>
+      <a href="/guide/grammar-book/6.html" class="sidebar-link">程序结构</a>
+    </li>
+  
+    
+    
+      
+      
+			
+      <li><h3>其它</h3></li>
+      
+    
+    <li>
+      <a href="/guide/team.html" class="sidebar-link">认识团队</a>
+    </li>
+  
+    
+    
+      
+      
+			
+    
+    <li>
+      <a href="/guide/MD.html" class="sidebar-link">模板.md用法</a>
+    </li>
+  
+</ul>
+
+      
+    </div>
+  </div>
+</div>
+
+
+<div class="content guide with-sidebar 5-guide">
+  
+    
   
   
+    <h1>内置Composite</h1>
   
-    <h1 id="5-内置Composite"><a href="#5-内置Composite" class="headerlink" title="5    内置Composite"></a>5    内置Composite</h1>
   
+    <h2 id="文件I-O"><a href="#文件I-O" class="headerlink" title="文件I/O"></a>文件I/O</h2><p>为了便于对文件操作，COStream对文件的I/O提供了内置composite支持，通过调用内置的文件I/O composite编程人员可以很方便的对文件读写操作。FileReader和FileWriter分别是COStream为I/O提供的一个内置的composite接口。FileReader用于将文件中的数据读到流中，而FileWriter则将流中的数据写到文件中。具体用法如下：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">stream&lt;<span class="keyword">double</span> x&gt; A,B;</span><br><span class="line">A = FileReader(“data.bin”);</span><br><span class="line">B = FMRadioCore(A);</span><br><span class="line">FileWriter(B)(“result.txt”);</span><br></pre></td></tr></table></figure></p>
+<p>表示将data.bin文件中的数据读入到数据流A中，FMRadioCore对数据进行处理，最后将处理后输出的数据保存至文件result.txt。这样通过提供对数据源和输出结果的文件存储，C++程序可以为该数据流程序提供数据或者利用数据流程序的输出结果来执行其他程序。</p>
+
+  
+  
+    <div class="guide-links">
+      
+      
+        <span>← <a href="/guide/grammar-book/4.html">层次性流程序构造</a></span>
+      
+      
+      
+        <span style="float: right;"><a href="/guide/grammar-book/6.html">程序结构</a> →</span>
+      
+    </div>
   
   <div class="footer">
     发现错误？想参与编辑？
