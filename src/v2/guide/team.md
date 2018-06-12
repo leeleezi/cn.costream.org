@@ -110,7 +110,6 @@ order: 803
 
 <div id="team-members">
   <div class="team">
-
     <h2 id="the-core-team">
       核心团队
       <button
@@ -129,19 +128,15 @@ order: 803
         </template>
       </button>
     </h2>
-
     <p v-if="errorGettingLocation" class="tip">
       未成功获取您的位置。
     </p>
-
     <p>
       这里会展示其中COStream团队成员的信息。
     </p>
-
     <p v-if="userPosition" class="success">
       核心团队成员已经按照跟你的距离排序。
     </p>
-
     <vuer-profile
       v-for="profile in sortedTeam"
       :key="profile.github"
@@ -259,6 +254,27 @@ order: 803
       ]
     },
     {
+      name: '王兆吉',
+      title: 'Member of DML',
+      city: 'Wuhan, China',
+      languages: ['zh', 'en'],
+      github: 'PixelWang',
+      twitter: null,
+      work: {
+        role: 'Master',
+        org:'HUST DML'
+      },
+      reposOfficial: [
+        'COStream Benchmark'
+      ],
+      //      reposPersonal: [
+      //        
+      //      ],
+      links: [
+        'https://github.com/PixelWang'
+      ]
+    },
+    {
       name: '李新星',
       title: 'Member of DML',
       city: 'Wuhan, China',
@@ -270,7 +286,7 @@ order: 803
         org:'HUST DML'
       },
       reposOfficial: [
-        'COStream图形库', '前端'
+        'COStream - Graphic', '前端'
       ],
 //      reposPersonal: [
 //        
