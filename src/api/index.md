@@ -3,9 +3,9 @@ title: 概览
 type: api
 order: 1
 ---
-###编译器工程架构
+## 编译器工程架构
 ![编译器工程架构](/img/PART2-1.png)
-####编译器前端
+### 编译器前端
 1. 获取输入
 
     `Main#Handle_options`
@@ -50,7 +50,7 @@ order: 1
     静态工作量估计：
     `GLOBAL#GenerateWorkEst()`
 
-####编译后端：
+### 编译后端
 1. 对平面图进行初始化调度和稳态调度
     `GLOBAL#SchedulingSSG(),生成SSSG为SchedulerSSG`
 1. 用XML文件的形式描述SDF图
