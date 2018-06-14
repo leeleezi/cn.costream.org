@@ -26,7 +26,6 @@ order: 1001
 <p class="tip">其实这里的 `user.name`不需要和你注册的账号相同,换句话说这里的 `user.name` 可以任意填写,不过当你有多台Git设备时可以通过定义这个 `user.name`来区分是由哪台设备上传的 `commit`,关于这一点在后文的 `git log`会有图片演示</p>
 
 ## 生成 ssh 密钥 
-<p class="tip">*需要继续编辑*</p>
 为了连接 Github 我们需要使用 ssh [参考链接](https://www.cnblogs.com/superGG1990/p/6844952.html)
 git使用ssh密钥时，免去每次都要求输密码的麻烦
 使用`ssh-keygen -t rsa -C "your@email.com"`指令生成 ssh 密钥
@@ -52,22 +51,24 @@ $ git add -A
 $ git commit 
 $ git push
 ```
-## 更好看的 git log
-```bash
-git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit" 
-```
-现在你每次在终端输入`git lg`，就能看到下面漂亮的git log了。
-![git-lg](https://i.loli.net/2018/06/14/5b220e9999bb5.png)
->需要注意的是:
-- 前文设置的 user.name 这里会出现在 `git log` 记录里, 所以说给不同用户和设备设置不同的 user.name 是有益的.
-- 专业团队的`git commit`的`comment`要求清晰、风格统一, 可以参考[阮一峰的网络日志-Commit](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
-## 更多:
->学习要求:
+
+
+## 学习要求✭
 - 基本要求: 熟练使用`git clone | add | commit | push` *这里足够80%日常使用了*
 - 进阶要求: 了解**分支**,使用`git branch | checkout`等指令
 - 更高要求: 了解开源项目的`tag`,`release`,`Pull Request`等项目版本管理内容
 - 边角料 : 在使用时遇到问题可以随时百度`git 版本回滚`,`.gitignore`,`git 分支合并`,`git log 详解`等内容
 
+## 更多
+### 更好看的 git log
+```bash
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit" 
+```
+现在你每次在终端输入`git lg`，就能看到下面漂亮的git log了。
+![git-lg](https://i.loli.net/2018/06/14/5b22158769764.png)
+>需要注意的是:
+- 前文设置的 user.name 这里会出现在 `git log` 记录里, 所以说给不同用户和设备设置不同的 user.name 是有益的.
+- 专业团队的`git commit`的`comment`要求清晰、风格统一, 可以参考[阮一峰的网络日志-Commit](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
 
->for Mac:
+### for Mac:
 Mac 用户可以通过 SSH 来连接自己的Vmware虚拟机 , 为什么要多此一举呢,是因为这里有超好看的终端 iTerm2,配置可以参考[ITerm2配色方案-简书](https://www.jianshu.com/p/33deff6b8a63)
