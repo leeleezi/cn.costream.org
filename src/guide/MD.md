@@ -1,7 +1,7 @@
 ---
 title: 模板.md用法
 type: guide
-order: 1000
+order: 1002
 ---
 
 ## 神奇的.md 语法

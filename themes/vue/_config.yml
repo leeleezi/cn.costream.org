@@ -1,6 +1,6 @@
-site_description: "Vue.js - The Progressive JavaScript Framework"
+site_description: "COStream - The High Performance Dataflow Language and Compiler"
 google_analytics: UA-46852172-3
-root_domain: cn.vuejs.org
+root_domain: cn.costream.site
 vue_version: 2.5.13
 
 special_sponsors:
