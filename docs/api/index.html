@@ -5,21 +5,21 @@
   <head>
     <title>概览 — COStream</title>
     <meta charset="utf-8">
-    <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="description" content="COStream - The High Performance Dataflow Language and Compiler">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <link rel="alternate" hreflang="x-default" href="https://costream.site/api/index.html">
     <link rel="alternate" hreflang="zh" href="https://cn.costream.site/api/index.html">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="概览 — Vue.js">
-    <meta property="og:description" content="Vue.js - The Progressive JavaScript Framework">
-    <meta property="og:image" content="https://cn.vuejs.org//images/logo.png">
+    <meta property="og:title" content="概览 — COStream">
+    <meta property="og:description" content="COStream - The High Performance Dataflow Language and Compiler">
+    <meta property="og:image" content="https://cn.costream.site/images/logo.png">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="概览 — Vue.js">
-    <meta name="twitter:description" content="Vue.js - The Progressive JavaScript Framework">
-    <meta name="twitter:image" content="https://cn.vuejs.org/images/logo.png">
+    <meta name="twitter:title" content="概览 — COStream">
+    <meta name="twitter:description" content="COStream - The High Performance Dataflow Language and Compiler">
+    <meta name="twitter:image" content="https://cn.costream.site/images/logo.png">
 
 <!--
     <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-icon-57x57.png">
@@ -66,7 +66,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-46852172-3', 'cn.vuejs.org');
+      ga('create', 'UA-46852172-3', 'cn.costream.site');
       ga('send', 'pageview');
     </script>
   </head>
@@ -352,9 +352,8 @@ original version from vuejs.org
     <h1>概览</h1>
   
   
-    <p>###编译器工程架构<br><img src="/img/PART2-1.png" alt="编译器工程架构"></p>
-<p>####编译器前端</p>
-<ol>
+    <h2 id="编译器工程架构"><a href="#编译器工程架构" class="headerlink" title="编译器工程架构"></a>编译器工程架构</h2><p><img src="/img/PART2-1.png" alt="编译器工程架构"></p>
+<h3 id="编译器前端"><a href="#编译器前端" class="headerlink" title="编译器前端"></a>编译器前端</h3><ol>
 <li><p>获取输入</p>
 <p> <code>Main#Handle_options</code><br> <code>Main#Get_preprocessed_input</code></p>
 <p> 初始化环境<br> <code>GLOBAL#InitTypes</code><br> <code>Main#Init_symbol_tables</code><br> <code>GLOBAL#InitOperatorTable</code></p>
@@ -378,8 +377,7 @@ original version from vuejs.org
 <li>语法树到平面图<br> <code>GLOBAL#AST2FlatStaticStreamGraph</code>,生成StaticStreamGraph类对象SSG<br> <code>AutoProfiling#AutoProfiling()</code><br> <code>AutoProfiling#GeneratingProfile()</code></li>
 <li>对平面图各节点进行工作估计<br> 静态工作量估计：<br> <code>GLOBAL#GenerateWorkEst()</code></li>
 </ol>
-<p>####编译后端：</p>
-<ol>
+<h3 id="编译后端"><a href="#编译后端" class="headerlink" title="编译后端"></a>编译后端</h3><ol>
 <li>对平面图进行初始化调度和稳态调度<br> <code>GLOBAL#SchedulingSSG(),生成SSSG为SchedulerSSG</code></li>
 <li>用XML文件的形式描述SDF图<br> <code>GLOBAL#DumpStreamGraph()</code></li>
 <li>对节点进行调度划分<br> <code>MetisPartition#MetisPartiton()</code><br> <code>Partition#setPlaces()</code><br> <code>Partition#SssgPartition()</code></li>

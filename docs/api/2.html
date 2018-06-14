@@ -3,23 +3,23 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
-    <title>COStream</title>
+    <title>前端 — COStream</title>
     <meta charset="utf-8">
-    <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="description" content="COStream - The High Performance Dataflow Language and Compiler">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <link rel="alternate" hreflang="x-default" href="https://costream.site/api/2.html">
     <link rel="alternate" hreflang="zh" href="https://cn.costream.site/api/2.html">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Vue.js">
-    <meta property="og:description" content="Vue.js - The Progressive JavaScript Framework">
-    <meta property="og:image" content="https://cn.vuejs.org//images/logo.png">
+    <meta property="og:title" content="前端 — COStream">
+    <meta property="og:description" content="COStream - The High Performance Dataflow Language and Compiler">
+    <meta property="og:image" content="https://cn.costream.site/images/logo.png">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Vue.js">
-    <meta name="twitter:description" content="Vue.js - The Progressive JavaScript Framework">
-    <meta name="twitter:image" content="https://cn.vuejs.org/images/logo.png">
+    <meta name="twitter:title" content="前端 — COStream">
+    <meta name="twitter:description" content="COStream - The High Performance Dataflow Language and Compiler">
+    <meta name="twitter:image" content="https://cn.costream.site/images/logo.png">
 
 <!--
     <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-icon-57x57.png">
@@ -57,7 +57,7 @@
 
     <!-- this needs to be loaded before guide's inline scripts -->
     <script src="/js/vue.js"></script>
-    <script>window.PAGE_TYPE = ""</script>
+    <script>window.PAGE_TYPE = "api"</script>
 
     <!-- ga -->
     <script>
@@ -66,7 +66,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-46852172-3', 'cn.vuejs.org');
+      ga('create', 'UA-46852172-3', 'cn.costream.site');
       ga('send', 'pageview');
     </script>
   </head>
@@ -175,6 +175,7 @@
         
           
   <div class="sidebar">
+  <div class="sidebar-inner">
     <ul class="main-menu">
       <li>
   <form id="search-form">
@@ -263,13 +264,95 @@
 <!--<li><a href="https://github.com/vuejs/cn.vuejs.org/" target="_blank" class="nav-link contribute">参与翻译</a></li>-->
 
     </ul>
+    <div class="list">
+      <!--
+<div class="sidebar-sponsors">
+  <div class="main-sponsor">
+    <span>特别赞助</span><br>
+    <a id="main-sponsor-link" target="_blank" style="display: block; margin: 15px 0;" href="https://www.bmqb.com/jobs">
+      <img id="main-sponsor-image" src="/images/bmqb.png">
+    </a>
   </div>
+  <a class="become-backer" href="/support-vuejs">
+    成为赞助者
+  </a>
+</div>
+-->
 
-<div class="content  ">
+<!--
+
+original version from vuejs.org
+
+<div id="sidebar-sponsors-special">
+  <div class="main-sponsor">
+    <span>特别赞助</span>
+    <div>
+    <a href="https://stdlib.com" target="_blank" class="logo">
+      <img src="/images/stdlib.png">
+    </a>
+    <a href="https://www.bitsrc.io/?utm_source=vue&utm_medium=vue&utm_campaign=vue&utm_term=vue&utm_content=vue" target="_blank" class="logo">
+      <img src="/images/bit-wide.png">
+    </a>
+    </div>
+  </div>
+</div>
+
+<div id="sidebar-sponsors-platinum">
+  <div class="main-sponsor">
+    <span>Patreon 赞助</span>
+    <div>
+    <a href="http://tooltwist.com/" target="_blank" class="logo">
+      <img src="/images/tooltwist.png">
+    </a>
+    <a href="https://vueschool.io/?utm_source=Vuejs.org&utm_medium=Banner&utm_campaign=Sponsored%20Banner&utm_content=V1" target="_blank" class="logo">
+      <img src="/images/vueschool.png">
+    </a>
+    <a href="https://vehikl.com/" target="_blank" class="logo">
+      <img src="/images/vehikl.png">
+    </a>
+    </div>
+  </div>
+  <a class="become-backer" href="/support-vuejs">
+    成为赞助者
+  </a>
+</div>
+
+-->
+
+      
+        <h2>
+          
+          API
+<!--
+          
+            <select class="version-select">
+              <option value="SELF" selected>2.x</option>
+              <option value="v1">1.0</option>
+              <option value="012">0.12</option>
+              <option value="011">0.11</option>
+            </select>
+          
+-->
+        </h2>
+        <ul class="menu-root">
+  
+</ul>
+
+      
+    </div>
+  </div>
+</div>
+
+
+<div class="content api with-sidebar ">
+  
+    
   
   
+    <h1>前端</h1>
   
-    <h1 id="2-前端"><a href="#2-前端" class="headerlink" title="2    前端"></a>2    前端</h1>
+  
+    <h2 id="输入文件获取与处理"><a href="#输入文件获取与处理" class="headerlink" title="输入文件获取与处理"></a>输入文件获取与处理</h2><h2 id="输入预处理及初始化环境"><a href="#输入预处理及初始化环境" class="headerlink" title="输入预处理及初始化环境"></a>输入预处理及初始化环境</h2><h2 id="文法建立和语法树生成"><a href="#文法建立和语法树生成" class="headerlink" title="文法建立和语法树生成"></a>文法建立和语法树生成</h2><h2 id="文件C4-l-amp-ANSI-y解析"><a href="#文件C4-l-amp-ANSI-y解析" class="headerlink" title="文件C4.l　&amp; ANSI.y解析"></a>文件C4.l　&amp; ANSI.y解析</h2><h2 id="打印符号表"><a href="#打印符号表" class="headerlink" title="打印符号表"></a>打印符号表</h2><h2 id="删除临时文件-amp-词语法分析结果检查"><a href="#删除临时文件-amp-词语法分析结果检查" class="headerlink" title="删除临时文件&amp;词语法分析结果检查"></a>删除临时文件&amp;词语法分析结果检查</h2><h2 id="语义检查"><a href="#语义检查" class="headerlink" title="语义检查"></a>语义检查</h2><h2 id="活跃变量分析"><a href="#活跃变量分析" class="headerlink" title="活跃变量分析"></a>活跃变量分析</h2><h2 id="添加变量重命名"><a href="#添加变量重命名" class="headerlink" title="添加变量重命名"></a>添加变量重命名</h2><h2 id="常量传播"><a href="#常量传播" class="headerlink" title="常量传播"></a>常量传播</h2><h2 id="打印抽象语法树"><a href="#打印抽象语法树" class="headerlink" title="打印抽象语法树"></a>打印抽象语法树</h2><h2 id="语法树到平面图"><a href="#语法树到平面图" class="headerlink" title="语法树到平面图"></a>语法树到平面图</h2><h2 id="平面图节点工作量估计"><a href="#平面图节点工作量估计" class="headerlink" title="平面图节点工作量估计"></a>平面图节点工作量估计</h2>
   
   
   <div class="footer">
