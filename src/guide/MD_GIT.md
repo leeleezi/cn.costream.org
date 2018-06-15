@@ -45,16 +45,18 @@ Are you sure you want to continue connecting (yes/no)? yes
 恭喜你，你的设置已经成功了。
 
 ## 修改 & 提交
-~~素质三连(误)~~
 ```bash
 $ git add -A
-$ git commit 
+$ git commit -m "your comment" 
 $ git push
 ```
-
+## 版本回滚
+```bash
+$ git reset --hard
+```
 
 ## 学习要求✭
-- 基本要求: 熟练使用`git clone | add | commit | push` *这里足够80%日常使用了*
+- 基本要求: 熟练使用`git clone | add | commit | push | git reset --hard` *这里足够80%日常使用了*
 - 进阶要求: 了解**分支**,使用`git branch | checkout`等指令
 - 更高要求: 了解开源项目的`tag`,`release`,`Pull Request`等项目版本管理内容
 - 边角料 : 在使用时遇到问题可以随时百度`git 版本回滚`,`.gitignore`,`git 分支合并`,`git log 详解`等内容
@@ -69,7 +71,11 @@ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Crese
 >需要注意的是:
 - 前文设置的 user.name 这里会出现在 `git log` 记录里, 所以说给不同用户和设备设置不同的 user.name 是有益的.
 - 专业团队的`git commit`的`comment`要求清晰、风格统一, 可以参考[阮一峰的网络日志-Commit](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
-
+### 其他
+```bash
+git config --global alias.st "status"  #简写 git st
+git config --global core.editor "vim"  #设置 vim 为git默认编辑器
+```
 ### for Mac:
 Mac 用户可以通过 SSH 来连接自己的Vmware虚拟机 
 *为什么要多此一举呢,是因为这里有超好看的终端 iTerm2,配置可以参考[ITerm2配色方案-简书](https://www.jianshu.com/p/33deff6b8a63)*
