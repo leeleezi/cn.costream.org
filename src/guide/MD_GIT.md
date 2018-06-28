@@ -14,16 +14,19 @@ order: 1001
 - 14.04.5  	[下载](https://mirrors.163.com/ubuntu-releases/14.04.5/)	 *推荐64位*
 - 16+版本  		*暂未测试过*
 ## Git
-- 为什么要使用 Git? [廖雪峰的Git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000) *仅做参考*
+- 为什么要使用 Git? [廖雪峰的Git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001373962845513aefd77a99f4145f0a2c7a7ca057e7570000) *仅做参考*
 - git 常用指令速查 [Git简明教程-简书](https://www.jianshu.com/p/16ad0722e4cc)
 
 ## 安装 git
-`$ sudo apt-get install git`
+`$ sudo apt-get install git` 或[网页链接下载Git](https://git-scm.com)
 ![](https://s1.ax1x.com/2018/06/14/CjibjI.png)
+<p class="tip">Windows用户下载 Git 安装后可使用 `Git Bash`作为命令行,
+其它命令行操作和 Ubuntu 命令行一样</p>
 初次安装git需要配置用户名和邮箱，否则git会提示：please tell me who you are.
 你需要运行命令来配置你的用户名和邮箱：
 ![](https://s1.ax1x.com/2018/06/14/CjiHgA.png)
-<p class="tip">其实这里的 `user.name`不需要和你注册的账号相同,换句话说这里的 `user.name` 可以任意填写,不过当你有多台Git设备时可以通过定义这个 `user.name`来区分是由哪台设备上传的 `commit`,关于这一点在后文的 `git log`会有图片演示</p>
+<p class="tip">其实这里的 `user.name`不需要和你注册的账号相同,换句话说这里的 `user.name` 可以任意填写,不过当你有多台Git设备时可以通过定义这个 `user.name`来区分是由哪台设备上传的 `commit`,关于这一点在后文的 `git log`会有图片演示.
+总之建议使用`"姓名缩写"."操作系统"`来作为 `user.name`,如`xxx.win10`</p>
 
 ## 生成 ssh 密钥 
 为了连接 Github 我们需要使用 ssh [参考链接](https://www.cnblogs.com/superGG1990/p/6844952.html)
@@ -44,6 +47,18 @@ Are you sure you want to continue connecting (yes/no)? yes
 `Hi xxx! You've successfully authenticated, but GitHub does not # provide shell access.`
 恭喜你，你的设置已经成功了。
 
+## 下载项目
+```bash
+$ git clone XXX/XXX.git 
+#以下为2018/6/29周五临时指令, 后来会删除
+$ npm install -g cnpm
+$ cnpm install -g hexo-cli hexo-server
+$ git clone git@github.com:DML308/cn.costream.org.git 
+$ git clone git@github.com:DML308/costream.org.git 
+$ cd costream.org
+$ cnpm install 
+$ hexo serve
+```
 ## 修改 & 提交
 ```bash
 $ git add -A
