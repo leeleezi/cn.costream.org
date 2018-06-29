@@ -31,7 +31,7 @@ order: 1001
 ## 生成 ssh 密钥 
 为了连接 Github 我们需要使用 ssh [参考链接](https://www.cnblogs.com/superGG1990/p/6844952.html)
 git使用ssh密钥时，免去每次都要求输密码的麻烦
-使用`ssh-keygen -t rsa -C "your@email.com"`指令生成 ssh 密钥
+使用`ssh-keygen -t rsa -C "your@email.com"`指令生成 ssh 密钥,生成密钥时遇到冒号提示输入内容的时候直接按Enter就好
 ![](https://i.loli.net/2018/06/14/5b2204fb8d82c.png)
 用`cat ~/.ssh/id_rsa.pub`查看你的 ssh 公钥,复制下面字符串
 ![](https://i.loli.net/2018/06/14/5b2205ae66151.png)
@@ -45,19 +45,19 @@ Are you sure you want to continue connecting (yes/no)? yes
 ```
 如果看到：
 `Hi xxx! You've successfully authenticated, but GitHub does not # provide shell access.`
-恭喜你，你的设置已经成功了。
+恭喜你，你的设置已经成功了(如果你没有忘记设置`user.name`和`user.email`的话)。
 
 ## 下载项目
 ```bash
 $ git clone XXX/XXX.git 
 #以下为2018/6/29周五临时指令, 后来会删除
-$ npm install -g cnpm
-$ cnpm install -g hexo-cli hexo-server
-$ git clone git@github.com:DML308/cn.costream.org.git 
+$ npm install -g cnpm #cnpm 是 npm 这个包管理器的淘宝镜像,加速国内访问
+$ cnpm install -g hexo-cli hexo-server #hexo是一款流行的博客生成工具,用来把.md生成.html 静态网页
+$ git clone git@github.com:DML308/cn.costream.org.git #把中文站点clone下来只是为了翻译的时候做对比用
 $ git clone git@github.com:DML308/costream.org.git 
 $ cd costream.org
-$ cnpm install 
-$ hexo serve
+$ cnpm install #hexo 工具的package.json里定义了一些Dependencies插件的名字,这些插件并不会把包内容上传github而只是上传它们的名字和版本号以节省网络空间, 所以此时在本地把它们按照定义好的规则下载下来
+$ hexo serve #开启 localhost:4000以后这是一个本地的 Web 服务器,如果按下 Ctrl+C 那么该服务器就会停止. 如果既想开着 hexo serve 又想动 git 那么最好开两个Git Bash 窗口
 ```
 ## 修改 & 提交
 ```bash
@@ -74,7 +74,7 @@ $ git reset --hard
 ```
 
 ## 学习要求✭
-- 基本要求: 熟练使用`git clone | add | commit | push | git reset --hard` *这里足够80%日常使用了*
+- 基本要求: 熟练使用`git clone | status | add | commit | push | git reset --hard` *这里足够80%日常使用了*
 - 进阶要求: 了解**分支**,使用`git branch | checkout`等指令
 - 更高要求: 了解开源项目的`tag`,`release`,`Pull Request`等项目版本管理内容
 - 边角料 : 在使用时遇到问题可以随时百度`git 版本回滚`,`.gitignore`,`git 分支合并`,`git log 详解`等内容
@@ -116,8 +116,6 @@ Windows的命令行也是能用的且功能齐全,缺点就是不是很好看.
 **推荐的工具**
 - `Brackets` `Atom` `VSCode`*推荐程度一般* 
 	这些编辑器人各有所爱 
-- `git-cli` *推荐程度一般*
-	windows 上安装 git 时带的命令行工具,绿色底的背景,优点是路径中使用和 Linux 一样的`\`
 - `Bitvise` *强烈推荐✭✭✭✭✩*
 一个软件就包含了`ssh 连接`+`打开命令行`+`与服务器传文件`, ~~妈妈再也不用提醒我下载 FileZilla~~
 - `WOX` 	*超级强烈推荐✭✭✭✭✭*

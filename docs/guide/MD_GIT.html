@@ -146,21 +146,6 @@
     <a href="#" class="nav-link team">团队</a>
 </li>
 -->
-<li class="nav-dropdown-container support-vue">
-  <a href="/support-vuejs/" class="nav-link">支持 COStream</a><span class="arrow"></span>
-  <ul class="nav-dropdown">
-    <li><ul>
-<!--
-      <li><a href="/support-vuejs/#One-time-Donations" class="nav-link">一次性赞助</a></li>
-      <li><a href="/support-vuejs/#Recurring-Pledges" class="nav-link">周期性赞助</a></li>
--->
-      <li><a href=" " class="nav-link">一次性赞助</a></li>
-      <li><a href=" " class="nav-link">周期性赞助</a></li>
-<!--      <li><a href="https://vue.threadless.com" target="_blank" class="nav-link">T 恤商店</a></li>-->
-    </ul></li>
-  </ul>
-</li>
-
 <li class="nav-dropdown-container language">
   <a class="nav-link">多语言</a><span class="arrow"></span>
   <ul class="nav-dropdown">
@@ -246,21 +231,6 @@
     <a href="#" class="nav-link team">团队</a>
 </li>
 -->
-<li class="nav-dropdown-container support-vue">
-  <a href="/support-vuejs/" class="nav-link">支持 COStream</a><span class="arrow"></span>
-  <ul class="nav-dropdown">
-    <li><ul>
-<!--
-      <li><a href="/support-vuejs/#One-time-Donations" class="nav-link">一次性赞助</a></li>
-      <li><a href="/support-vuejs/#Recurring-Pledges" class="nav-link">周期性赞助</a></li>
--->
-      <li><a href=" " class="nav-link">一次性赞助</a></li>
-      <li><a href=" " class="nav-link">周期性赞助</a></li>
-<!--      <li><a href="https://vue.threadless.com" target="_blank" class="nav-link">T 恤商店</a></li>-->
-    </ul></li>
-  </ul>
-</li>
-
 <li class="nav-dropdown-container language">
   <a class="nav-link">多语言</a><span class="arrow"></span>
   <ul class="nav-dropdown">
@@ -514,13 +484,13 @@ original version from vuejs.org
 <h2 id="安装-git"><a href="#安装-git" class="headerlink" title="安装 git"></a>安装 git</h2><p><code>$ sudo apt-get install git</code> 或<a href="https://git-scm.com" target="_blank" rel="noopener">网页链接下载Git</a><br><img src="https://s1.ax1x.com/2018/06/14/CjibjI.png" alt=""></p>
 <p class="tip">Windows用户下载 Git 安装后可使用 <code>Git Bash</code>作为命令行,<br>其它命令行操作和 Ubuntu 命令行一样</p><br>初次安装git需要配置用户名和邮箱，否则git会提示：please tell me who you are.<br>你需要运行命令来配置你的用户名和邮箱：<br><img src="https://s1.ax1x.com/2018/06/14/CjiHgA.png" alt=""><br><p class="tip">其实这里的 <code>user.name</code>不需要和你注册的账号相同,换句话说这里的 <code>user.name</code> 可以任意填写,不过当你有多台Git设备时可以通过定义这个 <code>user.name</code>来区分是由哪台设备上传的 <code>commit</code>,关于这一点在后文的 <code>git log</code>会有图片演示.<br>总之建议使用<code>&quot;姓名缩写&quot;.&quot;操作系统&quot;</code>来作为 <code>user.name</code>,如<code>xxx.win10</code></p>
 
-<h2 id="生成-ssh-密钥"><a href="#生成-ssh-密钥" class="headerlink" title="生成 ssh 密钥"></a>生成 ssh 密钥</h2><p>为了连接 Github 我们需要使用 ssh <a href="https://www.cnblogs.com/superGG1990/p/6844952.html" target="_blank" rel="noopener">参考链接</a><br>git使用ssh密钥时，免去每次都要求输密码的麻烦<br>使用<code>ssh-keygen -t rsa -C &quot;your@email.com&quot;</code>指令生成 ssh 密钥<br><img src="https://i.loli.net/2018/06/14/5b2204fb8d82c.png" alt=""><br>用<code>cat ~/.ssh/id_rsa.pub</code>查看你的 ssh 公钥,复制下面字符串<br><img src="https://i.loli.net/2018/06/14/5b2205ae66151.png" alt=""><br>登陆你的github帐户。点击右上角你的头像，然后 <code>Settings -&gt; 左栏点击 SSH and GPG keys -&gt; 点击 New SSH key</code>,把上面复制的公钥内容，粘贴进“Key”文本域内。 title域，自己随便起个名字例如上文的 user.name。点击 Add key。<br>完成以后，验证下这个key是不是正常工作：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br><span class="line">Attempts to ssh to github</span><br><span class="line">RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)? yes</span><br></pre></td></tr></table></figure></p>
-<p>如果看到：<br><code>Hi xxx! You&#39;ve successfully authenticated, but GitHub does not # provide shell access.</code><br>恭喜你，你的设置已经成功了。</p>
-<h2 id="下载项目"><a href="#下载项目" class="headerlink" title="下载项目"></a>下载项目</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> XXX/XXX.git </span><br><span class="line"><span class="comment">#以下为2018/6/29周五临时指令, 后来会删除</span></span><br><span class="line">$ npm install -g cnpm</span><br><span class="line">$ cnpm install -g hexo-cli hexo-server</span><br><span class="line">$ git <span class="built_in">clone</span> git@github.com:DML308/cn.costream.org.git </span><br><span class="line">$ git <span class="built_in">clone</span> git@github.com:DML308/costream.org.git </span><br><span class="line">$ <span class="built_in">cd</span> costream.org</span><br><span class="line">$ cnpm install </span><br><span class="line">$ hexo serve</span><br></pre></td></tr></table></figure>
+<h2 id="生成-ssh-密钥"><a href="#生成-ssh-密钥" class="headerlink" title="生成 ssh 密钥"></a>生成 ssh 密钥</h2><p>为了连接 Github 我们需要使用 ssh <a href="https://www.cnblogs.com/superGG1990/p/6844952.html" target="_blank" rel="noopener">参考链接</a><br>git使用ssh密钥时，免去每次都要求输密码的麻烦<br>使用<code>ssh-keygen -t rsa -C &quot;your@email.com&quot;</code>指令生成 ssh 密钥,生成密钥时遇到冒号提示输入内容的时候直接按Enter就好<br><img src="https://i.loli.net/2018/06/14/5b2204fb8d82c.png" alt=""><br>用<code>cat ~/.ssh/id_rsa.pub</code>查看你的 ssh 公钥,复制下面字符串<br><img src="https://i.loli.net/2018/06/14/5b2205ae66151.png" alt=""><br>登陆你的github帐户。点击右上角你的头像，然后 <code>Settings -&gt; 左栏点击 SSH and GPG keys -&gt; 点击 New SSH key</code>,把上面复制的公钥内容，粘贴进“Key”文本域内。 title域，自己随便起个名字例如上文的 user.name。点击 Add key。<br>完成以后，验证下这个key是不是正常工作：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br><span class="line">Attempts to ssh to github</span><br><span class="line">RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)? yes</span><br></pre></td></tr></table></figure></p>
+<p>如果看到：<br><code>Hi xxx! You&#39;ve successfully authenticated, but GitHub does not # provide shell access.</code><br>恭喜你，你的设置已经成功了(如果你没有忘记设置<code>user.name</code>和<code>user.email</code>的话)。</p>
+<h2 id="下载项目"><a href="#下载项目" class="headerlink" title="下载项目"></a>下载项目</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> XXX/XXX.git </span><br><span class="line"><span class="comment">#以下为2018/6/29周五临时指令, 后来会删除</span></span><br><span class="line">$ npm install -g cnpm <span class="comment">#cnpm 是 npm 这个包管理器的淘宝镜像,加速国内访问</span></span><br><span class="line">$ cnpm install -g hexo-cli hexo-server <span class="comment">#hexo是一款流行的博客生成工具,用来把.md生成.html 静态网页</span></span><br><span class="line">$ git <span class="built_in">clone</span> git@github.com:DML308/cn.costream.org.git <span class="comment">#把中文站点clone下来只是为了翻译的时候做对比用</span></span><br><span class="line">$ git <span class="built_in">clone</span> git@github.com:DML308/costream.org.git </span><br><span class="line">$ <span class="built_in">cd</span> costream.org</span><br><span class="line">$ cnpm install <span class="comment">#hexo 工具的package.json里定义了一些Dependencies插件的名字,这些插件并不会把包内容上传github而只是上传它们的名字和版本号以节省网络空间, 所以此时在本地把它们按照定义好的规则下载下来</span></span><br><span class="line">$ hexo serve <span class="comment">#开启 localhost:4000以后这是一个本地的 Web 服务器,如果按下 Ctrl+C 那么该服务器就会停止. 如果既想开着 hexo serve 又想动 git 那么最好开两个Git Bash 窗口</span></span><br></pre></td></tr></table></figure>
 <h2 id="修改-amp-提交"><a href="#修改-amp-提交" class="headerlink" title="修改 &amp; 提交"></a>修改 &amp; 提交</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># edit your code</span></span><br><span class="line">$ git add -A</span><br><span class="line">$ git commit -m <span class="string">"your comment"</span> </span><br><span class="line">$ git pull <span class="comment">#拉取别人修改的代码,无冲突时默认合并</span></span><br><span class="line"><span class="comment">#不建议一点小改动就 commit-push ,熟练以后我们可以本地修改多次并本地commit多次后再执行push一次就ok</span></span><br><span class="line">$ git push</span><br></pre></td></tr></table></figure>
 <h2 id="版本回滚"><a href="#版本回滚" class="headerlink" title="版本回滚"></a>版本回滚</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git reset --hard</span><br></pre></td></tr></table></figure>
 <h2 id="学习要求✭"><a href="#学习要求✭" class="headerlink" title="学习要求✭"></a>学习要求✭</h2><ul>
-<li>基本要求: 熟练使用<code>git clone | add | commit | push | git reset --hard</code> <em>这里足够80%日常使用了</em></li>
+<li>基本要求: 熟练使用<code>git clone | status | add | commit | push | git reset --hard</code> <em>这里足够80%日常使用了</em></li>
 <li>进阶要求: 了解<strong>分支</strong>,使用<code>git branch | checkout</code>等指令</li>
 <li>更高要求: 了解开源项目的<code>tag</code>,<code>release</code>,<code>Pull Request</code>等项目版本管理内容</li>
 <li>边角料 : 在使用时遇到问题可以随时百度<code>git 版本回滚</code>,<code>.gitignore</code>,<code>git 分支合并</code>,<code>git log 详解</code>等内容</li>
@@ -549,7 +519,6 @@ original version from vuejs.org
 <h3 id="for-Windows"><a href="#for-Windows" class="headerlink" title="for Windows:"></a>for Windows:</h3><p>Windows的命令行也是能用的且功能齐全,缺点就是不是很好看.<br><strong>推荐的工具</strong></p>
 <ul>
 <li><code>Brackets</code> <code>Atom</code> <code>VSCode</code><em>推荐程度一般</em><br>  这些编辑器人各有所爱 </li>
-<li><code>git-cli</code> <em>推荐程度一般</em><br>  windows 上安装 git 时带的命令行工具,绿色底的背景,优点是路径中使用和 Linux 一样的<code>\</code></li>
 <li><code>Bitvise</code> <em>强烈推荐✭✭✭✭✩</em><br>一个软件就包含了<code>ssh 连接</code>+<code>打开命令行</code>+<code>与服务器传文件</code>, <del>妈妈再也不用提醒我下载 FileZilla</del></li>
 <li><code>WOX</code>     <em>超级强烈推荐✭✭✭✭✭</em><br>使用<code>alt+space</code>来打开窗口执行快捷命令,功能强大,爱不释手,<a href="http://www.wox.one/" target="_blank" rel="noopener">http://wox.one/</a>,如果觉得好用记得在 Github 上给一个✭,现在已有<iframe src="https://ghbtns.com/github-btn.html?user=Wox-launcher&repo=Wox&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="20px" style="vertical-align:bottom;line-height:20px;margin:1px 0px"></iframe><br><img src="https://camo.githubusercontent.com/9db33546d3a905a9ad915e0948d3ba3f47f57b64/687474703a2f2f692e696d6775722e636f6d2f4474784e424a692e676966" alt=""></li>
 </ul>
