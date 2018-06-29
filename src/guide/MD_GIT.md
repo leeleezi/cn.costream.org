@@ -61,10 +61,11 @@ $ hexo serve
 ```
 ## 修改 & 提交
 ```bash
-$ git pull #拉取别人修改的代码,无冲突时默认合并
-#  then edit your code
+# edit your code
 $ git add -A
 $ git commit -m "your comment" 
+$ git pull #拉取别人修改的代码,无冲突时默认合并
+#不建议一点小改动就 commit-push ,熟练以后我们可以本地修改多次并本地commit多次后再执行push一次就ok
 $ git push
 ```
 ## 版本回滚
