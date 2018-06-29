@@ -61,6 +61,8 @@ $ hexo serve
 ```
 ## 修改 & 提交
 ```bash
+$ git pull #拉取别人修改的代码,无冲突时默认合并
+#  then edit your code
 $ git add -A
 $ git commit -m "your comment" 
 $ git push
