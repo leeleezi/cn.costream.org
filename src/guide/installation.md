@@ -7,7 +7,7 @@ costream_version: 0.6.0
 
 ### 兼容性
 
-COStream 支持在 Ubuntu CentOS 上运行,暂只支持 gcc4.4.x
+COStream 支持在 Ubuntu CentOS 上运行,暂只支持 gcc4.4.x 
 
 ### 更新日志
 
@@ -72,8 +72,9 @@ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 $ source /etc/profile
 ```
 ## 更新metis文件
-```bash
-$ cd src/3rdpart/parmetis-4.0/metis/
+<p class="tip">仅支持parmetis-4.0</p>
+  ```bash
+$ cd src/3rdpart/parmetis-4.0/metis/  
 $ make config
 $ make
 #此时生成了libmetis.a文件,下面将此文件移动到需要的位置
