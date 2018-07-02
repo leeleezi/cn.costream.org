@@ -1,8 +1,8 @@
 /**
-  * Shuffles array in place.
-  * @param {Array} a items The array containing the items.
-  */
-function shuffle (a) {
+ * Shuffles array in place.
+ * @param {Array} a items The array containing the items.
+ */
+function shuffle(a) {
 	a = a.concat([])
 	if (window.location.hostname === 'localhost') {
 		return a
@@ -29,7 +29,7 @@ var team = [{
 		org: 'HUST DML'
 	},
 	reposOfficial: [
-		'多核计算与流编译', '基于内容的视频分析','网络安全与大数据处理'
+		'多核计算与流编译', '基于内容的视频分析', '网络安全与大数据处理'
 	],
 	links: [
 		'http://faculty.hust.edu.cn/yujunqing/zh_CN/index.htm'
@@ -46,7 +46,7 @@ team = team.concat(shuffle([ //shuffle 函数打乱了后续成员的顺序
 		twitter: null,
 		work: {
 			role: 'Master',
-			org:'HUST DML'
+			org: 'HUST DML'
 		},
 		reposOfficial: [
 			'COStream GPU'
@@ -67,7 +67,7 @@ team = team.concat(shuffle([ //shuffle 函数打乱了后续成员的顺序
 		twitter: null,
 		work: {
 			role: 'Master',
-			org:'HUST DML'
+			org: 'HUST DML'
 		},
 		reposOfficial: [
 			'COStream Benchmark'
@@ -88,7 +88,7 @@ team = team.concat(shuffle([ //shuffle 函数打乱了后续成员的顺序
 		twitter: null,
 		work: {
 			role: 'Master',
-			org:'HUST DML'
+			org: 'HUST DML'
 		},
 		reposOfficial: [
 			'COStream Dynamic scheduling'
@@ -104,12 +104,12 @@ team = team.concat(shuffle([ //shuffle 函数打乱了后续成员的顺序
 		name: '李新星',
 		title: 'Member of DML',
 		city: 'Wuhan, China',
-		languages: ['zh', 'en','jp'],
+		languages: ['zh', 'en', 'jp'],
 		github: 'lxx2013',
 		twitter: null,
 		work: {
 			role: 'Master',
-			org:'HUST DML'
+			org: 'HUST DML'
 		},
 		reposOfficial: [
 			'COStream - Graphic', '前端'
@@ -130,7 +130,7 @@ team = team.concat(shuffle([ //shuffle 函数打乱了后续成员的顺序
 		twitter: null,
 		work: {
 			role: 'Master',
-			org:'HUST DML'
+			org: 'HUST DML'
 		},
 		reposOfficial: [
 			'COStream - JPEG'
@@ -151,7 +151,7 @@ team = team.concat(shuffle([ //shuffle 函数打乱了后续成员的顺序
 		twitter: null,
 		work: {
 			role: 'Master',
-			org:'HUST DML'
+			org: 'HUST DML'
 		},
 		reposOfficial: [
 			'COStream - Tensorflow'
@@ -172,10 +172,10 @@ team = team.concat(shuffle([ //shuffle 函数打乱了后续成员的顺序
 		twitter: null,
 		work: {
 			role: 'Master',
-			org:'HUST DML'
+			org: 'HUST DML'
 		},
 		reposOfficial: [
-			'COStream','Linux'
+			'COStream', 'Linux'
 		],
 		//      reposPersonal: [
 		//        
@@ -183,6 +183,41 @@ team = team.concat(shuffle([ //shuffle 函数打乱了后续成员的顺序
 		links: [
 			'https://github.com/PHaoGhost'
 		]
-	}
+	},
+	{
+		name: '陈珍',
+		title: 'Professor of DML',
+		city: 'Shenzhen, China',
+		languages: ['zh', 'en'],
+		github: null,
+		img: '/images/Chenzhen.jpg',
+		work: {
+			role: 'Master',
+			org: 'HUST DML'
+		},
+		reposOfficial: [
+	   		'COStream - HEVC'
+	   	]
+	},
+	{
+		name: '莫斌生',
+		title: 'Member of DML',
+		city: 'Hangzhou, China',
+		languages: ['zh', 'en'],
+		github: 'mobinsheng',
+		twitter: null,
+		work: {
+			role: 'Master',
+			org: 'HUST DML'
+		},
+		reposOfficial: [
+			'COStream - H265'
+		],
+	      	reposPersonal: [
+			'HEVC','vs-x264-project'
+	      	],
+		links: [
+			'https://github.com/mobinsheng'
+		]
+	},
 ]))
-
