@@ -190,9 +190,11 @@ order: 803
 <script>
 (function () {
   var cityCoordsFor = {
-    'Wuhan, China' : [30.51415,114.40776],
-    'Chengdu, China': [30.572815, 104.066801],
-    'Chongqing, China': [29.431586, 106.912251]
+    	'Wuhan, China' : [30.51415,114.40776],
+    	'Chengdu, China': [30.572815, 104.066801],
+    	'Chongqing, China': [29.431586, 106.912251],
+	'Shenzhen, China':[22.27,113,46],
+	'Hangzhou, China':[29.11,118.21]
   }
   var languageNameFor = {
     en: 'English',

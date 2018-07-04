@@ -14,21 +14,24 @@ order: 1001
 - 14.04.5  	[下载](https://mirrors.163.com/ubuntu-releases/14.04.5/)	 *推荐64位*
 - 16+版本  		*暂未测试过*
 ## Git
-- 为什么要使用 Git? [廖雪峰的Git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000) *仅做参考*
+- 为什么要使用 Git? [廖雪峰的Git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001373962845513aefd77a99f4145f0a2c7a7ca057e7570000) *仅做参考*
 - git 常用指令速查 [Git简明教程-简书](https://www.jianshu.com/p/16ad0722e4cc)
 
 ## 安装 git
-`$ sudo apt-get install git`
+`$ sudo apt-get install git` 或[网页链接下载Git](https://git-scm.com)
 ![](https://s1.ax1x.com/2018/06/14/CjibjI.png)
+<p class="tip">Windows用户下载 Git 安装后可使用 `Git Bash`作为命令行,
+其它命令行操作和 Ubuntu 命令行一样</p>
 初次安装git需要配置用户名和邮箱，否则git会提示：please tell me who you are.
 你需要运行命令来配置你的用户名和邮箱：
 ![](https://s1.ax1x.com/2018/06/14/CjiHgA.png)
-<p class="tip">其实这里的 `user.name`不需要和你注册的账号相同,换句话说这里的 `user.name` 可以任意填写,不过当你有多台Git设备时可以通过定义这个 `user.name`来区分是由哪台设备上传的 `commit`,关于这一点在后文的 `git log`会有图片演示</p>
+<p class="tip">其实这里的 `user.name`不需要和你注册的账号相同,换句话说这里的 `user.name` 可以任意填写,不过当你有多台Git设备时可以通过定义这个 `user.name`来区分是由哪台设备上传的 `commit`,关于这一点在后文的 `git log`会有图片演示.
+总之建议使用`"姓名缩写"."操作系统"`来作为 `user.name`,如`xxx.win10`</p>
 
 ## 生成 ssh 密钥 
 为了连接 Github 我们需要使用 ssh [参考链接](https://www.cnblogs.com/superGG1990/p/6844952.html)
 git使用ssh密钥时，免去每次都要求输密码的麻烦
-使用`ssh-keygen -t rsa -C "your@email.com"`指令生成 ssh 密钥
+使用`ssh-keygen -t rsa -C "your@email.com"`指令生成 ssh 密钥,生成密钥时遇到冒号提示输入内容的时候直接按Enter就好
 ![](https://i.loli.net/2018/06/14/5b2204fb8d82c.png)
 用`cat ~/.ssh/id_rsa.pub`查看你的 ssh 公钥,复制下面字符串
 ![](https://i.loli.net/2018/06/14/5b2205ae66151.png)
@@ -42,19 +45,36 @@ Are you sure you want to continue connecting (yes/no)? yes
 ```
 如果看到：
 `Hi xxx! You've successfully authenticated, but GitHub does not # provide shell access.`
-恭喜你，你的设置已经成功了。
+恭喜你，你的设置已经成功了(如果你没有忘记设置`user.name`和`user.email`的话)。
 
-## 修改 & 提交
-~~素质三连(误)~~
+## 下载项目
 ```bash
+$ git clone XXX/XXX.git 
+#以下为2018/6/29周五临时指令, 后来会删除
+$ npm install -g cnpm #cnpm 是 npm 这个包管理器的淘宝镜像,加速国内访问
+$ cnpm install -g hexo-cli hexo-server #hexo是一款流行的博客生成工具,用来把.md生成.html 静态网页
+$ git clone git@github.com:DML308/cn.costream.org.git #把中文站点clone下来只是为了翻译的时候做对比用
+$ git clone git@github.com:DML308/costream.org.git 
+$ cd costream.org
+$ cnpm install #hexo 工具的package.json里定义了一些Dependencies插件的名字,这些插件并不会把包内容上传github而只是上传它们的名字和版本号以节省网络空间, 所以此时在本地把它们按照定义好的规则下载下来
+$ hexo serve #开启 localhost:4000以后这是一个本地的 Web 服务器,如果按下 Ctrl+C 那么该服务器就会停止. 如果既想开着 hexo serve 又想动 git 那么最好开两个Git Bash 窗口
+```
+## 修改 & 提交
+```bash
+# edit your code
 $ git add -A
-$ git commit 
+$ git commit -m "your comment" 
+$ git pull #拉取别人修改的代码,无冲突时默认合并
+#不建议一点小改动就 commit-push ,熟练以后我们可以本地修改多次并本地commit多次后再执行push一次就ok
 $ git push
 ```
-
+## 版本回滚
+```bash
+$ git reset --hard
+```
 
 ## 学习要求✭
-- 基本要求: 熟练使用`git clone | add | commit | push` *这里足够80%日常使用了*
+- 基本要求: 熟练使用`git clone | status | add | commit | push | git reset --hard` *这里足够80%日常使用了*
 - 进阶要求: 了解**分支**,使用`git branch | checkout`等指令
 - 更高要求: 了解开源项目的`tag`,`release`,`Pull Request`等项目版本管理内容
 - 边角料 : 在使用时遇到问题可以随时百度`git 版本回滚`,`.gitignore`,`git 分支合并`,`git log 详解`等内容
@@ -69,7 +89,11 @@ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Crese
 >需要注意的是:
 - 前文设置的 user.name 这里会出现在 `git log` 记录里, 所以说给不同用户和设备设置不同的 user.name 是有益的.
 - 专业团队的`git commit`的`comment`要求清晰、风格统一, 可以参考[阮一峰的网络日志-Commit](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
-
+### 其他
+```bash
+git config --global alias.st "status"  #简写 git st
+git config --global core.editor "vim"  #设置 vim 为git默认编辑器
+```
 ### for Mac:
 Mac 用户可以通过 SSH 来连接自己的Vmware虚拟机 
 *为什么要多此一举呢,是因为这里有超好看的终端 iTerm2,配置可以参考[ITerm2配色方案-简书](https://www.jianshu.com/p/33deff6b8a63)*
@@ -92,8 +116,6 @@ Windows的命令行也是能用的且功能齐全,缺点就是不是很好看.
 **推荐的工具**
 - `Brackets` `Atom` `VSCode`*推荐程度一般* 
 	这些编辑器人各有所爱 
-- `git-cli` *推荐程度一般*
-	windows 上安装 git 时带的命令行工具,绿色底的背景,优点是路径中使用和 Linux 一样的`\`
 - `Bitvise` *强烈推荐✭✭✭✭✩*
 一个软件就包含了`ssh 连接`+`打开命令行`+`与服务器传文件`, ~~妈妈再也不用提醒我下载 FileZilla~~
 - `WOX` 	*超级强烈推荐✭✭✭✭✭*
