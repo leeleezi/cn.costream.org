@@ -1,5 +1,5 @@
 <ul class="menu-root">
-  <% ['api', 'style-guide'].indexOf(type) === -1 && site.pages.find({type: type}).sort('order').each(function (p) { %>
+  <% ['cookbook', 'style-guide'].indexOf(type) === -1 && site.pages.find({type: type}).sort('order').each(function (p) { %>
     <% var fileName = p.path.replace(/^.+?\/([\w-]+)\.html/, '$1') %>
     <% if (type === 'guide') { %>
       <% if (fileName === 'index') { %>
@@ -10,6 +10,14 @@
       <% } %>
 			<% if (fileName === 'team') { %>
       <li><h3>其它</h3></li>
+      <% } %>
+    <% } %>
+    <% if (type === 'api') { %>
+      <% if (fileName === 'front') { %>
+      <li><h3>前端</h3></li>
+      <% } %>
+			<% if (fileName === 'back') { %>
+      <li><h3>后端</h3></li>
       <% } %>
     <% } %>
     <li>

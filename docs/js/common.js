@@ -221,14 +221,14 @@
         overlay.className = 'overlay'
     var isOpen = false
 
-    modalButton.addEventListener('click', function(event) {
-      event.stopPropagation()
-      videoModal.classList.toggle('open')
-      document.body.classList.toggle('stop-scroll')
-      document.body.appendChild(overlay)
-      videoWrapper.innerHTML = '<iframe style="height: 100%; left: 0; position: absolute; top: 0; width: 100%;" src="//player.youku.com/embed/XMzMwMTYyODMyNA==" frameborder="0" allowfullscreen></iframe>'
-      isOpen = true
-    })
+    // modalButton.addEventListener('click', function(event) {
+    //   event.stopPropagation()
+    //   videoModal.classList.toggle('open')
+    //   document.body.classList.toggle('stop-scroll')
+    //   document.body.appendChild(overlay)
+    //   videoWrapper.innerHTML = '<iframe style="height: 100%; left: 0; position: absolute; top: 0; width: 100%;" src="#" frameborder="0" allowfullscreen></iframe>'
+    //   isOpen = true
+    // })
 
     document.body.addEventListener('click', function(e) {
       if (isOpen && e.target !== modalButton && !videoModal.contains(e.target)) {
@@ -275,14 +275,14 @@
     // build sidebar
     var currentPageAnchor = sidebar.querySelector('.sidebar-link.current')
     var contentClasses = document.querySelector('.content').classList
-    var isAPIOrStyleGuide = (
-      contentClasses.contains('api') ||
+    var isCookbookOrStyleGuide = (
+      contentClasses.contains('Cookbook') ||
       contentClasses.contains('style-guide')
     )
-    if (currentPageAnchor || isAPIOrStyleGuide) {
+    if (currentPageAnchor || isCookbookOrStyleGuide) {
       var allHeaders = []
       var sectionContainer
-      if (isAPIOrStyleGuide) {
+      if (isCookbookOrStyleGuide) {
         sectionContainer = document.querySelector('.menu-root')
       } else {
         sectionContainer = document.createElement('ul')
@@ -297,7 +297,7 @@
           allHeaders.push(h)
           allHeaders.push.apply(allHeaders, h3s)
           if (h3s.length) {
-            sectionContainer.appendChild(makeSubLinks(h3s, isAPIOrStyleGuide))
+            sectionContainer.appendChild(makeSubLinks(h3s, isCookbookOrStyleGuide))
           }
         })
       } else {
