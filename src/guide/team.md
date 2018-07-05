@@ -194,7 +194,8 @@ order: 803
     	'Chengdu, China': [30.572815, 104.066801],
     	'Chongqing, China': [29.431586, 106.912251],
 	'Shenzhen, China':[22.27,113,46],
-	'Hangzhou, China':[29.11,118.21]
+	'Hangzhou, China':[29.11,118.21],
+	'Beijing, China':[39.9,116.3]
   }
   var languageNameFor = {
     en: 'English',
