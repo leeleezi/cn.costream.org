@@ -195,7 +195,8 @@ order: 803
     	'Chongqing, China': [29.431586, 106.912251],
 	'Shenzhen, China':[22.27,113,46],
 	'Hangzhou, China':[29.11,118.21],
-	'Beijing, China':[39.9,116.3]
+	'Beijing, China':[39.9,116.3],
+	'Guangzhou, China':[23.13,113.27]
   }
   var languageNameFor = {
     en: 'English',
