@@ -256,4 +256,19 @@ team = team.concat(shuffle([ //shuffle 函数打乱了后续成员的顺序
 	   		'COStream - CPU/GPU异构集群'
 	   	]
 	},
+	{
+		name: '杨胜哲',
+		title: 'Master of DML',
+		city: 'Guangzhou, China',
+		languages: ['zh', 'en'],
+		github: null,
+		img: 'https://i.loli.net/2018/07/08/5b41bbd7459ff.jpg',
+		work: {
+			role: 'Master',
+			org: 'HUST DML'
+		},
+		reposOfficial: [
+	   		'COStream - Dynamic Scheduling'
+	   	]
+	},
 ]))
