@@ -95,7 +95,7 @@
     <li><ul>
         <li><a href="/guide/" class="nav-link current">教程</a></li>
         <li><a href="/guide/grammar-book/grammar.html" class="nav-link">文法</a></li>
-        <li><a href="/api/" class="nav-link">API</a></li>
+        <li><a href="/api/" class="nav-link">源码</a></li>
       <li><a href="/examples/" class="nav-link">示例</a></li>
     </ul></li>
   </ul>
@@ -180,7 +180,7 @@
     <li><ul>
         <li><a href="/guide/" class="nav-link current">教程</a></li>
         <li><a href="/guide/grammar-book/grammar.html" class="nav-link">文法</a></li>
-        <li><a href="/api/" class="nav-link">API</a></li>
+        <li><a href="/api/" class="nav-link">源码</a></li>
       <li><a href="/examples/" class="nav-link">示例</a></li>
     </ul></li>
   </ul>
@@ -261,7 +261,7 @@
         </h2>
         <ul class="menu-root">
   
-    
+	
     
       
         <li><h3>基础</h3></li>
@@ -274,7 +274,7 @@
       <a href="/guide/index.html" class="sidebar-link current">简介</a>
     </li>
   
-    
+	
     
       
       
@@ -285,7 +285,7 @@
       <a href="/guide/installation.html" class="sidebar-link">安装</a>
     </li>
   
-    
+	
     
       
       
@@ -296,7 +296,7 @@
       <a href="/guide/helloworld.html" class="sidebar-link">运行第一个COStream程序</a>
     </li>
   
-    
+	
     
       
       
@@ -309,7 +309,7 @@
       <a href="/guide/grammar-book/grammar.html" class="sidebar-link">文法简介</a>
     </li>
   
-    
+	
     
       
       
@@ -320,7 +320,7 @@
       <a href="/guide/grammar-book/2.html" class="sidebar-link">关键字与类型</a>
     </li>
   
-    
+	
     
       
       
@@ -331,7 +331,7 @@
       <a href="/guide/grammar-book/3.html" class="sidebar-link">流数据处理</a>
     </li>
   
-    
+	
     
       
       
@@ -342,7 +342,7 @@
       <a href="/guide/grammar-book/4.html" class="sidebar-link">层次性流程序构造</a>
     </li>
   
-    
+	
     
       
       
@@ -353,7 +353,7 @@
       <a href="/guide/grammar-book/5.html" class="sidebar-link">内置Composite</a>
     </li>
   
-    
+	
     
       
       
@@ -364,7 +364,7 @@
       <a href="/guide/grammar-book/6.html" class="sidebar-link">程序结构</a>
     </li>
   
-    
+	
     
       
       
@@ -377,7 +377,7 @@
       <a href="/guide/team.html" class="sidebar-link">认识团队</a>
     </li>
   
-    
+	
     
       
       
@@ -388,7 +388,7 @@
       <a href="/guide/MD_GIT.html" class="sidebar-link">Git 使用简明教程</a>
     </li>
   
-    
+	
     
       
       
@@ -399,7 +399,7 @@
       <a href="/guide/link-document.html" class="sidebar-link">文献资料</a>
     </li>
   
-    
+	
     
       
       
@@ -426,7 +426,7 @@
     <h1>简介</h1>
   
   
-    <p>COStream编程语言是一种面向并行体系结构的高性能流编程语言，由<a href="http://media.hust.edu.cn" target="_blank" rel="noopener">华中科技大学数字媒体处理与检索实验室</a>多核计算与流编译组设计与开发。语言的名称由3个关键字：composite、operator和stream组合而来。COStream程序采用数据流图的方式来描述应用的处理过程，图中节点表示计算，边表示数据的流动。COStream语言具有广泛的应用领域，当前主要用于面向大数据量处理应用，如媒体处理、信号处理、搜索应用、数据文件处理等。</p>
+    <p>COStream编程语言是一种面向并行体系结构的高性能流编程语言，由<a href="http://media.hust.edu.cn" target="_blank" rel="noopener">华中科技大学数字媒体处理与检索实验室</a>多核计算与流编译组设计与开发。语言的名称由3个关键字：<code>Composite</code>、<code>Operator</code>和<code>Stream</code>组合而来。COStream程序采用数据流图的方式来描述应用的处理过程，图中节点表示计算，边表示数据的流动。COStream语言具有广泛的应用领域，当前主要用于面向大数据量处理应用，如媒体处理、信号处理、搜索应用、数据文件处理等。</p>
 <h2 id="主要特性"><a href="#主要特性" class="headerlink" title="主要特性"></a>主要特性</h2><blockquote>
 <p>流程序，即有序处理数据序列的程序，最常出现在声音、视频、数字信号处理的上下文中。流程序非常适合多核系统结构。对流应用的兴趣催生了一系列的作用于流域的程序语言，如COStream, Cg, StreamIt等。</p>
 </blockquote>
@@ -450,10 +450,10 @@
 <h4 id="一个稳定的计算模式"><a href="#一个稳定的计算模式" class="headerlink" title="    一个稳定的计算模式"></a><a href="#header-4"></a>    一个稳定的计算模式</h4><p>在程序稳态执行的过程中，数据流图的结构通常是不变的。即，一系列确定的actor将按照一个有序的顺序反复执行，给定一个输入数据流，将产生一个输出数据流。</p>
 <h4 id="滑动窗口的计算"><a href="#滑动窗口的计算" class="headerlink" title="    滑动窗口的计算"></a><a href="#header-4"></a>    滑动窗口的计算</h4><p>数据流中的每一个值通常都会被同一个actor在连续的执行中所检测，也被称为滑动窗口。滑动窗口的例子包括生物序列分析、自然语言的处理、图像的处理（锐化、模糊化等）、网络数据包的检测等。</p>
 <h4 id="偶尔的流外通信"><a href="#偶尔的流外通信" class="headerlink" title="    偶尔的流外通信"></a><a href="#header-4"></a>    偶尔的流外通信</h4><p>除了大容量的数据流将从一个actor流向另一个actor，actor也将通信一些少量的控制信息在一些罕见的不规则的基础上。例如：改变手机的音量，在屏幕中打印错误信息，或者改变自适应FIR actor中的系数。 这些信息通常和数据流中的数据相同步，例如调频电台在数据流中的某个特定点的传输时改变其频率。</p>
-<h4 id="高性能的期望"><a href="#高性能的期望" class="headerlink" title="    高性能的期望"></a><a href="#header-4"></a>    高性能的期望</h4><p>通常一些数据流程序需要满足实时性的限制，因此效率（延迟和吞吐量反面）是主要的考虑因素。另外有一些嵌入式的流程序将用于手机环境中，因此电量消耗，存储限制，代码大小限制等也很重要。</p>
+<h4 id="高性能的期望"><a href="#高性能的期望" class="headerlink" title="    高性能的期望"></a><a href="#header-4"></a>    高性能的期望</h4><p>通常一些数据流程序需要满足实时性的限制，因此效率（延迟和吞吐量）是主要的考虑因素。另外有一些嵌入式的流程序将用于手机环境中，因此电量消耗，存储限制，代码大小限制等也很重要。</p>
 <h2 id="COStream不适用的程序"><a href="#COStream不适用的程序" class="headerlink" title="COStream不适用的程序"></a>COStream不适用的程序</h2><h4 id="流结构的动态修改"><a href="#流结构的动态修改" class="headerlink" title="流结构的动态修改"></a><a href="#header-4"></a>流结构的动态修改</h4><p>COStream采用静态数据流图，不能在运行时候动态改变流图。一些流程序即使各个层次的actor执行很长一段时间后，偶尔也需要动态的修改流图。例如，如果一个无线网络的接口在其输入通道中经历了高噪声，这将使其需要产生一些actor去消除这些信号。或当网络协议从802.11变成了Bluetooth，它也可能重新初始化其子图。</p>
 <h4 id="actor的输入输出速率动态改变"><a href="#actor的输入输出速率动态改变" class="headerlink" title="actor的输入输出速率动态改变"></a><a href="#header-4"></a>actor的输入输出速率动态改变</h4><p>COStream各actor的输入输出速率在运行时恒定。一些应用程序需要对输入数据流进行分析，舍弃不符合需求的数据，即动态改变actor的输出速率。例如图像surf特征提取，以图像像素点为输入数据流，首先判断输入流中的数据项是否为特征点，若是特征点才进行下一步处理。</p>
-<h2 id="应用举例"><a href="#应用举例" class="headerlink" title="应用举例"></a>应用举例</h2><h3 id="实际应用-30个"><a href="#实际应用-30个" class="headerlink" title="实际应用( 30个):"></a>实际应用( 30个):</h3><table>
+<h2 id="应用举例"><a href="#应用举例" class="headerlink" title="应用举例"></a>应用举例</h2><h3 id="实际应用-25个"><a href="#实际应用-25个" class="headerlink" title="实际应用( 25个):"></a>实际应用( 25个):</h3><table>
 <thead>
 <tr>
 <th style="text-align:left"></th>
@@ -563,7 +563,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="库和内核-23个-Libraries-kernels-23"><a href="#库和内核-23个-Libraries-kernels-23" class="headerlink" title="库和内核( 23个)     Libraries / kernels (23):"></a>库和内核( 23个)     Libraries / kernels (23):</h3><table>
+<h3 id="库和内核-12个"><a href="#库和内核-12个" class="headerlink" title="库和内核( 12个):"></a>库和内核( 12个):</h3><table>
 <thead>
 <tr>
 <th style="text-align:left"></th>
@@ -621,7 +621,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="图像管道-4个-Graphics-pipelines-4"><a href="#图像管道-4个-Graphics-pipelines-4" class="headerlink" title="图像管道(4个)    Graphics pipelines (4):"></a>图像管道(4个)    Graphics pipelines (4):</h3><table>
+<h3 id="图像管道-4个"><a href="#图像管道-4个" class="headerlink" title="图像管道(4个)    :"></a>图像管道(4个)    :</h3><table>
 <thead>
 <tr>
 <th style="text-align:left"></th>
@@ -647,7 +647,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="排序算法-8个-Sorting-routines-8"><a href="#排序算法-8个-Sorting-routines-8" class="headerlink" title="排序算法(8个) Sorting routines (8):"></a>排序算法(8个) Sorting routines (8):</h3><table>
+<h3 id="排序算法-6个"><a href="#排序算法-6个" class="headerlink" title="排序算法(6个) :"></a>排序算法(6个) :</h3><table>
 <thead>
 <tr>
 <th style="text-align:left"></th>
@@ -681,7 +681,6 @@
 </tr>
 </tbody>
 </table>
-<p>关于COStream语言的定义、编程规范和编译器行为（包括静态和动态）的详细说明等，详见<a href="document">COStream参考文档列表</a>。</p>
 
   
   

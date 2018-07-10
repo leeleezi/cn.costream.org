@@ -3,21 +3,21 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
-    <title>概览 — COStream</title>
+    <title>输入文件的获取与处理 — COStream</title>
     <meta charset="utf-8">
     <meta name="description" content="COStream - The High Performance Dataflow Language and Compiler">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <link rel="alternate" hreflang="x-default" href="https://costream.site/api/index.html">
-    <link rel="alternate" hreflang="zh" href="https://cn.costream.site/api/index.html">
+    <link rel="alternate" hreflang="x-default" href="https://costream.site/api/front-2.1.0.html">
+    <link rel="alternate" hreflang="zh" href="https://cn.costream.site/api/front-2.1.0.html">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="概览 — COStream">
+    <meta property="og:title" content="输入文件的获取与处理 — COStream">
     <meta property="og:description" content="COStream - The High Performance Dataflow Language and Compiler">
     <meta property="og:image" content="https://cn.costream.site/images/logo.png">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="概览 — COStream">
+    <meta name="twitter:title" content="输入文件的获取与处理 — COStream">
     <meta name="twitter:description" content="COStream - The High Performance Dataflow Language and Compiler">
     <meta name="twitter:image" content="https://cn.costream.site/images/logo.png">
 
@@ -149,8 +149,8 @@
 <li class="nav-dropdown-container language">
   <a class="nav-link">多语言</a><span class="arrow"></span>
   <ul class="nav-dropdown">
-    <li><a href="https://costream.site/api/index.html" class="nav-link" target="_blank">English</a></li>
-    <li><a href="https://cn.costream.site/api/index.html" class="nav-link" target="_blank">简体中文</a></li>
+    <li><a href="https://costream.site/api/front-2.1.0.html" class="nav-link" target="_blank">English</a></li>
+    <li><a href="https://cn.costream.site/api/front-2.1.0.html" class="nav-link" target="_blank">简体中文</a></li>
   </ul>
 </li>
 
@@ -234,8 +234,8 @@
 <li class="nav-dropdown-container language">
   <a class="nav-link">多语言</a><span class="arrow"></span>
   <ul class="nav-dropdown">
-    <li><a href="https://costream.site/api/index.html" class="nav-link" target="_blank">English</a></li>
-    <li><a href="https://cn.costream.site/api/index.html" class="nav-link" target="_blank">简体中文</a></li>
+    <li><a href="https://costream.site/api/front-2.1.0.html" class="nav-link" target="_blank">English</a></li>
+    <li><a href="https://cn.costream.site/api/front-2.1.0.html" class="nav-link" target="_blank">简体中文</a></li>
   </ul>
 </li>
 
@@ -268,7 +268,7 @@
 		
     
     <li>
-      <a href="/api/index.html" class="sidebar-link current">概览</a>
+      <a href="/api/index.html" class="sidebar-link">概览</a>
     </li>
   
 	
@@ -280,7 +280,7 @@
 		
     
     <li>
-      <a href="/api/front-2.1.0.html" class="sidebar-link">输入文件的获取与处理</a>
+      <a href="/api/front-2.1.0.html" class="sidebar-link current">输入文件的获取与处理</a>
     </li>
   
 	
@@ -458,62 +458,85 @@
     
   
   
-    <h1>概览</h1>
+    <h1>输入文件的获取与处理</h1>
   
   
-    <h2 id="编译器工程架构"><a href="#编译器工程架构" class="headerlink" title="编译器工程架构"></a>编译器工程架构</h2><p><img src="https://i.loli.net/2018/07/10/5b44b304b4ba8.png" alt="编译器工程架构"></p>
-<h3 id="编译器前端"><a href="#编译器前端" class="headerlink" title="编译器前端"></a>编译器前端</h3><ol>
-<li><p>获取输入 &amp; 初始化环境</p>
-<p> <code>Main#Handle_options</code><br> <code>Main#Get_preprocessed_input</code></p>
-<p> 初始化环境<br> <code>GLOBAL#InitTypes</code><br> <code>Main#Init_symbol_tables</code><br> <code>GLOBAL#InitOperatorTable</code></p>
-</li>
-<li><p>文法建立 &amp; 语法树生成<br> <code>GLOBAL#yyparse</code><br> genetate<code>List*program</code>，this <code>program</code> is grammar</p>
-</li>
-<li><p>打印符号表</p>
-<p> <code>GLOBAL#PrintSymbolTable</code></p>
-</li>
-<li><p>删除临时文件</p>
-</li>
-<li><p>打印抽象语法树</p>
-<p> <code>GLOBAL#PrintList</code></p>
-</li>
-<li><p>语义检查<br> <code>GLOBAL#SemanticCheckProgram</code></p>
-</li>
-<li><p>活跃变量分析<br> <code>GLOBAL#AnalyzeProgram</code></p>
-</li>
-<li><p>添加变量重命名<br> <code>GLOBAL#VariableRenameProgram</code><br> <code>GLOBAL#ResetASTSymbolTable</code><br> 这部分对生成文件的名字进行修改，根据actor结点的名字或者duplicate以及从上到下从左到右的编号确定生成文件的名字。如sink_30.h</p>
-</li>
-<li><p>常量传播<br> <code>GLOBAL#PropagateProgram</code><br> 这部分将composite中的param（全部常量）进行替代</p>
-</li>
-<li><p>语法树到平面图<br> <code>GLOBAL#AST2FlatStaticStreamGraph</code><br> <code>AutoProfiling#AutoProfiling()</code><br> <code>AutoProfiling#GeneratingProfile()</code></p>
-</li>
-<li><p>对平面图各节点进行工作估计<br> 静态工作量估计：<br> <code>GLOBAL#GenerateWorkEst()</code></p>
-</li>
-</ol>
-<h3 id="编译器后端"><a href="#编译器后端" class="headerlink" title="编译器后端"></a>编译器后端</h3><ol>
-<li><p>对平面图进行初始化调度和稳态调度<br> <code>GLOBAL#SchedulingSSG(),生成SSSG为SchedulerSSG</code></p>
-</li>
-<li><p>用XML文件的形式描述SDF图<br> <code>GLOBAL#DumpStreamGraph()</code></p>
-</li>
-<li><p>对节点进行划分<br> <code>MetisPartition#MetisPartiton()</code><br> <code>Partition#setPlaces()</code><br> <code>Partition#SssgPartition()</code></p>
-</li>
-<li><p>水平分裂<br> Switch Variable: <code>RHFissionission</code><br> 水平分裂完之后需要从新metis划分<br> <code>MetisPartiton()</code><br> <code>setPlaces()</code><br> <code>SssgPartition()</code></p>
-</li>
-<li><p>打印理论加速比<br> Switch Variable: <code>Speedup</code><br> <code>GLOBAL#ComputeSpeedup()</code></p>
-</li>
-<li><p>阶段赋值<br> <code>StageAssignment#StageAssignment()</code><br> <code>StageAssignment#actorTopologicalorder(GetFlatNodes())</code><br> <code>StageAssignment#actorStageMap(GetFlatNode2Partition())</code></p>
-</li>
-<li><p>输入为SDF图输出为目标代码<br> <code>库函数#direct.h#getcwd()</code><br> <code>GodeGeneration#CodeGeneration()</code></p>
-</li>
-</ol>
-<p><img src="https://i.loli.net/2018/07/10/5b44b31ce1eec.png" alt="编译器后端"></p>
+    <p>该工程是一个针对数据流语言COStream的编译器，目标是将输入的COStream源程序经过编译器处理即（词法分析、语法分析、语义分析、中间代码生成与优化、目标代码生成）得到目标C++并行代码。与普通编译器不同的是，我们不仅实现了语言COStream到高级语言C++的转换，而且针对数据流的并行特性，根据输入的COStream源程序中暴露出的并行性以及对应数据流图的节点信息，进行了划分调度，最终得到C++多线程代码。</p>
+<h2 id="工程入口"><a href="#工程入口" class="headerlink" title="工程入口"></a>工程入口</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">GLOBAL <span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ……</span><br><span class="line">    <span class="comment">//Frontend</span></span><br><span class="line">    preproc = default_preproc;</span><br><span class="line">    <span class="comment">//Get input, processe command line parameter</span></span><br><span class="line">    handle_options(argc, argv);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> pos1 = InputFileName.find_last_of(<span class="string">'/'</span>);</span><br><span class="line">    <span class="keyword">int</span> pos2 = InputFileName.find(<span class="string">".spl"</span>);</span><br><span class="line">    <span class="built_in">string</span> substring=InputFileName.substr(pos1+<span class="number">1</span>,pos2-pos1<span class="number">-1</span>);	</span><br><span class="line">    <span class="built_in">string</span> ccfilename=InputFileName.substr(pos1+<span class="number">1</span>,pos2-pos1<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>default_preproc</code>是main.cpp文件的一个私有字符串变量，其存储默认编译命令”gcc –E –x c” </li>
+<li>基本变量<code>preproc</code>用于编译命令处理判断</li>
+<li>main函数默认参数<code>(argc,argv)</code>，其中<code>argc</code>指命令行输入参数的个数，<code>argv</code>存储了所有的命令行参数，本工程argc=1 argv=“工程路径”</li>
+<li><code>handle_option</code>函数将<code>Input_file</code>赋值给<code>InputFileName</code>，接下来截取输入源程序文件名，并记录下来<code>substring</code> 与 <code>ccfilename</code>均存储该文件名，前者在后期代码生成中有引用，后者在工作量估计步骤中得以引用。</li>
+</ul>
+<h2 id="关联文件解析"><a href="#关联文件解析" class="headerlink" title="关联文件解析"></a>关联文件解析</h2><p><code>main.cpp</code><br>该文件是整个工程的入口文件，其中定义了程序入口函数<code>main(argc,argv)</code>，以及必要头文件引用、必要全局变量声明、必要基本函数定义实现等。<br>具体代码实现详见main.cpp程序源文件，结合工程进行整体理解。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">关键变量说明：</th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>GLOBAL List *Program</code></td>
+<td style="text-align:left">这是一个全局<code>List*</code>变量专为处理输入源程序，<code>program</code>=源程序文件地址，而<code>*program</code>=源程序内容，是前端语法分析的目标。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GLOBAL Node * gMainComposite</code></td>
+<td style="text-align:left">这是分析程序的入口，相当于数据流程序的main函数，也是语法树的根节点，同样也是数据流图SDF的头结点。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GLOBAL extern StaticStreamGraph *SSG</code></td>
+<td style="text-align:left"><code>SSG</code>变量即静态数据流图，将存储由前端语法树直接转化而来的平面图；<code>extern</code>关键字指该变量在此处仅是声明而非定义，具体详参extern说明。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GLOBAL SchedulerSSG *SSSG</code></td>
+<td style="text-align:left"><code>SSSG</code>变量是经初态调度和稳态调度后的数据流图，它是由<code>SSG</code>转化而来。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GLOBAL Bool PrintAST</code></td>
+<td style="text-align:left">操作开关，以<code>PrintAST</code>为例，定义为true代表在控制台打印语法树，定义为false则不输出语法树。</td>
+</tr>
+<tr>
+<td style="text-align:left">.etc……</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">关键函数列举：</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>void handle_options(int argc , char *argv[])</code></td>
+<td style="text-align:left">命令行参数处理函数，获取用户输入的对源程序的编译命令中包含的各种信息</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>void init_symbol_tables(Bool shadow_warnings)</code></td>
+<td style="text-align:left">初始化符号表实现函数</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>FILE *get_preprocessed_input()</code></td>
+<td style="text-align:left">对输入源程序预处理函数，经过处理得到将要分析的输入源程序文件信息，并将文件地址赋值于<code>Input_File</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="输入文件获取与处理"><a href="#输入文件获取与处理" class="headerlink" title="输入文件获取与处理"></a>输入文件获取与处理</h2><p>编译器的初始化包括输入源程序的分析与编译命令的解析两个方面，该模块的实现由main.cpp中的<code>handle_options(int argc , char *argv[])</code> 来实现：</p>
+<ul>
+<li>函数参数<code>argc</code>与<code>argv</code>同<code>main</code>函数参数，<code>argc</code>指命令行输入参数的个数，argv存储了所有的命令行参数，本工程<code>argc=1 argv[0]=“工程路径”</code>；</li>
+<li>定义源程序路径数组，<code>char *files[16] = {&quot;./tests/SPLtest/Benchmarks/rvq.spl2.cc&quot;, ….};</code> 每一个文件都是COStream测试程序；</li>
+<li>解析命令行参数，参数个数为<code>argc</code>：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (X86Backend)</span><br><span class="line">&#123;</span><br><span class="line">    argc = <span class="number">5</span>;  </span><br><span class="line">    argv[<span class="number">1</span>] = <span class="string">"-x86"</span>;         <span class="comment">//chose platform</span></span><br><span class="line">    argv[<span class="number">2</span>] = <span class="string">"-nCpucore"</span>;    <span class="comment">//set cpu core number</span></span><br><span class="line">    argv[<span class="number">3</span>] = <span class="string">"8"</span>;            <span class="comment">// set cpu core number</span></span><br><span class="line">    argv[<span class="number">4</span>] = files[<span class="number">3</span>];       <span class="comment">//sorcefile for test</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (GPUBackend)</span><br><span class="line">&#123;</span><br><span class="line">    argc = <span class="number">9</span>;</span><br><span class="line">    argv[<span class="number">1</span>] = <span class="string">"-gpu"</span>;  </span><br><span class="line">    argv[<span class="number">2</span>] = <span class="string">"-nGpu"</span>;</span><br><span class="line">    argv[<span class="number">3</span>] = <span class="string">"3"</span>;</span><br><span class="line">    argv[<span class="number">4</span>] = files[<span class="number">8</span>];</span><br><span class="line">    argv[<span class="number">5</span>] = <span class="string">"-o"</span>;</span><br><span class="line">    argv[<span class="number">6</span>] = <span class="string">"test"</span>;</span><br><span class="line">    argv[<span class="number">7</span>] = <span class="string">"-multi"</span>;</span><br><span class="line">    argv[<span class="number">8</span>] = <span class="string">"3"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对argc数量的命令行参数关键字，逐个分析获取用户所设置的编译需求：<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (i=<span class="number">1</span>; i&lt;argc; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (argv[i][<span class="number">0</span>] == <span class="string">'-'</span>) &#123;  </span><br><span class="line">        <span class="keyword">switch</span> (argv[i][<span class="number">1</span>]) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'-'</span>:</span><br><span class="line">                QuietlyIgnore = !QuietlyIgnore;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'h'</span>:</span><br><span class="line">                usage(FALSE, <span class="number">0</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'a'</span>:</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">strcmp</span>(argv[i], <span class="string">"-ansi"</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">                    ANSIOnly = TRUE;</span><br><span class="line">                <span class="comment">/* change the preprocessor command, if the user hasn't</span></span><br><span class="line"><span class="comment">                already changed it with -P */</span></span><br><span class="line">                <span class="keyword">if</span> (preproc == default_preproc)</span><br><span class="line">                    preproc = ansi_preproc;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">strcmp</span>(argv[i], <span class="string">"-ast"</span>) == <span class="number">0</span>) </span><br><span class="line">                    PrintAST = TRUE;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    unknown_option(argv[i]);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                    ……</span><br><span class="line">        &#125;<span class="comment">//switch</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (input_file != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"Multiple input files defined, using `%s'\n"</span>,argv[i]);</span><br><span class="line">        &#125;<span class="comment">//if</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            input_file = argv[i];</span><br><span class="line">    &#125;<span class="comment">//if</span></span><br><span class="line">&#125;<span class="comment">//for</span></span><br></pre></td></tr></table></figure></li>
+</ul>
 
   
   
   <div class="footer">
     发现错误？想参与编辑？
     	
-	  <a href="https://github.com/DML308/cn.costream.org/tree/master/src/api/index.md" target="_blank">
+	  <a href="https://github.com/DML308/cn.costream.org/tree/master/src/api/front-2.1.0.md" target="_blank">
 		  在 GitHub 上编辑此页！
 	  </a>
   	

@@ -3,21 +3,21 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
-    <title>概览 — COStream</title>
+    <title>数据流图划分 — COStream</title>
     <meta charset="utf-8">
     <meta name="description" content="COStream - The High Performance Dataflow Language and Compiler">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <link rel="alternate" hreflang="x-default" href="https://costream.site/api/index.html">
-    <link rel="alternate" hreflang="zh" href="https://cn.costream.site/api/index.html">
+    <link rel="alternate" hreflang="x-default" href="https://costream.site/api/back-2.2.3.html">
+    <link rel="alternate" hreflang="zh" href="https://cn.costream.site/api/back-2.2.3.html">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="概览 — COStream">
+    <meta property="og:title" content="数据流图划分 — COStream">
     <meta property="og:description" content="COStream - The High Performance Dataflow Language and Compiler">
     <meta property="og:image" content="https://cn.costream.site/images/logo.png">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="概览 — COStream">
+    <meta name="twitter:title" content="数据流图划分 — COStream">
     <meta name="twitter:description" content="COStream - The High Performance Dataflow Language and Compiler">
     <meta name="twitter:image" content="https://cn.costream.site/images/logo.png">
 
@@ -149,8 +149,8 @@
 <li class="nav-dropdown-container language">
   <a class="nav-link">多语言</a><span class="arrow"></span>
   <ul class="nav-dropdown">
-    <li><a href="https://costream.site/api/index.html" class="nav-link" target="_blank">English</a></li>
-    <li><a href="https://cn.costream.site/api/index.html" class="nav-link" target="_blank">简体中文</a></li>
+    <li><a href="https://costream.site/api/back-2.2.3.html" class="nav-link" target="_blank">English</a></li>
+    <li><a href="https://cn.costream.site/api/back-2.2.3.html" class="nav-link" target="_blank">简体中文</a></li>
   </ul>
 </li>
 
@@ -234,8 +234,8 @@
 <li class="nav-dropdown-container language">
   <a class="nav-link">多语言</a><span class="arrow"></span>
   <ul class="nav-dropdown">
-    <li><a href="https://costream.site/api/index.html" class="nav-link" target="_blank">English</a></li>
-    <li><a href="https://cn.costream.site/api/index.html" class="nav-link" target="_blank">简体中文</a></li>
+    <li><a href="https://costream.site/api/back-2.2.3.html" class="nav-link" target="_blank">English</a></li>
+    <li><a href="https://cn.costream.site/api/back-2.2.3.html" class="nav-link" target="_blank">简体中文</a></li>
   </ul>
 </li>
 
@@ -268,7 +268,7 @@
 		
     
     <li>
-      <a href="/api/index.html" class="sidebar-link current">概览</a>
+      <a href="/api/index.html" class="sidebar-link">概览</a>
     </li>
   
 	
@@ -412,7 +412,7 @@
 		
     
     <li>
-      <a href="/api/back-2.2.3.html" class="sidebar-link">数据流图划分</a>
+      <a href="/api/back-2.2.3.html" class="sidebar-link current">数据流图划分</a>
     </li>
   
 	
@@ -458,62 +458,152 @@
     
   
   
-    <h1>概览</h1>
+    <h1>数据流图划分</h1>
   
   
-    <h2 id="编译器工程架构"><a href="#编译器工程架构" class="headerlink" title="编译器工程架构"></a>编译器工程架构</h2><p><img src="https://i.loli.net/2018/07/10/5b44b304b4ba8.png" alt="编译器工程架构"></p>
-<h3 id="编译器前端"><a href="#编译器前端" class="headerlink" title="编译器前端"></a>编译器前端</h3><ol>
-<li><p>获取输入 &amp; 初始化环境</p>
-<p> <code>Main#Handle_options</code><br> <code>Main#Get_preprocessed_input</code></p>
-<p> 初始化环境<br> <code>GLOBAL#InitTypes</code><br> <code>Main#Init_symbol_tables</code><br> <code>GLOBAL#InitOperatorTable</code></p>
-</li>
-<li><p>文法建立 &amp; 语法树生成<br> <code>GLOBAL#yyparse</code><br> genetate<code>List*program</code>，this <code>program</code> is grammar</p>
-</li>
-<li><p>打印符号表</p>
-<p> <code>GLOBAL#PrintSymbolTable</code></p>
-</li>
-<li><p>删除临时文件</p>
-</li>
-<li><p>打印抽象语法树</p>
-<p> <code>GLOBAL#PrintList</code></p>
-</li>
-<li><p>语义检查<br> <code>GLOBAL#SemanticCheckProgram</code></p>
-</li>
-<li><p>活跃变量分析<br> <code>GLOBAL#AnalyzeProgram</code></p>
-</li>
-<li><p>添加变量重命名<br> <code>GLOBAL#VariableRenameProgram</code><br> <code>GLOBAL#ResetASTSymbolTable</code><br> 这部分对生成文件的名字进行修改，根据actor结点的名字或者duplicate以及从上到下从左到右的编号确定生成文件的名字。如sink_30.h</p>
-</li>
-<li><p>常量传播<br> <code>GLOBAL#PropagateProgram</code><br> 这部分将composite中的param（全部常量）进行替代</p>
-</li>
-<li><p>语法树到平面图<br> <code>GLOBAL#AST2FlatStaticStreamGraph</code><br> <code>AutoProfiling#AutoProfiling()</code><br> <code>AutoProfiling#GeneratingProfile()</code></p>
-</li>
-<li><p>对平面图各节点进行工作估计<br> 静态工作量估计：<br> <code>GLOBAL#GenerateWorkEst()</code></p>
-</li>
-</ol>
-<h3 id="编译器后端"><a href="#编译器后端" class="headerlink" title="编译器后端"></a>编译器后端</h3><ol>
-<li><p>对平面图进行初始化调度和稳态调度<br> <code>GLOBAL#SchedulingSSG(),生成SSSG为SchedulerSSG</code></p>
-</li>
-<li><p>用XML文件的形式描述SDF图<br> <code>GLOBAL#DumpStreamGraph()</code></p>
-</li>
-<li><p>对节点进行划分<br> <code>MetisPartition#MetisPartiton()</code><br> <code>Partition#setPlaces()</code><br> <code>Partition#SssgPartition()</code></p>
-</li>
-<li><p>水平分裂<br> Switch Variable: <code>RHFissionission</code><br> 水平分裂完之后需要从新metis划分<br> <code>MetisPartiton()</code><br> <code>setPlaces()</code><br> <code>SssgPartition()</code></p>
-</li>
-<li><p>打印理论加速比<br> Switch Variable: <code>Speedup</code><br> <code>GLOBAL#ComputeSpeedup()</code></p>
-</li>
-<li><p>阶段赋值<br> <code>StageAssignment#StageAssignment()</code><br> <code>StageAssignment#actorTopologicalorder(GetFlatNodes())</code><br> <code>StageAssignment#actorStageMap(GetFlatNode2Partition())</code></p>
-</li>
-<li><p>输入为SDF图输出为目标代码<br> <code>库函数#direct.h#getcwd()</code><br> <code>GodeGeneration#CodeGeneration()</code></p>
-</li>
-</ol>
-<p><img src="https://i.loli.net/2018/07/10/5b44b31ce1eec.png" alt="编译器后端"></p>
+    <p>当COStream编译工程的阅读理解工作进行到该步骤，则对于该编译器的整体实现机制、语法树到平面图的转化以及数据流图SDF的存储访问等方面有了基本的了解和掌握。<br>要想真正理解编译器后端对于数据流图SDF中节点的调度和划分思想与实现，必须有一定的C++编程基础，对于C++标准中的结构体、指针、基本容器（如list、vector、map、multimap）及迭代器Iterator达到熟悉并灵活应用的程度。<br>我们知道，COStream是一个数据流语言，一门在多核平台下得以并行运行的高级语言，其面向多种平台后端如X10Backend 、 X86Backend 以及 GPUBackend ，并且针对不同的后端划分调度的方法有所差异，因此，划分调度及后面的分裂融合直至最终代码生成步骤模块的实现方法均是以平台分别实现。</p>
+<h2 id="程序入口"><a href="#程序入口" class="headerlink" title="程序入口"></a>程序入口</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// （3）Parition graph</span></span><br><span class="line">PhaseName = <span class="string">"Partition"</span>;</span><br><span class="line"><span class="keyword">if</span> (Errors == <span class="number">0</span> &amp;&amp; PPartition &amp;&amp; (X86Backend || X10Backend || GPUBackend) )</span><br><span class="line">&#123;</span><br><span class="line">    ……</span><br><span class="line">    <span class="keyword">if</span> (X10ParallelBackEnd == TRUE)</span><br><span class="line">    ……</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (X10DistributedBackEnd == TRUE)</span><br><span class="line">    ……</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (X10Backend || X86Backend)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//According to the number of nodes in SSSG, and CPU cores </span></span><br><span class="line">        <span class="comment">//set the partition number</span></span><br><span class="line">        mp-&gt;setCpuCoreNum(CpuCoreNum, SSSG);</span><br><span class="line">        mp-&gt;SssgPartition(SSSG,<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (GPUBackend &amp;&amp; MAFLPFlag)</span><br><span class="line">    ……</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">PhaseName = <span class="string">"SetMultiNum"</span>;</span><br><span class="line"><span class="keyword">if</span> (Errors == <span class="number">0</span> &amp;&amp; GPUBackend)</span><br><span class="line">    ……</span><br><span class="line">    PhaseName = <span class="string">"PartitionGraph"</span>;</span><br><span class="line">    <span class="keyword">if</span> (Errors == <span class="number">0</span> &amp;&amp; PPartition &amp;&amp; PartitionGraph &amp;&amp; (X86Backend||X10Backend ||</span><br><span class="line">                                                        GPUBackend) )</span><br><span class="line">    &#123;</span><br><span class="line">    <span class="keyword">if</span>(GPUBackend)</span><br><span class="line">        DumpStreamGraph(SSSG,maflp,<span class="string">"GPUPartitionGraph.dot"</span>,<span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        DumpStreamGraph(SSSG, mp, <span class="string">"PartitionGraph.dot"</span>,<span class="literal">NULL</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>例如: 如果我们使用Inter X86架构下的8核服务器，根据条件判断，进入X86Backend代码分支</li>
+<li>变量<code>mp</code>即<code>MetisPartiton *mp = NULL</code> 定义在main函数，划分调度类MetisPartition的一个对象;</li>
+<li>首先，根据源程序经语法树转化的SDF图节点个数以及当前CPU的物理核数，决定SDF图的划分份数，由<code>setCpuCoreNum(CpuCoreNum , SSSG)</code>实现，其中变量<code>CpuCoreNum=8</code>定义在main.cpp，SSSG是上一阶段初态和稳态调度的输出。</li>
+<li>划分份数确定后，调用划分函数<code>mp-&gt;SssgPartition(SSSG,1)</code> 该函数在MetisPartition.cpp中实现，该文件是此划分调度模块的一个关联文件。</li>
+<li>完成划分调度，将划分后的SDF图打印输出<code>DumpStreamGraph(SSSG, mp, &quot;PartitionGraph.dot&quot;,NULL)</code>。</li>
+</ul>
+<h2 id="关联文件解析"><a href="#关联文件解析" class="headerlink" title="关联文件解析"></a>关联文件解析</h2><p>(1)     partition.h &amp; partition.cpp<br>partition.h 定义了所有划分调度的基类<br><img src="https://i.loli.net/2018/07/10/5b44b37a0688d.jpg" alt="partitionclass"></p>
+<p><em>基类Partition成员变量</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>map&lt;FlatNode*,int&gt;</code><br>    <code>FlatNode2PartitionNum</code></td>
+<td style="text-align:left">保存划分结果,节点到划分编号的映射</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>multimap&lt;int，FlatNode*&gt;</code><br><code>FlatNode2PartitionNum</code></td>
+<td style="text-align:left">保存划分结果,划分编号到节点的映射</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vector&lt;FlatNode *&gt; PartitionNumSet</code></td>
+<td style="text-align:left">记录返回的节点集合</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>int mnparts</code></td>
+<td style="text-align:left">划分的份数</td>
+</tr>
+</tbody>
+</table>
+<p><em>基类Partition成员函数</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数名称</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>void setCpuCoreNum(int,SchedulerSSG*)</code></td>
+<td style="text-align:left">设置划分的place个数（由SDF图节点以及用户指定划分核决定）</td>
+</tr>
+</tbody>
+</table>
+<p><em>基类Partition非成员函数</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数名称</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>void DumpStreamGraph(SchedulerSSG*ssg,Partition *,</code><br> <code>const char *fileName, ClusterPartition *)</code></td>
+<td style="text-align:left">SDF平面图对应dot文件的生成函数，在文件dumpGraph.cpp中实现</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>void ComputeSpeedup(SchedulerSSG*sssg,Partition *mp ,</code><br> <code>std::string , const char *fileName,std::string)</code></td>
+<td style="text-align:left">单核、多核平台COStream程序执行理论加速比的计算函数，在speedup.cpp文件中实现</td>
+</tr>
+</tbody>
+</table>
+<p>(2)    Metis.h &amp; MetisPartiton.h &amp; MetisPartiton.cpp<br>束调度的实现相关文件，该编译工程中对于束调度采用了是Metis划分算法。</p>
+<p>(3)    RRSPartition.h &amp; RRSPartition.cpp<br>循环分发调度的实现相关文件。</p>
+<p>(4)    TDOBPartition.h &amp; TDOBPartition.cpp<br>自上而下负载均衡的划分调度实现相关文件。</p>
+<h2 id="划分算法流程图"><a href="#划分算法流程图" class="headerlink" title="划分算法流程图"></a>划分算法流程图</h2><p>1)    （1）    设置划分核数<br>该函数用来设置划分模块数目，物理核数决定划分份数<br><img src="https://i.loli.net/2018/07/10/5b44b38ab3da7.jpg" alt="partitionflowchat"></p>
+<p>2)    SDFPartion—SSSGPartition<br>采用MetisPartition任务调度，结合边通信及负载均衡</p>
+<p><em>单核下，数据处理</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">变量名称</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>map&lt;FlatNode*,int&gt; FlatNode2PartitionNum</code></td>
+<td style="text-align:left"><code>Insert(make_pair(sssg-&gt;GetFlatNodes()[i],0))</code> <br>将SDF图所有节点的划分编号映射为0</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>multimap&lt;int，FlatNode*&gt; FlatNode2PartitionNum</code></td>
+<td style="text-align:left"><code>Insert(make_pair(0,sssg-&gt;GetFlatNodes()[i]))</code><br>将SDF图所有节点的划分编号映射为0</td>
+</tr>
+</tbody>
+</table>
+<p><em>多核下, use Metis API</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">变量名称</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>vector&lt;int&gt; part(nvtxs)</code></td>
+<td style="text-align:left">nvtxs：SDF节点总量; <br>part：存储每个节点划分后的划分编号</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vector&lt;int&gt; vsize(nvtxs,0)</code></td>
+<td style="text-align:left">vsize：于存储每个节点的工作量，划分前全部初始化为0</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vector&lt;int&gt; adjncy(edgenum*2)</code></td>
+<td style="text-align:left">adjncy：用于存储边，容量初始化为节点数量的2倍</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vector&lt;int&gt; adjwgt(edgenum*2)</code></td>
+<td style="text-align:left">adjwgt： 用于存储边的权重</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>METIS_PartGraphKway(&amp;nvtxs,&amp;mncon,mxadj,</code><br><code>madjncy,mvwgt,mvsize,</code><br><code>madjwgt,&amp;mnparts,tpwgts,</code><br><code>ubvec,options,&amp;objval,mpart)</code></td>
+<td style="text-align:left">调用metis接口下的K-路图划分算法，对当前SDF图根据actor工作量和通信量进行划分</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>FlatNode2PartitionNum.insert</code><br><code>(make_pair(sssg-&gt;GetFlatNodes()[i],part[i]))</code></td>
+<td style="text-align:left">建立节点到划分编号的映射</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>PartitonNum2FlatNode.insert</code><br><code>(make_pair(part[i],sssg-&gt;GetFlatNodes()[i]))</code></td>
+<td style="text-align:left">建立划分编号到节点的映射</td>
+</tr>
+</tbody>
+</table>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="程序实例生成的划分平面图中什么时候对节点进行着色？"><a href="#程序实例生成的划分平面图中什么时候对节点进行着色？" class="headerlink" title="程序实例生成的划分平面图中什么时候对节点进行着色？"></a>程序实例生成的划分平面图中什么时候对节点进行着色？</h3><p>SDF划分平面图的生成由dumpGraph.cpp中的<code>DumpStreamGraph(SchedulerSSG*ssg,Partition *, const char *fileName, ClusterPartition *)</code>函数生成 .dot 文件，严格按照用户设定的划分份数以及划分调度模块的结果，对每一个SDF图节点进行着色。</p>
+<h3 id="MKP—多层K路图划分的特点？"><a href="#MKP—多层K路图划分的特点？" class="headerlink" title="MKP—多层K路图划分的特点？"></a>MKP—多层K路图划分的特点？</h3><p>它没有改变SDF图的结构特征（节点数量不变），将图划分为具有相似权重的多个子图，并确保子图之间的最小通信。</p>
 
   
   
   <div class="footer">
     发现错误？想参与编辑？
     	
-	  <a href="https://github.com/DML308/cn.costream.org/tree/master/src/api/index.md" target="_blank">
+	  <a href="https://github.com/DML308/cn.costream.org/tree/master/src/api/back-2.2.3.md" target="_blank">
 		  在 GitHub 上编辑此页！
 	  </a>
   	

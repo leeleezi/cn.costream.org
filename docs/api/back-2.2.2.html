@@ -3,21 +3,21 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
-    <title>概览 — COStream</title>
+    <title>用XML文本的形式描述SDF图 — COStream</title>
     <meta charset="utf-8">
     <meta name="description" content="COStream - The High Performance Dataflow Language and Compiler">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <link rel="alternate" hreflang="x-default" href="https://costream.site/api/index.html">
-    <link rel="alternate" hreflang="zh" href="https://cn.costream.site/api/index.html">
+    <link rel="alternate" hreflang="x-default" href="https://costream.site/api/back-2.2.2.html">
+    <link rel="alternate" hreflang="zh" href="https://cn.costream.site/api/back-2.2.2.html">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="概览 — COStream">
+    <meta property="og:title" content="用XML文本的形式描述SDF图 — COStream">
     <meta property="og:description" content="COStream - The High Performance Dataflow Language and Compiler">
     <meta property="og:image" content="https://cn.costream.site/images/logo.png">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="概览 — COStream">
+    <meta name="twitter:title" content="用XML文本的形式描述SDF图 — COStream">
     <meta name="twitter:description" content="COStream - The High Performance Dataflow Language and Compiler">
     <meta name="twitter:image" content="https://cn.costream.site/images/logo.png">
 
@@ -149,8 +149,8 @@
 <li class="nav-dropdown-container language">
   <a class="nav-link">多语言</a><span class="arrow"></span>
   <ul class="nav-dropdown">
-    <li><a href="https://costream.site/api/index.html" class="nav-link" target="_blank">English</a></li>
-    <li><a href="https://cn.costream.site/api/index.html" class="nav-link" target="_blank">简体中文</a></li>
+    <li><a href="https://costream.site/api/back-2.2.2.html" class="nav-link" target="_blank">English</a></li>
+    <li><a href="https://cn.costream.site/api/back-2.2.2.html" class="nav-link" target="_blank">简体中文</a></li>
   </ul>
 </li>
 
@@ -234,8 +234,8 @@
 <li class="nav-dropdown-container language">
   <a class="nav-link">多语言</a><span class="arrow"></span>
   <ul class="nav-dropdown">
-    <li><a href="https://costream.site/api/index.html" class="nav-link" target="_blank">English</a></li>
-    <li><a href="https://cn.costream.site/api/index.html" class="nav-link" target="_blank">简体中文</a></li>
+    <li><a href="https://costream.site/api/back-2.2.2.html" class="nav-link" target="_blank">English</a></li>
+    <li><a href="https://cn.costream.site/api/back-2.2.2.html" class="nav-link" target="_blank">简体中文</a></li>
   </ul>
 </li>
 
@@ -268,7 +268,7 @@
 		
     
     <li>
-      <a href="/api/index.html" class="sidebar-link current">概览</a>
+      <a href="/api/index.html" class="sidebar-link">概览</a>
     </li>
   
 	
@@ -402,7 +402,7 @@
 		
     
     <li>
-      <a href="/api/back-2.2.2.html" class="sidebar-link">用XML文本的形式描述SDF图</a>
+      <a href="/api/back-2.2.2.html" class="sidebar-link current">用XML文本的形式描述SDF图</a>
     </li>
   
 	
@@ -458,62 +458,27 @@
     
   
   
-    <h1>概览</h1>
+    <h1>用XML文本的形式描述SDF图</h1>
   
   
-    <h2 id="编译器工程架构"><a href="#编译器工程架构" class="headerlink" title="编译器工程架构"></a>编译器工程架构</h2><p><img src="https://i.loli.net/2018/07/10/5b44b304b4ba8.png" alt="编译器工程架构"></p>
-<h3 id="编译器前端"><a href="#编译器前端" class="headerlink" title="编译器前端"></a>编译器前端</h3><ol>
-<li><p>获取输入 &amp; 初始化环境</p>
-<p> <code>Main#Handle_options</code><br> <code>Main#Get_preprocessed_input</code></p>
-<p> 初始化环境<br> <code>GLOBAL#InitTypes</code><br> <code>Main#Init_symbol_tables</code><br> <code>GLOBAL#InitOperatorTable</code></p>
-</li>
-<li><p>文法建立 &amp; 语法树生成<br> <code>GLOBAL#yyparse</code><br> genetate<code>List*program</code>，this <code>program</code> is grammar</p>
-</li>
-<li><p>打印符号表</p>
-<p> <code>GLOBAL#PrintSymbolTable</code></p>
-</li>
-<li><p>删除临时文件</p>
-</li>
-<li><p>打印抽象语法树</p>
-<p> <code>GLOBAL#PrintList</code></p>
-</li>
-<li><p>语义检查<br> <code>GLOBAL#SemanticCheckProgram</code></p>
-</li>
-<li><p>活跃变量分析<br> <code>GLOBAL#AnalyzeProgram</code></p>
-</li>
-<li><p>添加变量重命名<br> <code>GLOBAL#VariableRenameProgram</code><br> <code>GLOBAL#ResetASTSymbolTable</code><br> 这部分对生成文件的名字进行修改，根据actor结点的名字或者duplicate以及从上到下从左到右的编号确定生成文件的名字。如sink_30.h</p>
-</li>
-<li><p>常量传播<br> <code>GLOBAL#PropagateProgram</code><br> 这部分将composite中的param（全部常量）进行替代</p>
-</li>
-<li><p>语法树到平面图<br> <code>GLOBAL#AST2FlatStaticStreamGraph</code><br> <code>AutoProfiling#AutoProfiling()</code><br> <code>AutoProfiling#GeneratingProfile()</code></p>
-</li>
-<li><p>对平面图各节点进行工作估计<br> 静态工作量估计：<br> <code>GLOBAL#GenerateWorkEst()</code></p>
-</li>
-</ol>
-<h3 id="编译器后端"><a href="#编译器后端" class="headerlink" title="编译器后端"></a>编译器后端</h3><ol>
-<li><p>对平面图进行初始化调度和稳态调度<br> <code>GLOBAL#SchedulingSSG(),生成SSSG为SchedulerSSG</code></p>
-</li>
-<li><p>用XML文件的形式描述SDF图<br> <code>GLOBAL#DumpStreamGraph()</code></p>
-</li>
-<li><p>对节点进行划分<br> <code>MetisPartition#MetisPartiton()</code><br> <code>Partition#setPlaces()</code><br> <code>Partition#SssgPartition()</code></p>
-</li>
-<li><p>水平分裂<br> Switch Variable: <code>RHFissionission</code><br> 水平分裂完之后需要从新metis划分<br> <code>MetisPartiton()</code><br> <code>setPlaces()</code><br> <code>SssgPartition()</code></p>
-</li>
-<li><p>打印理论加速比<br> Switch Variable: <code>Speedup</code><br> <code>GLOBAL#ComputeSpeedup()</code></p>
-</li>
-<li><p>阶段赋值<br> <code>StageAssignment#StageAssignment()</code><br> <code>StageAssignment#actorTopologicalorder(GetFlatNodes())</code><br> <code>StageAssignment#actorStageMap(GetFlatNode2Partition())</code></p>
-</li>
-<li><p>输入为SDF图输出为目标代码<br> <code>库函数#direct.h#getcwd()</code><br> <code>GodeGeneration#CodeGeneration()</code></p>
-</li>
-</ol>
-<p><img src="https://i.loli.net/2018/07/10/5b44b31ce1eec.png" alt="编译器后端"></p>
+    <p>经过后端步骤一的对平面图进行初始化调度和稳态调度，得到平面图SSSG（schedule static stream Graph），接下来的步骤则是，针对该平面图进行划分，融合分裂，一系列的优化，最终生成目标代码。<br>紧接着步骤二为用XML文本的形式描述SDF图，该步骤生成一个dot文件，以打印SDF图。</p>
+<h2 id="程序入口"><a href="#程序入口" class="headerlink" title="程序入口"></a>程序入口</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// （(1)Describe the SDF diagram in the form of XML</span></span><br><span class="line">PhaseName = <span class="string">"SSG2Graph"</span>;</span><br><span class="line"><span class="keyword">if</span> (Errors == <span class="number">0</span> &amp;&amp; SSG2Graph)</span><br><span class="line">    DumpStreamGraph(SSSG, <span class="literal">NULL</span>, <span class="string">"flatgraph.dot"</span>,<span class="literal">NULL</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>变量<code>PhaseName</code>为阶段名称，该阶段记为SSG2Graph</li>
+<li><code>SSG2Graph</code> 为平面图调度开关，类型Global Bool，位于main.cpp全局变量定义部分</li>
+<li>程序入口即函数<code>DumpStreamGraph(SSSG, NULL, &quot;flatgraph.dot&quot;,NULL)</code>，输入达到稳态调度的SSSG，输出可打印平面图的dot文件，“flatgraph.dot”</li>
+</ul>
+<h2 id="关联文件解析"><a href="#关联文件解析" class="headerlink" title="关联文件解析"></a>关联文件解析</h2><p>(1)    dumpGraph.h<br>这是一个简单的头声明文件，不包含实质性的内容，仅仅含有预编译的声明。<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _DUMP_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _DUMP_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"MetisPartiton.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// _DUMP_H</span></span></span><br></pre></td></tr></table></figure></p>
+<p>(2)    dumpGraph.cpp<br>访问并打印流图节点方法的实现文件。<br>首先，文件中定义了146中颜色字符串数组，用于区分流图划分在各个核上的不同结点。<br>其次，定义并实现了访问流图结点信息并打印的函数。<br>另外，定义并实现的dot文件输出函数，<code>void DumpStreamGraph(SSSG, NULL, &quot;flatgraph.dot&quot;,NULL)</code>该函数即main.cpp中编译器后端步骤二调用的程序入口。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">GLOBAL <span class="keyword">void</span> <span class="title">DumpStreamGraph</span><span class="params">(SchedulerSSG *sssg,Partition *mp,<span class="keyword">const</span> <span class="keyword">char</span> *fileName, ClusterPartition* cp)</span></span></span><br><span class="line"><span class="function"></span>&#123;	</span><br><span class="line">    <span class="keyword">if</span> ( cp )</span><br><span class="line">    &#123;</span><br><span class="line">        vertexBuf.str(<span class="string">""</span>);</span><br><span class="line">        edgeBuf.str(<span class="string">""</span>);</span><br><span class="line">        <span class="built_in">stringstream</span> buf;</span><br><span class="line">        Ssg = sssg;</span><br><span class="line">        mpp = mp;</span><br><span class="line">        buf&lt;&lt;<span class="string">"digraph COStream &#123;"</span>;</span><br><span class="line">        vertexBufInPlace = <span class="keyword">new</span> <span class="built_in">stringstream</span>[cp-&gt;GetClusters()];</span><br><span class="line">        toBuildClusterOutPutString(Ssg-&gt;GetTopLevel(), cp);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cp-&gt;GetClusters(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            buf &lt;&lt; <span class="string">"\nsubgraph cluster_"</span> &lt;&lt; i &lt;&lt; <span class="string">" &#123;"</span>;</span><br><span class="line">            buf &lt;&lt; <span class="string">"\nlabel = \"place_"</span> &lt;&lt; i &lt;&lt; <span class="string">"\";"</span>;</span><br><span class="line">            buf &lt;&lt;vertexBufInPlace[i].str() &lt;&lt; <span class="string">"&#125;"</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        buf&lt;&lt;<span class="string">"\n\n"</span>;  </span><br><span class="line">        buf&lt;&lt;edgeBuf.str();</span><br><span class="line">        buf&lt;&lt;<span class="string">"&#125;\n"</span>;  </span><br><span class="line">        Ssg-&gt;ResetFlatNodeVisitTimes();<span class="comment">//将flatnode的visttimes置0</span></span><br><span class="line">        ofstream fw;</span><br><span class="line">        fw.open(fileName);</span><br><span class="line">        fw&lt;&lt;buf.str();</span><br><span class="line">        fw.close();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        Ssg = sssg;</span><br><span class="line">        mpp = mp;</span><br><span class="line">        buf.str(<span class="string">""</span>);</span><br><span class="line">        buf&lt;&lt;<span class="string">"digraph Flattend &#123;\n"</span>;</span><br><span class="line">        toBuildOutPutString(Ssg-&gt;GetTopLevel());</span><br><span class="line">        buf&lt;&lt;<span class="string">"&#125;\n"</span>;  </span><br><span class="line">        Ssg-&gt;ResetFlatNodeVisitTimes();<span class="comment">//将flatnode的visttimes置0</span></span><br><span class="line">        ofstream fw;</span><br><span class="line">        fw.open(fileName);</span><br><span class="line">        fw&lt;&lt;buf.str();</span><br><span class="line">        fw.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">toBuildOutPutString</span><span class="params">(FlatNode *node)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//访问并打印相应节点信息</span></span><br><span class="line">    MyVisitNode(node);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; node-&gt;nOut; i++) &#123;<span class="comment">/*DFS*/</span></span><br><span class="line">        <span class="comment">//该结点的后续结点还未被访问过</span></span><br><span class="line">        <span class="keyword">if</span> (node-&gt;outFlatNodes[i] == <span class="literal">NULL</span> || node-&gt;outFlatNodes[i]-&gt;GetVisitTimes() != <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">        toBuildOutPutString(node-&gt;outFlatNodes[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 访问该结点并打印节点信息，为节点着色 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MyVisitNode</span><span class="params">(FlatNode *node)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    node-&gt;VisitNode();</span><br><span class="line">    <span class="keyword">if</span> (node-&gt;contents!=<span class="literal">NULL</span> ) &#123;</span><br><span class="line">        ...(code of print the info of node )</span><br><span class="line">        <span class="comment">//color the node after Partition</span></span><br><span class="line">        <span class="keyword">if</span>(mpp != <span class="literal">NULL</span>)</span><br><span class="line">        &#123;		</span><br><span class="line">            buf&lt;&lt;<span class="string">" color=\""</span>&lt;&lt;color[mpp-&gt;findPartitionNumForFlatNode(node)]&lt;&lt;<span class="string">"\""</span>; </span><br><span class="line">            buf&lt;&lt;<span class="string">" style=\"filled\" "</span>; 	</span><br><span class="line">        &#125;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上代码即为用XML文本的形式描述SDF图的实现函数。</p>
 
   
   
   <div class="footer">
     发现错误？想参与编辑？
     	
-	  <a href="https://github.com/DML308/cn.costream.org/tree/master/src/api/index.md" target="_blank">
+	  <a href="https://github.com/DML308/cn.costream.org/tree/master/src/api/back-2.2.2.md" target="_blank">
 		  在 GitHub 上编辑此页！
 	  </a>
   	

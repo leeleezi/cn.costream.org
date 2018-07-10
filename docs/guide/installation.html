@@ -95,7 +95,7 @@
     <li><ul>
         <li><a href="/guide/" class="nav-link current">教程</a></li>
         <li><a href="/guide/grammar-book/grammar.html" class="nav-link">文法</a></li>
-        <li><a href="/api/" class="nav-link">API</a></li>
+        <li><a href="/api/" class="nav-link">源码</a></li>
       <li><a href="/examples/" class="nav-link">示例</a></li>
     </ul></li>
   </ul>
@@ -180,7 +180,7 @@
     <li><ul>
         <li><a href="/guide/" class="nav-link current">教程</a></li>
         <li><a href="/guide/grammar-book/grammar.html" class="nav-link">文法</a></li>
-        <li><a href="/api/" class="nav-link">API</a></li>
+        <li><a href="/api/" class="nav-link">源码</a></li>
       <li><a href="/examples/" class="nav-link">示例</a></li>
     </ul></li>
   </ul>
@@ -261,7 +261,7 @@
         </h2>
         <ul class="menu-root">
   
-    
+	
     
       
         <li><h3>基础</h3></li>
@@ -274,7 +274,7 @@
       <a href="/guide/index.html" class="sidebar-link">简介</a>
     </li>
   
-    
+	
     
       
       
@@ -285,7 +285,7 @@
       <a href="/guide/installation.html" class="sidebar-link current">安装</a>
     </li>
   
-    
+	
     
       
       
@@ -296,7 +296,7 @@
       <a href="/guide/helloworld.html" class="sidebar-link">运行第一个COStream程序</a>
     </li>
   
-    
+	
     
       
       
@@ -309,7 +309,7 @@
       <a href="/guide/grammar-book/grammar.html" class="sidebar-link">文法简介</a>
     </li>
   
-    
+	
     
       
       
@@ -320,7 +320,7 @@
       <a href="/guide/grammar-book/2.html" class="sidebar-link">关键字与类型</a>
     </li>
   
-    
+	
     
       
       
@@ -331,7 +331,7 @@
       <a href="/guide/grammar-book/3.html" class="sidebar-link">流数据处理</a>
     </li>
   
-    
+	
     
       
       
@@ -342,7 +342,7 @@
       <a href="/guide/grammar-book/4.html" class="sidebar-link">层次性流程序构造</a>
     </li>
   
-    
+	
     
       
       
@@ -353,7 +353,7 @@
       <a href="/guide/grammar-book/5.html" class="sidebar-link">内置Composite</a>
     </li>
   
-    
+	
     
       
       
@@ -364,7 +364,7 @@
       <a href="/guide/grammar-book/6.html" class="sidebar-link">程序结构</a>
     </li>
   
-    
+	
     
       
       
@@ -377,7 +377,7 @@
       <a href="/guide/team.html" class="sidebar-link">认识团队</a>
     </li>
   
-    
+	
     
       
       
@@ -388,7 +388,7 @@
       <a href="/guide/MD_GIT.html" class="sidebar-link">Git 使用简明教程</a>
     </li>
   
-    
+	
     
       
       
@@ -399,7 +399,7 @@
       <a href="/guide/link-document.html" class="sidebar-link">文献资料</a>
     </li>
   
-    
+	
     
       
       
@@ -427,7 +427,7 @@
   
   
     <h3 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h3><p>COStream 支持在 Ubuntu CentOS 上运行,暂只支持 gcc4.4.x </p>
-<h3 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h3><p>最新稳定版本：0.6.0</p>
+<h3 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h3><p>最新稳定版本：v1.00</p>
 <p>每个版本的更新日志见 <a href="https://github.com/DML308/COStream/releases" target="_blank" rel="noopener">GitHub</a>。</p>
 <h2 id="安装前置软件"><a href="#安装前置软件" class="headerlink" title="安装前置软件"></a>安装前置软件</h2><p>安装gcc g++ gdb flex bison cmake</p>
 <p>其中gcc和g++的版本要求为4.4.x 可参考下列指令修改默认gcc版本</p>
@@ -437,7 +437,7 @@
 <h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo vim /etc/profile</span><br><span class="line"><span class="comment">#在/etc/profile文件末尾添加：</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#set COStream environment</span></span><br><span class="line"><span class="built_in">export</span> PATH=~/COStream:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> COSTREAM_LIB=~/COStream/runtime/X86Lib2/</span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=/usr/<span class="built_in">local</span>/lib:<span class="variable">$LD_LIBRARY_PATH</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#更新环境变量使之立即生效</span></span><br><span class="line">$ <span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
 <h2 id="更新metis文件"><a href="#更新metis文件" class="headerlink" title="更新metis文件"></a>更新metis文件</h2><p></p><p class="tip">仅支持parmetis-4.0</p><br>  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> src/3rdpart/parmetis-4.0/metis/  </span><br><span class="line">$ make config</span><br><span class="line">$ make</span><br><span class="line"><span class="comment">#此时生成了libmetis.a文件,下面将此文件移动到需要的位置</span></span><br><span class="line">$ cp build/Linux-x86_64/libmetis/libmetis.a ../../include/libmetis.a</span><br><span class="line">$ cp build/Linux-x86_64/libmetis/libmetis.a ../../lib/libmetis.a</span><br></pre></td></tr></table></figure><p></p>
 <h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/COStream/src</span><br><span class="line">$ make clean</span><br><span class="line">$ make</span><br><span class="line">$ sudo cp COStreamC /usr/<span class="built_in">local</span>/sbin/COStreamC</span><br></pre></td></tr></table></figure>
-<h2 id="编译成功后可以查看版本信息"><a href="#编译成功后可以查看版本信息" class="headerlink" title="编译成功后可以查看版本信息"></a>编译成功后可以查看版本信息</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ COStreamC -v</span><br><span class="line">COStreamC</span><br><span class="line">Version 0.60 (your compile date)</span><br></pre></td></tr></table></figure>
+<h2 id="编译成功后可以查看版本信息"><a href="#编译成功后可以查看版本信息" class="headerlink" title="编译成功后可以查看版本信息"></a>编译成功后可以查看版本信息</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ COStreamC -v</span><br><span class="line">COStreamC</span><br><span class="line">Version 1.00 (your compile date)</span><br></pre></td></tr></table></figure>
 
   
   

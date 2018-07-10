@@ -186,7 +186,7 @@ team = team.concat(shuffle([ //shuffle 函数打乱了后续成员的顺序
 	},
 	{
 		name: '陈珍',
-		title: 'Professor of DML',
+		title: 'Master of DML',
 		city: 'Shenzhen, China',
 		languages: ['zh', 'en'],
 		github: null,
@@ -239,6 +239,72 @@ team = team.concat(shuffle([ //shuffle 函数打乱了后续成员的顺序
 // 	      	],
 		links: [
 			'https://github.com/xingzheziran'
+		]
+	},
+	{
+		name: '杨瑞瑞',
+		title: 'Master of DML',
+		city: 'Beijing, China',
+		languages: ['zh', 'en'],
+		github: null,
+		img: 'https://i.loli.net/2018/07/05/5b3dac2fcafc4.png',
+		work: {
+			role: 'Master',
+			org: 'HUST DML'
+		},
+		reposOfficial: [
+	   		'COStream - CPU/GPU异构集群'
+	   	]
+	},
+	{
+		name: '杨胜哲',
+		title: 'Master of DML',
+		city: 'Guangzhou, China',
+		languages: ['zh', 'en'],
+		github: null,
+		img: 'https://i.loli.net/2018/07/08/5b41bbd7459ff.jpg',
+		work: {
+			role: 'Master',
+			org: 'HUST DML'
+		},
+		reposOfficial: [
+	   		'COStream - Dynamic Scheduling'
+	   	]
+	},
+	{
+		name: '杨燕',
+		title: 'Master of DML',
+		city: 'Beijing, China',
+		languages: ['zh', 'en'],
+		github: null,
+		img: 'https://i.loli.net/2018/07/08/5b422ec5b0f42.png',
+		work: {
+			role: 'Master',
+			org: 'HUST DML'
+		},
+		reposOfficial: [
+	   		'COStream - Eclipse Plugin'
+	   	]
+	},
+	{
+		name: '朱亮',
+		title: 'Member of DML',
+		city: 'Wuhan, China',
+		languages: ['zh', 'en'],
+		github: 'xingzhexiaozhu',
+		twitter: null,
+		work: {
+			role: 'Master',
+			org: 'HUST DML'
+		},
+		reposOfficial: [
+			'COStream - Big Data'
+		],
+	      	reposPersonal: [
+			'DASCAN','MovieRecommendation'
+	      	],
+		links: [
+			'https://github.com/xingzhexiaozhu'
 		]
 	},
 ]))

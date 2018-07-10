@@ -3,21 +3,21 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
-    <title>概览 — COStream</title>
+    <title>语法树到平面图 SSG — COStream</title>
     <meta charset="utf-8">
     <meta name="description" content="COStream - The High Performance Dataflow Language and Compiler">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <link rel="alternate" hreflang="x-default" href="https://costream.site/api/index.html">
-    <link rel="alternate" hreflang="zh" href="https://cn.costream.site/api/index.html">
+    <link rel="alternate" hreflang="x-default" href="https://costream.site/api/front-2.1.10.html">
+    <link rel="alternate" hreflang="zh" href="https://cn.costream.site/api/front-2.1.10.html">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="概览 — COStream">
+    <meta property="og:title" content="语法树到平面图 SSG — COStream">
     <meta property="og:description" content="COStream - The High Performance Dataflow Language and Compiler">
     <meta property="og:image" content="https://cn.costream.site/images/logo.png">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="概览 — COStream">
+    <meta name="twitter:title" content="语法树到平面图 SSG — COStream">
     <meta name="twitter:description" content="COStream - The High Performance Dataflow Language and Compiler">
     <meta name="twitter:image" content="https://cn.costream.site/images/logo.png">
 
@@ -149,8 +149,8 @@
 <li class="nav-dropdown-container language">
   <a class="nav-link">多语言</a><span class="arrow"></span>
   <ul class="nav-dropdown">
-    <li><a href="https://costream.site/api/index.html" class="nav-link" target="_blank">English</a></li>
-    <li><a href="https://cn.costream.site/api/index.html" class="nav-link" target="_blank">简体中文</a></li>
+    <li><a href="https://costream.site/api/front-2.1.10.html" class="nav-link" target="_blank">English</a></li>
+    <li><a href="https://cn.costream.site/api/front-2.1.10.html" class="nav-link" target="_blank">简体中文</a></li>
   </ul>
 </li>
 
@@ -234,8 +234,8 @@
 <li class="nav-dropdown-container language">
   <a class="nav-link">多语言</a><span class="arrow"></span>
   <ul class="nav-dropdown">
-    <li><a href="https://costream.site/api/index.html" class="nav-link" target="_blank">English</a></li>
-    <li><a href="https://cn.costream.site/api/index.html" class="nav-link" target="_blank">简体中文</a></li>
+    <li><a href="https://costream.site/api/front-2.1.10.html" class="nav-link" target="_blank">English</a></li>
+    <li><a href="https://cn.costream.site/api/front-2.1.10.html" class="nav-link" target="_blank">简体中文</a></li>
   </ul>
 </li>
 
@@ -268,7 +268,7 @@
 		
     
     <li>
-      <a href="/api/index.html" class="sidebar-link current">概览</a>
+      <a href="/api/index.html" class="sidebar-link">概览</a>
     </li>
   
 	
@@ -370,7 +370,7 @@
 		
     
     <li>
-      <a href="/api/front-2.1.10.html" class="sidebar-link">语法树到平面图 SSG</a>
+      <a href="/api/front-2.1.10.html" class="sidebar-link current">语法树到平面图 SSG</a>
     </li>
   
 	
@@ -458,62 +458,209 @@
     
   
   
-    <h1>概览</h1>
+    <h1>语法树到平面图 SSG</h1>
   
   
-    <h2 id="编译器工程架构"><a href="#编译器工程架构" class="headerlink" title="编译器工程架构"></a>编译器工程架构</h2><p><img src="https://i.loli.net/2018/07/10/5b44b304b4ba8.png" alt="编译器工程架构"></p>
-<h3 id="编译器前端"><a href="#编译器前端" class="headerlink" title="编译器前端"></a>编译器前端</h3><ol>
-<li><p>获取输入 &amp; 初始化环境</p>
-<p> <code>Main#Handle_options</code><br> <code>Main#Get_preprocessed_input</code></p>
-<p> 初始化环境<br> <code>GLOBAL#InitTypes</code><br> <code>Main#Init_symbol_tables</code><br> <code>GLOBAL#InitOperatorTable</code></p>
-</li>
-<li><p>文法建立 &amp; 语法树生成<br> <code>GLOBAL#yyparse</code><br> genetate<code>List*program</code>，this <code>program</code> is grammar</p>
-</li>
-<li><p>打印符号表</p>
-<p> <code>GLOBAL#PrintSymbolTable</code></p>
-</li>
-<li><p>删除临时文件</p>
-</li>
-<li><p>打印抽象语法树</p>
-<p> <code>GLOBAL#PrintList</code></p>
-</li>
-<li><p>语义检查<br> <code>GLOBAL#SemanticCheckProgram</code></p>
-</li>
-<li><p>活跃变量分析<br> <code>GLOBAL#AnalyzeProgram</code></p>
-</li>
-<li><p>添加变量重命名<br> <code>GLOBAL#VariableRenameProgram</code><br> <code>GLOBAL#ResetASTSymbolTable</code><br> 这部分对生成文件的名字进行修改，根据actor结点的名字或者duplicate以及从上到下从左到右的编号确定生成文件的名字。如sink_30.h</p>
-</li>
-<li><p>常量传播<br> <code>GLOBAL#PropagateProgram</code><br> 这部分将composite中的param（全部常量）进行替代</p>
-</li>
-<li><p>语法树到平面图<br> <code>GLOBAL#AST2FlatStaticStreamGraph</code><br> <code>AutoProfiling#AutoProfiling()</code><br> <code>AutoProfiling#GeneratingProfile()</code></p>
-</li>
-<li><p>对平面图各节点进行工作估计<br> 静态工作量估计：<br> <code>GLOBAL#GenerateWorkEst()</code></p>
-</li>
-</ol>
-<h3 id="编译器后端"><a href="#编译器后端" class="headerlink" title="编译器后端"></a>编译器后端</h3><ol>
-<li><p>对平面图进行初始化调度和稳态调度<br> <code>GLOBAL#SchedulingSSG(),生成SSSG为SchedulerSSG</code></p>
-</li>
-<li><p>用XML文件的形式描述SDF图<br> <code>GLOBAL#DumpStreamGraph()</code></p>
-</li>
-<li><p>对节点进行划分<br> <code>MetisPartition#MetisPartiton()</code><br> <code>Partition#setPlaces()</code><br> <code>Partition#SssgPartition()</code></p>
-</li>
-<li><p>水平分裂<br> Switch Variable: <code>RHFissionission</code><br> 水平分裂完之后需要从新metis划分<br> <code>MetisPartiton()</code><br> <code>setPlaces()</code><br> <code>SssgPartition()</code></p>
-</li>
-<li><p>打印理论加速比<br> Switch Variable: <code>Speedup</code><br> <code>GLOBAL#ComputeSpeedup()</code></p>
-</li>
-<li><p>阶段赋值<br> <code>StageAssignment#StageAssignment()</code><br> <code>StageAssignment#actorTopologicalorder(GetFlatNodes())</code><br> <code>StageAssignment#actorStageMap(GetFlatNode2Partition())</code></p>
-</li>
-<li><p>输入为SDF图输出为目标代码<br> <code>库函数#direct.h#getcwd()</code><br> <code>GodeGeneration#CodeGeneration()</code></p>
-</li>
-</ol>
-<p><img src="https://i.loli.net/2018/07/10/5b44b31ce1eec.png" alt="编译器后端"></p>
-
+    <p>平面图是指COStream数据流源程序对应的一个静态同步数据流图SDF，它是编译器后端讨论调度划分的研究对象。编译器前端的词、语法分析生成抽象语法树AST，语法树到平面图模块实现将该AST转换为SDF。</p>
+<h2 id="程序入口"><a href="#程序入口" class="headerlink" title="程序入口"></a>程序入口</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// （10）AST to Flatgraph</span></span><br><span class="line"><span class="comment">// SSG ( object of StaticStreamGraph )</span></span><br><span class="line">PhaseName = <span class="string">"AST2FlatSSG"</span>;</span><br><span class="line"><span class="keyword">if</span> (Errors == <span class="number">0</span> &amp;&amp; AST2FlatSSG)</span><br><span class="line">    SSG = AST2FlatStaticStreamGraph(gMainComposite);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>AST2FlatSSG</code> 为语法树到平面图开关，定义于main.cpp头部</li>
+<li><code>AST2FlatStaticStreamGraph(…)</code>函数为语法树到平面图的实现，输入参数为抽象语法树的根节点<code>gMainComposite</code>，输出参数为静态数据流图StaticStreamGraph对象SSG</li>
+</ul>
+<h2 id="关联文件解析"><a href="#关联文件解析" class="headerlink" title="关联文件解析"></a>关联文件解析</h2><p>(1)    flatNode.h &amp; flatNode.cpp<br>该文件为静态数据流图的节点结构说明文件</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">变量名称</th>
+<th style="text-align:left">变量描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>int visitTimes</code></td>
+<td style="text-align:left">表示该节点是否已经被访问过</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>operatorNode *contents</code></td>
+<td style="text-align:left">指向operator（经常量传播后的）</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>compositeNode *composite</code></td>
+<td style="text-align:left">指向operator所在的composite（实际展开的）</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>operatorNode *oldContents</code></td>
+<td style="text-align:left">指向原始operator</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>compositeNode *oldComposite</code></td>
+<td style="text-align:left">指向原始operator所在的composite</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>int nOut</code></td>
+<td style="text-align:left">输出边数目</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>int nIn</code></td>
+<td style="text-align:left">输入边数目</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>int place_id, thread_id,</code><br><code>post_thread_id, serial_id</code></td>
+<td style="text-align:left">划分算法中使用的变量</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vector&lt;FlatNode *&gt; outFlatNodes</code></td>
+<td style="text-align:left">输出边的operator集合</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vector&lt;FlatNode *&gt; inFlatNodes</code></td>
+<td style="text-align:left">输入边的operator集合</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>outPushString</code><br><code>inPopString</code><br><code>inPeekString</code><br><code>pushString</code><br><code>peekString</code></td>
+<td style="text-align:left">保存operater信息<br>Type :<code>vector&lt;string&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>long work_estimate</code></td>
+<td style="text-align:left">节点work函数的静态工作量估计值</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>int num</code></td>
+<td style="text-align:left">operator在ssg图中flatnodes的顺序编号</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>int GPUPart</code> <br> <code>bool BorderFlag</code></td>
+<td style="text-align:left">GPU节点划分变量</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>currentIn ,currentOut ,schedMult ,</code><br><code>schedDivider ,uin ,label</code></td>
+<td style="text-align:left">扩展变量 Type:<code>int</code></td>
+</tr>
+<tr>
+<td style="text-align:left">SDF nodes functions：</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>void AddOutEdges(FlatNode *dest)</code></td>
+<td style="text-align:left">添加出边</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>void AddInEdges(FlatNode *src)</code></td>
+<td style="text-align:left">添加入边</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>string GetOperatorName()</code></td>
+<td style="text-align:left">获取flatnode节点的operator的name</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>void visitNode()</code></td>
+<td style="text-align:left">访问该节点</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>void ResetVisitTimes()</code></td>
+<td style="text-align:left">重置visitTimes信息</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>int GetVisitTimes()</code></td>
+<td style="text-align:left">获取该节点的访问信息</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>void SetIOStreams()</code></td>
+<td style="text-align:left">……</td>
+</tr>
+</tbody>
+</table>
+<p>具体函数实现见<code>flatNode.cpp</code></p>
+<p>(2)    staticStreamGraph.h &amp; staticStreamGraph.cpp</p>
+<p>该头文件描述的是静态数据流图的属性和行为，引用了<code>flatNode.h</code> ，即流图的基本节点为flatNode结构，其定义的行为供后端语法树到平面图生成以及节点划分调度调用。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">变量名称</th>
+<th style="text-align:left">变量描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>FlatNode *topLevel</code></td>
+<td style="text-align:left">SDF的起始节点，假设只有一个输入为0的节点</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vector&lt;FlatNode *&gt; tmpFlatNodes</code></td>
+<td style="text-align:left">SDF图某place上或某thread上节点集合</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vector&lt;FlatNode *&gt; flatNodes</code></td>
+<td style="text-align:left">SDF图所有节点集合</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>map&lt;Node *, FlatNode *&gt; mapEdge2UpFlatNode</code></td>
+<td style="text-align:left">将有向边与其上端绑定</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>map&lt;Node *, FlatNode *&gt; mapEdge2DownFlatNode</code></td>
+<td style="text-align:left">将有向边与其下端绑定</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>map&lt;FlatNode *, int&gt; mapSteadyWork2FaltNode</code></td>
+<td style="text-align:left">存放各个operator的workestimate 稳态工作量估计</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>map&lt;FlatNode *, int&gt; mapInitWork2FaltNode</code></td>
+<td style="text-align:left">存放各个operator的workestimate 初态工作量估计</td>
+</tr>
+<tr>
+<td style="text-align:left">Funcitions名称:</td>
+<td style="text-align:left">描述</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>StaticStreamGraph()</code></td>
+<td style="text-align:left">构造函数</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SetName()</code></td>
+<td style="text-align:left">设置actor名字</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SetTopLevel()</code></td>
+<td style="text-align:left">设置SDF图起始点</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>AddFlatNode(FlatNode *flatNode)</code></td>
+<td style="text-align:left">向<code>flatNodes</code>中添加节点</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>PrintFlatNodes()</code></td>
+<td style="text-align:left">该函数仅有声明，没有实现</td>
+</tr>
+</tbody>
+</table>
+<p>(3)    ast2ssg.cpp<br>该文件在引入静态数据流图相关头文件的基础上实现语法树到平面图的转换。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">变量名称</th>
+<th style="text-align:left">变量描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>AST2FlatStaticStreamGraph(Node *mainComposite)</code></td>
+<td style="text-align:left">语法树到平面图的转换函数</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GraphToOperators(Node *composite, Node *oldComposite)</code></td>
+<td style="text-align:left">平面图节点单元operator的生成函数</td>
+</tr>
+</tbody>
+</table>
+<h2 id="程序实现"><a href="#程序实现" class="headerlink" title="程序实现"></a>程序实现</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 返回静态流图，作为后端分析的输入</span></span><br><span class="line"><span class="function">GLOBAL StaticStreamGraph *<span class="title">AST2FlatStaticStreamGraph</span><span class="params">(Node *mainComposite)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Node *compositeCall = <span class="literal">NULL</span>, *operNode = <span class="literal">NULL</span>;</span><br><span class="line">    List *operators = <span class="literal">NULL</span>;	</span><br><span class="line">    <span class="comment">//使用断言assert判断前端语法分析树的有效性</span></span><br><span class="line">    assert(mainComposite &amp;&amp; mainComposite-&gt;typ == Composite &amp;&amp; </span><br><span class="line">        mainComposite-&gt;u.composite.decl-&gt;u.decl.type-&gt;u.comdcl.inout == <span class="literal">NULL</span>);</span><br><span class="line">    assert(<span class="built_in">strcmp</span>(mainComposite-&gt;u.composite.decl-&gt;u.decl.name, <span class="string">"Main"</span>) == <span class="number">0</span>);</span><br><span class="line">    <span class="comment">//创建一个静态数据流图，调用默认构造函数，参数初始化为空</span></span><br><span class="line">    ssg = <span class="keyword">new</span> StaticStreamGraph();</span><br><span class="line">    <span class="comment">//参数后者代表oldComposite</span></span><br><span class="line">    GraphToOperators(mainComposite, mainComposite);</span><br><span class="line">    <span class="comment">//设置链表头结点</span></span><br><span class="line">    ssg-&gt;SetTopLevel();</span><br><span class="line">    <span class="comment">//设置流图所有结点权重</span></span><br><span class="line">    ssg-&gt;SetFlatNodesWeights();</span><br><span class="line">    <span class="comment">/* 重置ssg内flatNodes的每个flatNode的name, 便于打印dot图*/</span></span><br><span class="line">    ssg-&gt;ResetFlatNodeNames(); </span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 0</span></span><br><span class="line">    ssg-&gt;PrintFlatNodes();</span><br><span class="line">    PrintNode(<span class="built_in">stdout</span>, gMainComposite, <span class="number">0</span>);</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="keyword">return</span> ssg;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
   
   
   <div class="footer">
     发现错误？想参与编辑？
     	
-	  <a href="https://github.com/DML308/cn.costream.org/tree/master/src/api/index.md" target="_blank">
+	  <a href="https://github.com/DML308/cn.costream.org/tree/master/src/api/front-2.1.10.md" target="_blank">
 		  在 GitHub 上编辑此页！
 	  </a>
   	
