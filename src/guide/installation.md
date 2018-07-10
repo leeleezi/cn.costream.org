@@ -2,7 +2,7 @@
 title: 安装
 type: guide
 order: 2
-costream_version: 0.6.0
+costream_version: v1.00
 ---
 
 ### 兼容性
@@ -92,5 +92,5 @@ $ sudo cp COStreamC /usr/local/sbin/COStreamC
 ```bash
 $ COStreamC -v
 COStreamC
-Version 0.60 (your compile date)
+Version 1.00 (your compile date)
 ```
