@@ -92,7 +92,6 @@ GLOBAL int workEstimate(Node *from,int w)
     return totalWork;
 }
 ```
-See project files for more details
 
 (3)	workEstimate2.h & workEstimate2.c
 该文件是专门针对数据流程序的数据流图定义并实现的数据流估计稳态工作量的计算方式。

@@ -14,8 +14,8 @@ order: 25
 		Program = SemanticCheckProgram(Program);
 
 ```
-- This input of function is COStream program
-- SemanticCheck is the switch of semantic check，defined in the head of main.cpp
+- 该函数的输入`Program`为costream源程序
+- `SemanticCheck` 变量为语义检查的开关，定义在main.cpp头部
 
 ## 关联文件解析
 `sem-check.c` 是一个对前端语法树的语义检查文件
