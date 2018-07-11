@@ -247,7 +247,7 @@
       
         <h2>
           
-          API
+          源码
 <!--
           
             <select class="version-select">
@@ -464,9 +464,9 @@
     <p>删除临时目录是编译工程在前端词、语法分析之后，对源程序文件所在目录下的临时文件进行删除。<br>另外，该模块对前面词、语法分析结果进行了正确性验证。</p>
 <h2 id="程序入口"><a href="#程序入口" class="headerlink" title="程序入口"></a>程序入口</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// （4）Delete file &amp; verifies the Lexical and grammatical analysis results</span></span><br><span class="line"><span class="keyword">if</span> (tmpname[<span class="number">0</span>] != <span class="number">0</span>) </span><br><span class="line">&#123;</span><br><span class="line">    assert(<span class="number">0</span> == fclose(yyin));</span><br><span class="line">    assert(<span class="number">0</span> == remove(tmpname));</span><br><span class="line">&#125;	</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> NDEBUG</span></span><br><span class="line"><span class="keyword">if</span> (Errors == <span class="number">0</span>) &#123;</span><br><span class="line">    PhaseName = <span class="string">"Verification"</span>;</span><br><span class="line">    VerifyParse(Program);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>Variable<code>Program</code>存储了源程序；</li>
+<li>变量<code>Program</code>存储了源程序；</li>
 <li><code>VerifyParse(Program)</code>是函数实现入口；实现对词、语法分析后，节点、数据类型、声明列表、表达式、表达式列表、语句、语句列表以及COStream语言扩展文法分析结果的正确性验证。</li>
-<li>Associate file : <code>verify-parse.c</code></li>
+<li>相关文件 : <code>verify-parse.c</code></li>
 </ul>
 
   

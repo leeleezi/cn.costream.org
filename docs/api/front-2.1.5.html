@@ -247,7 +247,7 @@
       
         <h2>
           
-          API
+          源码
 <!--
           
             <select class="version-select">
@@ -464,8 +464,8 @@
     <p>语义检查是编译器前端词、语法分析后的步骤，该模块对语法分析后生成的抽象语法树所有节点逐一检查。</p>
 <h2 id="程序入口"><a href="#程序入口" class="headerlink" title="程序入口"></a>程序入口</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// （5）sem-check.c is a semantic check file</span></span><br><span class="line">	PhaseName = <span class="string">"Semantic Check"</span>; </span><br><span class="line">	<span class="keyword">if</span> (Errors == <span class="number">0</span> &amp;&amp; SemanticCheck)</span><br><span class="line">		Program = SemanticCheckProgram(Program);</span><br></pre></td></tr></table></figure>
 <ul>
-<li>This input of function is COStream program</li>
-<li>SemanticCheck is the switch of semantic check，defined in the head of main.cpp</li>
+<li>该函数的输入<code>Program</code>为costream源程序</li>
+<li><code>SemanticCheck</code> 变量为语义检查的开关，定义在main.cpp头部</li>
 </ul>
 <h2 id="关联文件解析"><a href="#关联文件解析" class="headerlink" title="关联文件解析"></a>关联文件解析</h2><p><code>sem-check.c</code> 是一个对前端语法树的语义检查文件</p>
 <table>
