@@ -24,7 +24,7 @@ if (Errors == 0) {
 #endif
 
 ```
-- Variable` Program`存储了源程序；
+- 变量` Program`存储了源程序；
 - `VerifyParse(Program)`是函数实现入口；实现对词、语法分析后，节点、数据类型、声明列表、表达式、表达式列表、语句、语句列表以及COStream语言扩展文法分析结果的正确性验证。
-- Associate file : `verify-parse.c`
+- 相关文件 : `verify-parse.c`
 

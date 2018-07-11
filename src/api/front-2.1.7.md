@@ -19,4 +19,4 @@ ResetASTSymbolTable(VariableRenameTable);
 
 ```
 - 对程序中的变量进行重新命名，例如 actor 变成 actor_1
-- Related file rename.h & rename.c
+- 相关文件 rename.h & rename.c
