@@ -119,5 +119,5 @@ Windows的命令行也是能用的且功能齐全,缺点就是不是很好看.
 - `Bitvise` *强烈推荐✭✭✭✭✩*
 一个软件就包含了`ssh 连接`+`打开命令行`+`与服务器传文件`, ~~妈妈再也不用提醒我下载 FileZilla~~
 - `WOX` 	*超级强烈推荐✭✭✭✭✭*
- 使用`alt+space`来打开窗口执行快捷命令,功能强大,爱不释手,[http://wox.one/](http://www.wox.one/),如果觉得好用记得在 Github 上给一个✭,现在已有<iframe src="https://ghbtns.com/github-btn.html?user=Wox-launcher&repo=Wox&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="20px" style="vertical-align:bottom;line-height:20px;margin:1px 0px"></iframe>
+ 使用`alt+space`来打开窗口执行快捷命令,功能强大,爱不释手,[http://wox.one/](http://www.wox.one/),如果觉得好用记得在 Github 上给一个✭,现在已有<iframe src="https://ghbtns.com/github-btn.html?user=Wox-launcher&repo=Wox&type=star&count=true" frameborder="0" scrolling="0" height="20px" style="vertical-align:bottom;line-height:20px;margin:1px 0px"></iframe>
  ![](https://camo.githubusercontent.com/9db33546d3a905a9ad915e0948d3ba3f47f57b64/687474703a2f2f692e696d6775722e636f6d2f4474784e424a692e676966)

@@ -23,4 +23,4 @@ order: 1003
  
 - 其它
  - Bitvise 
- - [WOX](http://www.wox.one/)  ------      <iframe src="https://ghbtns.com/github-btn.html?user=Wox-launcher&repo=Wox&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="20px" style="vertical-align:bottom;line-height:20px;margin:1px 0px"></iframe>
+ - [WOX](http://www.wox.one/)  ------      <iframe src="https://ghbtns.com/github-btn.html?user=Wox-launcher&repo=Wox&type=star&count=true" frameborder="0" scrolling="0" height="20px" style="vertical-align:bottom;line-height:20px;margin:1px 0px"></iframe>
