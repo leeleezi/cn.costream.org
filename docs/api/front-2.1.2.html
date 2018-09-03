@@ -61,13 +61,12 @@
 
     <!-- ga -->
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-46852172-3', 'cn.costream.site');
-      ga('send', 'pageview');
+      // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      // ga('create', 'UA-46852172-3', 'cn.costream.site');
+      // ga('send', 'pageview');
     </script>
   </head>
   <body class="docs">
@@ -517,11 +516,11 @@
       var match = window.location.pathname.match(/^\/(v\d+)/)
       var version = match ? match[1] : 'v2'
       docsearch({
-      appId: 'BH4D9OD16A',
-      apiKey: '5638280abff9d207417bb03be05f0b25',
-      indexName: 'vuejs_cn2',
+      appId: 'KZDIIW94S9',
+      apiKey: '57ac1e8afb135bca804242cb3a865cb6',
+      indexName: 'cn.costream.site',
       inputSelector: selector,
-      algoliaOptions: { facetFilters: ["version:" + version] }
+      //algoliaOptions: { facetFilters: ["version:" + version] }
       })
     })
     </script>
