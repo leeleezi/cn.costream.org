@@ -15,6 +15,12 @@ $ git commit
 $ git push
 ```
 
+## 为 algolia 搜索建立索引
+
+```bash
+$ hexo algolia
+```
+
 ## 部署
 
 该站点通过 **手动部署** 对 `master` 分支进行部署到 `master/docs` - Git Pages。

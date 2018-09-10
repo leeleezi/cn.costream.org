@@ -146,6 +146,11 @@ feed:
   path: atom.xml
   limit: 20
 
+algolia:	
+  applicationID: 'G5DJTBYP0J'	
+  apiKey: '408ee09edc757e3b147e511bdaa07ac4'	
+  indexName: 'cn.costream.site'	
+  chunkSize: 5000
 
 alias:
   api/index.html: api/index.html
