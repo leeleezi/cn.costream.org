@@ -319,10 +319,10 @@ team = team.concat(shuffle([ //shuffle 函数打乱了后续成员的顺序
 			org: 'HUST DML'
 		},
 		reposOfficial: [
-			'COStream - Big Data'
+			'COStream.前端'
 		],
 	      	reposPersonal: [
-			'DASCAN','MovieRecommendation'
+			'HTML-MusicPlayer'
 	      	],
 		links: [
 			'https://github.com/zzNire'
