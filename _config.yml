@@ -12,7 +12,7 @@ language: zh-CN
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://cn.costream.site
+url: https://cn.costream.org
 root: /
 permalink: :year/:month/:day/:title/
 tag_dir: tags
@@ -149,7 +149,7 @@ feed:
 algolia:	
   applicationID: 'G5DJTBYP0J'	
   apiKey: '408ee09edc757e3b147e511bdaa07ac4'	
-  indexName: 'cn.costream.site'	
+  indexName: 'cn.costream.org'	
   chunkSize: 5000
 
 alias:
