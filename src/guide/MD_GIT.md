@@ -124,6 +124,10 @@ $ ssh username@dell #
 [svn]
     pathnameencoding = utf-8
 ```
+执行
+```
+export LESSCHARSET=utf-8
+```
 
 ### for Windows:
 Windows的命令行也是能用的且功能齐全,缺点就是不是很好看.
