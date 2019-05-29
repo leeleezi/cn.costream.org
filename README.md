@@ -1,4 +1,5 @@
 # COStream 中文文档
+![](https://travis-ci.org/DML308/cn.costream.org.svg?branch=master)
 
 该站点基于 [Hexo](https://hexo.io/) 构建而成，使用[vue](https://vuejs.org)提供的主题。网站内容在 `src` 文件夹内，格式为 Markdown
 
@@ -23,7 +24,7 @@ $ hexo algolia
 
 ## 部署
 
-该站点通过 **手动部署** 对 `master` 分支进行部署到 `master/docs` - Git Pages。
+该站点使用[travis-ci持续集成服务](https://travis-ci.org) 对 `master` 分支进行部署到 `gh-pages` - Git Pages。
 
 ## 如何参与贡献
 
