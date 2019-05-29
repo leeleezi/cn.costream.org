@@ -1,9 +1,0 @@
-site_description: "COStream - The High Performance Dataflow Language and Compiler"
-google_analytics: UA-46852172-3
-root_domain: cn.costream.org
-
-platinum_sponsors_china:
-  - url: http://www.nsfc.gov.cn/
-    img: nsfc.jpg
-  - url: http://www.most.gov.cn/
-    img: most.png
