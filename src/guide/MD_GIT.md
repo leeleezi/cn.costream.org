@@ -11,8 +11,8 @@ order: 1001
 
 虚拟机选择 Ubuntu 或者 CentoOs 都可以,或其他 Linux 发行版
 >Ubuntu:
-- 14.04.5  	[下载](https://mirrors.163.com/ubuntu-releases/14.04.5/)	 *推荐64位*
-- 16+版本  		*暂未测试过*
+- 14 * gcc 版本太老 *
+- 16或18  	[下载](http://mirrors.hust.edu.cn/ubuntu-releases/)	 *推荐64位*
 ## Git
 - 为什么要使用 Git? [廖雪峰的Git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001373962845513aefd77a99f4145f0a2c7a7ca057e7570000) *仅做参考*
 - git 常用指令速查 [Git简明教程-简书](https://www.jianshu.com/p/16ad0722e4cc)
@@ -49,14 +49,14 @@ Are you sure you want to continue connecting (yes/no)? yes
 
 ## 下载项目
 ```bash
+# 简单的 clone 项目使用 git clone 即可
 $ git clone XXX/XXX.git 
-#以下为2018/6/29周五临时指令, 后来会删除
-$ npm install -g cnpm #cnpm 是 npm 这个包管理器的淘宝镜像,加速国内访问
-$ cnpm install -g hexo-cli hexo-server #hexo是一款流行的博客生成工具,用来把.md生成.html 静态网页
-$ git clone git@github.com:DML308/cn.costream.org.git #把中文站点clone下来只是为了翻译的时候做对比用
-$ git clone git@github.com:DML308/costream.org.git 
+# 若要编辑实验室网站文档则需安装 nodejs 和 hexo
+$ npm install -g hexo-cli hexo-server #hexo是一款流行的博客生成工具,用来把.md生成.html 静态网页
+$ git clone git@github.com:DML308/cn.costream.org.git #中文站点
+$ git clone git@github.com:DML308/costream.org.git    #英文站点
 $ cd costream.org
-$ cnpm install #hexo 工具的package.json里定义了一些Dependencies插件的名字,这些插件并不会把包内容上传github而只是上传它们的名字和版本号以节省网络空间, 所以此时在本地把它们按照定义好的规则下载下来
+$ npm install #hexo 工具的package.json里定义了一些Dependencies插件的名字,这些插件并不会把包内容上传github而只是上传它们的名字和版本号以节省网络空间, 所以此时在本地把它们按照定义好的规则下载下来
 $ hexo serve #开启 localhost:4000以后这是一个本地的 Web 服务器,如果按下 Ctrl+C 那么该服务器就会停止. 如果既想开着 hexo serve 又想动 git 那么最好开两个Git Bash 窗口
 ```
 ## 修改 & 提交
@@ -111,11 +111,29 @@ $ ssh username@dell #
 1. **ssh 免密码登录**
 复制 Mac 的 `cat ~/.ssh/id_rsa.pub`内容,复制入Linux 上的`vim ~/.ssh/authorized_keys`文件即可实现免密连接,连接时使用`ssh username@dell`即可,其中`dell`是上一步添加的 hosts 名字
 
+### for Linux:
+目前常见的一个问题是*中文 windows *上装的*虚拟机 linux* 上 vscode 的控制台`git lg`或`git log`出现乱码, 乱码格式一般为`<A1><E6>`的形式,解决方法:
+在`~/.gitconfig`中添加如下内容:
+```
+[core]
+    quotepath = false
+[gui]
+    encoding = utf-8
+[i18n]
+    commitencoding = utf-8
+[svn]
+    pathnameencoding = utf-8
+```
+执行
+```
+export LESSCHARSET=utf-8
+```
+
 ### for Windows:
 Windows的命令行也是能用的且功能齐全,缺点就是不是很好看.
 **推荐的工具**
-- `Brackets` `Atom` `VSCode`*推荐程度一般* 
-	这些编辑器人各有所爱 
+- `VSCode` `Brackets`*推荐程度一般* 
+   这些编辑器人各有所爱, 注意**编辑器不是IDE**, 编辑器不含开发环境, 本质上和**vim**无区别, 编译出错时请更多考虑自己编译流程中的问题.
 - `Bitvise` *强烈推荐✭✭✭✭✩*
 一个软件就包含了`ssh 连接`+`打开命令行`+`与服务器传文件`, ~~妈妈再也不用提醒我下载 FileZilla~~
 - `WOX` 	*超级强烈推荐✭✭✭✭✭*
