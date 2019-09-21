@@ -78,6 +78,7 @@ $ git reset --hard
 - 进阶要求: 了解**分支**,使用`git branch | checkout`等指令
 - 更高要求: 了解开源项目的`tag`,`release`,`Pull Request`等项目版本管理内容
 - 边角料 : 在使用时遇到问题可以随时百度`git 版本回滚`,`.gitignore`,`git 分支合并`,`git log 详解`等内容
+- 多分支管理: 试试去闯关吧~ [https://learngitbranching.js.org/](https://learngitbranching.js.org/)
 
 ## 更多
 ### 更好看的 git log
@@ -92,6 +93,8 @@ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Crese
 ### 其他
 ```bash
 git config --global alias.st "status"  #简写 git st
+git config --global alias.br "branch"  #简写 git branch
+git config --global alias.co "checkout" #简写 git checkout
 git config --global core.editor "vim"  #设置 vim 为git默认编辑器
 ```
 ### for Mac:
