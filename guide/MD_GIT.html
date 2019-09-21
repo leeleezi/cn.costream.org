@@ -465,6 +465,7 @@
 <li>进阶要求: 了解<strong>分支</strong>,使用<code>git branch | checkout</code>等指令</li>
 <li>更高要求: 了解开源项目的<code>tag</code>,<code>release</code>,<code>Pull Request</code>等项目版本管理内容</li>
 <li>边角料 : 在使用时遇到问题可以随时百度<code>git 版本回滚</code>,<code>.gitignore</code>,<code>git 分支合并</code>,<code>git log 详解</code>等内容</li>
+<li>多分支管理: 试试去闯关吧~ <a href="https://learngitbranching.js.org/" target="_blank" rel="noopener">https://learngitbranching.js.org/</a></li>
 </ul>
 <h2 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h2><h3 id="更好看的-git-log"><a href="#更好看的-git-log" class="headerlink" title="更好看的 git log"></a>更好看的 git log</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global alias.lg <span class="string">"log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit"</span></span><br></pre></td></tr></table></figure>
 <p>现在你每次在终端输入<code>git lg</code>，就能看到下面漂亮的git log了。<br><img src="https://i.loli.net/2018/06/14/5b22158769764.png" alt="git-lg"></p>
@@ -475,7 +476,7 @@
 <li>专业团队的<code>git commit</code>的<code>comment</code>要求清晰、风格统一, 可以参考<a href="http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html" target="_blank" rel="noopener">阮一峰的网络日志-Commit</a></li>
 </ul>
 </blockquote>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global alias.st <span class="string">"status"</span>  <span class="comment">#简写 git st</span></span><br><span class="line">git config --global core.editor <span class="string">"vim"</span>  <span class="comment">#设置 vim 为git默认编辑器</span></span><br></pre></td></tr></table></figure>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global alias.st <span class="string">"status"</span>  <span class="comment">#简写 git st</span></span><br><span class="line">git config --global alias.br <span class="string">"branch"</span>  <span class="comment">#简写 git branch</span></span><br><span class="line">git config --global alias.co <span class="string">"checkout"</span> <span class="comment">#简写 git checkout</span></span><br><span class="line">git config --global core.editor <span class="string">"vim"</span>  <span class="comment">#设置 vim 为git默认编辑器</span></span><br></pre></td></tr></table></figure>
 <h3 id="for-Mac"><a href="#for-Mac" class="headerlink" title="for Mac:"></a>for Mac:</h3><p>Mac 用户可以通过 SSH 来连接自己的Vmware虚拟机<br><em>为什么要多此一举呢,是因为这里有超好看的终端 iTerm2,配置可以参考<a href="https://www.jianshu.com/p/33deff6b8a63" target="_blank" rel="noopener">ITerm2配色方案-简书</a></em></p>
 <ol>
 <li><p><strong>Ubuntu安装 openssh-server</strong></p>
