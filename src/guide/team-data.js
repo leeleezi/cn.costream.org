@@ -411,5 +411,20 @@ team = team.concat(shuffle([ //shuffle 函数打乱了后续成员的顺序
 		]
 		
 	},
+	{       
+		name: '刘力',
+		title: 'Member of DML',
+		city: 'Wuhan, China',
+		languages: ['zh', 'en'],
+		github: 'leeleezi',
+		twitter: null,
+		work: {
+			role: 'postgraduate',
+			org: 'HUST DML'
+		},
+		links: [
+			'https://github.com/leeleezi'
+		]
+	},
 	
 ]))
